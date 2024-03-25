@@ -1,0 +1,216 @@
+\setcounter{subsection}{2}
+\subsection{The Axiom of Completeness}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+
+    \item
+    For some $z \in \mathbb{Z}_5$, if we choose $y = 5 - z \pmod 5$ then
+    \begin{align*}
+        z + y   &= (5 - z) + z \pmod 5 \\
+                &= 0 \pmod 5 
+    \end{align*}
+    Hence $y$ is an additive identity of $z$.
+
+    \item
+    This can be done explitly. \\
+    \begin{center}
+        \begin{tabular}{cc}
+            \toprule
+            $z$ & $x$ \\
+            \midrule
+            1 & 1 \\
+            2 & 3 \\
+            3 & 2 \\
+            4 & 4 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    For example, for $z = 4, x = 4$:
+    \begin{align*}
+        xz  &= 4 \times 4 \pmod 5 \\
+            &= 16 \pmod 5 \\
+            &= 1 \pmod 5
+    \end{align*}
+
+    \item
+    For $\mathbb{Z}_4$, then the construction in (a) will always be valid for a additive
+    inverse. Hence an additive inverse exists for $\mathbb{Z}_n \, \forall \, n \in \mathbb N$. 
+
+    Finding a multiplictive inverse is not always possible for any $z \in \mathbb Z_4$. For
+    instance, $z = 2$ does not have a multiplictive inverse since any number multiplied
+    by two will be even. However, we require the product to be $4n+1$ for some $n \in \mathbb N$
+    which is impossible since the product will always be even.
+
+    Hence, we conjecture that $\exists$ a multiplitive inverse $\forall \, z \in \mathbb Z_n$
+    given $n$ is prime so that no element of $\mathbb Z_n$ shares a factor with n i.e. the greatest
+    common divisor between any element of the set and n is 1.
+    
+\end{enumerate}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{definition}
+        A real number $i$ is a greatest lower bound for a set $A \subseteq \mathbb{R}$ if it meets the following criteria:
+        \begin{enumerate}[label=(\roman*)]
+            \item $i$ is a lower bound for $A$.
+            \item If $b$ is any lower bound for $A$, then $b \leq i $.
+        \end{enumerate}
+    \end{definition}
+
+    \item
+    \begin{lemma}
+        Assume $i \in \mathbb{R}$ is a lower bound on a set $A \subseteq \mathbb{R}$. 
+        Then $i = \inf A$ if and only if $\forall \, \varepsilon > 0 \, \exists \, a \in A $
+        s.t. $i + \varepsilon > a$.  
+    \end{lemma}
+
+    \begin{proof}
+        ($\Rightarrow$) Suppose $i = \inf A$, then $\forall \, \epsilon > 0 $ $ i+\varepsilon > i$
+        but $i+\varepsilon$ cannot be a greater lower bound so there must exist $a \in A$ s.t. $i+\varepsilon > a$.
+
+        ($\Leftarrow$) Suppose for some $i \in \mathbb{R}$ $i+\varepsilon > a$ for some $a \in A $ for arbitrary $ \varepsilon > 0$ then:
+        \begin{enumerate}[label=(\roman*)]
+            \item $i$ is a lower bound by assumption.
+            \item Suppose $i \neq b = \inf A$ with $b>i$, then $b = i + \varepsilon$ for 
+            $\varepsilon = |b - i|$ but $b =  i + \varepsilon > a$ for some $a \in A$ so
+            we have reached a contradition since we assumed $b$ is a lower bound on A.
+            Hence, $i$ is indeed the greatest lower bound.
+        \end{enumerate}
+    \end{proof}
+\end{enumerate}
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        \begin{enumerate}[label=(\roman*)]
+            \item 
+            Suppose $\inf A$ is not an upper bound on B so $\exists$ $b \in B$ s.t. $\inf A \leq b$ but $b$ is a lower bound on $A$ so
+            \begin{equation*}
+                \inf A < b \leq a \, \forall a \in  A
+            \end{equation*}
+            This is a contradition since this would imply $b$ is a greater lower
+            bound on A so we conclude $\inf A$ is indeed an upper bound on B.
+
+            \item 
+            A lower bound on $A$ is given by $\inf A - \varepsilon$ for any $\varepsilon > 0$ so $\inf A - \varepsilon \in B \forall \varepsilon > 0$. 
+            But this would imply
+            \begin{equation*}
+                \inf A - \varepsilon < \inf A - \varepsilon/2 = b \in B
+            \end{equation*}
+            for any $\varepsilon >0$ which implies that $\inf A$ is a least upper bound for $B$.
+
+            Alternatively, $\inf A$ is a lower bound on $A$ then $\inf A \in B$.
+            So since $\inf A$ is an upper bound within $B$ then $\inf A$ is a maximum of $B$. If a maximum exists then $\sup B = \max B = \inf A$.
+        \end{enumerate}
+        Hence $\sup B = \inf A$.
+
+        \item
+        For set $A$ define set $-A = \{-a : a \in  A \}$. It is clear that $-A$ is bounded so we only need to prove
+        \begin{equation*}
+            -\sup(-A) = \inf A
+        \end{equation*}
+    \end{proof}
+\end{enumerate}
+
+\ex{4}
+\begin{proof}
+    If $B \subseteq A$ then $\forall b\in B \, \exists a \in  A$ s.t. $a \geq b$, this implies
+    \begin{equation*}
+        \sup A \geq a \geq \sup B
+    \end{equation*}
+\end{proof}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        \begin{enumerate}[label=(\roman*)]
+            \item 
+            By \defn, $\forall a \in A \, \sup A \geq a$. 
+            Adding $c$ to both sides we get $\forall a \in A \, c + \sup A \geq c + a $. Hence, $c + \sup{A}$ is an upper bound on $c+A$.
+
+            \item 
+            Now for arbitrary $\varepsilon > 0$, $\sup A - \varepsilon < a$ for some $a \in A$. This implies, $c + \sup A - \varepsilon < c + a \in c + A$ for some $a \in A$.
+        \end{enumerate}
+        Hence, $\sup{c+A} = c + \sup A$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        \begin{enumerate}[label=(\roman*)]
+            \item 
+            By \defn, $\forall a \in A \, \sup A \geq a$. 
+            Multiplying by $c$ on both sides we get $\forall a \in A \, c \sup A \geq c a $. Hence, $c \sup{A}$ is an upper bound on $c A$.
+
+            \item 
+            Now for arbitrary $\varepsilon > 0$, $\sup A - \varepsilon < a$ for some $a \in A$. This implies, $c \sup A - \varepsilon < c a \in c A$ for some $a \in A$.
+
+        \end{enumerate}
+    \end{proof}
+
+    \item 
+    We postulate $\sup{cA} = -c \inf A$. This can be easily seen by imagining the sequence of maniplations from $A \rightarrow cA \rightarrow -cA$ and 
+    observe how the up changes.
+\end{enumerate}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item $3$
+    \item $1$
+    \item $1/2$
+    \item $9$
+\end{enumerate}
+
+\ex{7}
+\begin{proof}
+    Since is an upper bound by assumption, we only need to check that
+    a is the least upepr bound. However, this is trivial since for arbitrary $\varepsilon > 0$ $a - \varepsilon < a \in A$ so $a = \sup A$.
+\end{proof}
+
+\ex{8}
+\begin{proof}
+    Let $\varepsilon = (\sup A + \sup B) / 2$. So
+    \begin{equation*}
+        \sup A < \sup B - \varepsilon < b
+    \end{equation*}
+    for some $b \in B$. So $b \in  B$ is an upper bound for $A$. 
+\end{proof}
+
+\ex{9}
+\begin{enumerate}[label=(\alph*)]
+    \item True
+    
+    \item 
+    False, consider set 
+    \begin{equation*}
+        A = \left\{ L - \frac{1}{n} : n \in \mathbb{N} \right\}
+    \end{equation*}
+    where $\sup A = L$.
+    
+    \item 
+    False, consider sets
+    \begin{align*}
+        A &= \left\{ L - \frac{1}{n} : n \in \mathbb{N} \right\} \\
+        B &= \left\{ L + \frac{1}{n} : n \in \mathbb{N} \right\}
+    \end{align*}
+    However, $\inf B = \sup A = L$.
+
+    \item True
+
+    \item 
+    False, consider sets
+    \begin{align*}
+        A &= \left\{ 1 - \frac{1}{n} : n \in \mathbb{N} \text{ and } n \text{ is even} \right\} \\
+        B &= \left\{ 1 + \frac{1}{n} : n \in \mathbb{N} \text{ and } n \text{ is odd} \right\}
+    \end{align*}
+    Then, $\sup A = 1 \leq \sup B = 1$ but $\nexists \, b \in B$ that is an upper bound for $A$.
+
+    This statement can be contradited more easily by noting that the 
+    statement is false for two indentical sets with the supremum not in 
+    the set.
+\end{enumerate}
+    

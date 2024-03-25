@@ -1,0 +1,35 @@
+\documentclass[twocolumn]{article}
+
+\usepackage{titling}
+\usepackage[margin=3cm,bottom=4cm,top=4cm]{geometry}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{amsthm}
+
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+
+
+\newcommand{\ex}[1]{\textbf{Exercise} \thesubsection.#1\par}
+\newcommand{\defn}{\text{def}\textsuperscript{\underline{\text{n}}}}
+\newcommand{\Thm}{\text{Tm}\textsuperscript{\underline{\text{m}}}}
+
+
+\begin{document}
+
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \tableofcontents
+  \end{@twocolumnfalse}
+]
+
+\hfill
+
+\section{The Real Numbers}
+\input{1 The Real Numbers/1.3 The Axiom of Completeness}
+
+\end{document}
