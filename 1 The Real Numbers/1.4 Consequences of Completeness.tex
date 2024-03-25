@@ -1,0 +1,221 @@
+\subsection{Consequences of Completeness}
+
+\ex{1}
+\begin{theorem}
+    For every two real numbers a and b
+    with $a<b$, there exists a rational number r satisfying $a<r<b$.
+\end{theorem}
+\begin{proof}
+    We consider two cases:
+    \begin{itemize}
+        \item $a < 0, b > 0$:
+        By \Thm 1.4.3 $\exists$ $r$ s.t.
+        \begin{equation*}
+            a < 0 \leq r < b
+        \end{equation*}
+
+        \item $a<0, b \leq 0$:
+        By \Thm 1.4.3 $\exists$ $r$ s.t. $-b < r < -a$ 
+        $\Rightarrow a < -r < b$.
+    \end{itemize}
+\end{proof}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Let $p/q, r/s \in \mathbb{Q}$ with $p, q, r, s \in \mathbb{Z}$, then
+        \begin{align*}
+            \frac{p}{q} + \frac{r}{s} = \frac{ps+rq}{qs} \in \mathbb{Q}
+        \end{align*}
+
+        Similarly,
+        \begin{align*}
+            \frac{p}{q} \frac{r}{s} = \frac{pq}{rs} \in \mathbb{Q}
+        \end{align*}
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        We proceed by contradiction:
+        Suppose $p,q,r,s \in \mathbb{Z}$ with $a=p/q$, then
+        \begin{align*}
+            at = \frac{p}{q}t   &= \frac{r}{s} \\
+                  \Rightarrow t &= \frac{rq}{sp} \in \mathbb{Q} 
+        \end{align*}
+    \end{proof}
+    However, $t$ is irrational.
+
+    \item 
+    $\mathbb{I}$ is not closed under addition or multiplication.
+    For instance, consider examples
+    \begin{align*}
+        - \sqrt 2 + \sqrt 2 = 0 \in \mathbb{Q} \\
+        \sqrt 2 \sqrt 2 = 2 \in \mathbb{Q} 
+    \end{align*}
+\end{enumerate}
+
+\ex{3}
+\begin{corollary}
+    Given any two real numbers $a<b$, there exists an irrational
+    number $t$ satisfying $a<t<b$.
+\end{corollary}
+\begin{proof}
+    Using \Thm 1.4.3 $\exists \, r \in \mathbb{Q}$ s.t. 
+    \begin{equation*}
+        a - \sqrt 2 < r < b - \sqrt 2 
+    \end{equation*}
+    given $a < b$. However, if we add $\sqrt 2$ this implies 
+    \begin{equation*}
+        a < r + \sqrt 2 < b
+    \end{equation*}
+    Using \Ex{2} we can conclude that $t = r + \sqrt 2 \in \mathbb{I}$.
+\end{proof}
+
+\ex{4}
+\begin{proof}
+    Let $A = \inf \{ 1/n: n \in \mathbb{N} \}$
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Since $1/n \neq 0$ for any $n \in  \mathbb{N}$ then 0
+        is indeed a lower bound for A.
+
+        \item 
+        By the Archimedean Property of $\mathbb{R}$ for any
+        $\varepsilon > 0 \, \exists n \in \mathbb{N}$ s.t.
+        \begin{equation*}
+            0 + \varepsilon = \varepsilon > 1/n \in A
+        \end{equation*}
+    \end{enumerate}
+    Hence $\inf A = 0$.
+\end{proof}
+
+\ex{5}
+\begin{proof}
+    We proceed by contradiction, suppose $\exists x \in \bigcap_{n=1}^{\infty}$,
+    However, by the Archimedean Property $ \exists m \in \mathbb{N}$ s.t.
+    $x > 1/n$ so $x \notin (0,1/m) \Rightarrow x  \notin \bigcap_{n=1}^{\infty} (0,1/n)$
+\end{proof}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Continuing on from the proof of \Thm 1.4.5:
+    By the Archimedean Property $\exists$ $n_0 \in \mathbb{N}$ s.t. 
+    $1 / n_0 < \frac{\alpha^2+2}{2\alpha} $ which implies
+    \begin{equation*}
+        \left( \alpha - \frac{1}{n_0} \right) > \alpha^2 - \frac{2\alpha}{n_0} > 2
+    \end{equation*}
+    But we assumed $\alpha$ is a least upper bound so we have reached a 
+    contradition. Hence, $\alpha^2 = 2 \Rightarrow \alpha=\sqrt 2$.
+
+    \item
+    We only need to repeat the proof given in \Thm 1.4.5 using the set
+    \begin{align*}
+        S = \{ s\in \mathbb{R}: s^2 < b \}
+    \end{align*}
+    We would conclude $\sup S = \sqrt b$.
+\end{enumerate}
+
+\ex{7}
+\begin{theorem}
+    If $A \subseteq B$ and $B$ is countable, then $A$ is either countable,
+    finite, or empty.
+\end{theorem}
+\begin{proof}
+    We proceed by induction: We will induct on the domain of $g: \mathbb{N} \rightarrow A$.
+    
+    \begin{itemize}
+        \item 
+        Base case ($m = 1$):
+        Let $T_1 = \{ n_1 \in \mathbb{N} : f(n) \in A \}$. Let $n_1 = \min T_1$
+        and $g(1) = f(n_1)$.
+
+        \item 
+        Inductive step: ($m > 1$): Let $T_{m+1} = T_m\\ n_m$. Let $n_{m+1} = \min T_{m+1}$
+        and $g(n_{m+1}) = f(n_{m+1})$.
+    \end{itemize}
+    Clearly $g$ will be 1-1 and onto since $\text{dom} g$ and $\text{ran} g$ are 
+    subsets of $\text{dom} f$ and $\text{ran} f$ respectively which is also 1-1 and onto.
+    
+    If $A$ is either empty or finite then the indcution stops at some $m$.
+\end{proof}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+   \begin{proof}
+        Without loss of generality suppose $A_1, B_2$ are disjoint. We begin by
+        assuming that both sets are infinite. Since $B_2 \subseteq A_2$ we proved
+        in \Ex{7} that $B_2$ is countable so $\exists$ bijections
+        \begin{align*}
+            f &: A_2 \rightarrow \mathbb{R} \\
+            g &: B_2 \rightarrow \mathbb{R}
+        \end{align*}
+        We define new function $h : \mathbb{N} \rightarrow A_1 \cup B_2$ by
+        \begin{equation*}
+            h(n) = \begin{cases} 
+                f(\frac{n+1}{2}) & n \text{ odd} \\
+                g(\frac{n}{2}) & n \text{ even}
+            \end{cases}
+        \end{equation*}
+        $h$ simply returns the elements of $A_1$ and $B_2$ in alternating order.
+        Since $h$ is 1-1 (since $A_1$ and $B_2$ are disjoint) and onto we can
+        conclude $A_1 \cup B_2$ is countable. However since $A_1 \cup B_2 = A_1 \cup A_2$
+        then the same conclusion follows for any two infinite countable sets.
+        
+        If $B_2$ is finite with $m$ elements then we simply define
+        \begin{equation*}
+            h(n) = \begin{cases} 
+                g(n) & n \leq m \\
+                f(n-m) & n > m
+            \end{cases}
+        \end{equation*}
+
+        By induction this result can be generalized to an arbitrary number of sets
+        since every induction step only involves the union of two countable sets
+        which we have proven.
+   \end{proof}
+
+   \item
+   We cannot induct on infinity, what case came before infinity?
+
+   \item
+   Let $f_m: \mathbb{N} \rightarrow A_m \, \forall m \in \mathbb{N}$ and 
+   $A = \{ f_m \in m\in \mathbb{M} \}$.
+
+   For each $m\in \mathbb{N}$, we could assign $A_m$ to the $m^{\text{th}}$ row
+   of the grid and the $n^{\text{th}}$ element of $A_m$ to the $n^{\text{th}}$ 
+   column. To that end, we define bijective function $k : \mathbb{N} \times \mathbb{N} \rightarrow A$ given by
+   \begin{equation*}
+        k(n,m) = f_n(m)
+   \end{equation*}
+
+   Next let $g: \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N}$ which 
+   takes in a row and a column and returns the corresponding value in the 
+   two-dimensional array in illustrated in the preblem. Hence $g$ is bijective 
+   so $g^{-1}$ also exists and undoes the mapping.
+   
+   The composition of bijective functions is bijective so we can define
+   $\ell : \mathbb{N} \rightarrow \bigcup_{n=1}^\infty A_n$ By
+   \begin{equation*}
+        \ell = k \circ g^{-1}
+   \end{equation*}
+   which would prove $\bigcup_{n=1}^\infty A_n$ is countable.
+    
+\end{enumerate}
+
+\ex{9}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    If $A \sim B$ then $\exists$ bijection $f: A\rightarrow B$. However, 
+    the inverse of a bijection is a bijection so $f^{-1}$ exists and is bijective
+    which implies $B\sim A$.
+
+    \item
+    The result follows trivially using the fact that the composition of 
+    bijective functions is a bijection. That is, if $f:A \rightarrow B$ and 
+    $g:B \rightarrow C$ then $h:A\rightarrow C$ is a bijection and implies $A \sim C$.
+\end{enumerate}
+
+\ex{10}
