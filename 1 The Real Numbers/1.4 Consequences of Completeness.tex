@@ -219,3 +219,186 @@
 \end{enumerate}
 
 \ex{10}
+We first prove a lemma which will make the desired proof much simpler:
+\begin{lemma}
+    $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$
+\end{lemma}
+\begin{proof}
+    Now
+    \begin{equation*}
+        \mathbb{N} \times \mathbb{N} = \bigcup_{n}^\infty \{ (n,m) : m \in \mathbb{N} \}
+    \end{equation*}
+    Each set in the union is clearly countable and we know the union of countable sets is countable.
+\end{proof}
+
+We can extend this lemma using induction to conclude that
+\begin{align*}
+    \underbrace{\mathbb{N} \times \cdots \times \mathbb{N}}_n \sim \mathbb{N}
+\end{align*}
+for any $n \in \mathbb{N}$.
+
+We can now proceed with the desired proof.
+\begin{proof}
+    Let
+    \begin{equation*}
+        B_n = \{ \text{all subsets of } \mathbb{N} \text{ with n elements} \}
+    \end{equation*}
+    It is clear that $B_n \sim \underbrace{\mathbb{N} \times \cdots \times \mathbb{N}}_n$
+    for any $n \in \mathbb{N}$ so $B_n$ is countable. We know the union of countable sets is
+    countable so 
+    \begin{equation*}
+        \bigcup_n^\infty B_n \sim \mathbb{N}
+    \end{equation*}
+\end{proof}
+
+\ex{11}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    We can define map
+    \begin{equation*}
+        f : (0,1) \rightarrow S
+    \end{equation*}
+    where for $s\in $ $f(s) = (s,0)$
+
+    \item 
+    We can define $f:S \rightarrow (0,1)$ such that for $(x,y) \in S$ $f$ interleves the 
+    digits of $x$ and $y$. For example if $x=0.321$ and $y=0.458$ then $f(x,y)=0.435281$.
+    However, $f$ is not onto, for example, $\nexists s\in S$ s.t. $f(s)=0.101010...$.  
+\end{enumerate}
+
+\ex{12}
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \begin{itemize}
+        \item $\sqrt 2$ is the \soln of $x^2-2=0$
+        \item $\sqrt[\uproot{3} n]{2}$ is a \soln of $x^3 - 2=0$
+        \item 
+        Now
+        \begin{align*}
+            (\sqrt 3 + \sqrt 2)^2 &= 3 + 2 + 2 \sqrt 6 \\
+            (\sqrt 3 + \sqrt 2)^2 - 5 &= 2 \sqrt 6 \\
+            \Rightarrow ((\sqrt 3 + \sqrt 2)^2 - 5)^2 &= 24
+        \end{align*}
+        So $\sqrt 3 + \sqrt 2$ is a \soln of $(x^2-5)^2 = 24$.
+    \end{itemize}
+
+    \item
+    We can divide the set of degree $n$ polynomials based on whether their coefficients 
+    satisify
+    \begin{equation*}
+        |a_n| + |a_{n-1}| + \cdots + |a_1| + |a_0| \leq m
+    \end{equation*}
+    There are less than $2m^n$ unique polynomials, each with a finite number of roots so 
+    the set of algebraic numbers obtained from polynomials of degree $n$ with terms 
+    summing to less than or equal to $m$ is finite and denoted by $A_{(n,m)}$. 
+    The union of finite sets is countable so $A_n = \bigcup_m^{\infty} A_{(n,m)}$ is countable
+    where $A_n$ denotes the set of all algebraic numbers obtainable from polynomials of 
+    degree $n$.
+
+    Alternative method:
+    A quick way to see this result is to note that 
+    \begin{align*}
+        \underbrace{\mathbb{Z} \times \cdots \times \mathbb{Z}}_{m} \sim \underbrace{\mathbb{N} \times \cdots \times \mathbb{N}}_{2m} \sim \mathbb{N}
+    \end{align*}
+    Since we can easily find a mapping of polynomials of integer coefficients of degree $n$ to 
+    the above set which is countable, then by the transitive property set of polynomials of integer coefficients 
+    of degree $n$ is countable. Each polynomials produces at most four roots and the union of
+    a countablely infinite number of finite sets. So if we denote
+    \begin{align*}
+        B_m = \{\text{Set of roots of the } m^{\text{th}} \text{ polynomial}\}
+    \end{align*}
+    then $\bigcup_m^\infty B_m$ is countable.
+
+    \item 
+    Since the union of countable sets is countable $\bigcup_n^\infty A_n$ is countable.
+\end{enumerate}
+
+\ex{13}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $f$ is by assumption 1-1 so $\exists$ a unique $x\in X$ s.t. $f(x)=y$ given $y\in f(X)$.
+
+    \item 
+    \begin{itemize}
+        \item 
+        The number of elements to the left of $x$ is zero: 
+        If $X=Y$ and $f, g$ are identity maps $g^{-1}(x)=x$ and $f^{1}(g^{-1}(x))=x$ etc. so
+        there are no values to the left of $x$.
+
+        Alternatively: $x\in g^{-1}(X)$.
+
+        \item 
+        The number of elements to the left of $x$ is finite: 
+        If $g^{-1}(x) \not\in f^{-1}(X)$ then only one element exists to the left of $x$.
+
+        \item 
+        A simple example is if $g^{-1}(x) = y$ and $f^{-1}(y) = x$.
+        
+        A less trivial example can be obtained if we consider $X=Y=\mathbb{N}$ and 
+        $f(n) = n+1 \rightarrow f^{-1}(n)=n-1$. Let $g=f$, then if we chain $f^{-1}$ and 
+        $g^{-1}$ we obtain $..,n-2, n-1, n, ...$
+    \end{itemize}
+
+    \item 
+    If $\exists$ some $a, b$ s.t. any one of the following holds
+    \begin{gather*}
+        a = (f^{-1} \circ \cdots \circ f^{-1})(b) \\
+        a = (f^{-1} \circ \cdots \circ g^{-1})(b) \\
+        a = ( g^{-1} \circ \cdots  \circ f^{-1})(b) \\
+        a = ( g^{-1} \circ \cdots \circ g^{-1} )(b)
+    \end{gather*}
+    The $C_a$ and $C_b$ match at atleast one point. If this is the case then since
+    the chain is extending in the same way and the starting value is the same then 
+    the two chains must agree everywhere.
+
+    Alternatively, if the above does not occur then the chains must not agree anywhere
+    and are therefore disjoint.
+
+    \item
+    If $C_y \cap Y\not\subseteq f(X)$ then $\exists$ at least one a single $y\in Y$ where
+    $y \not\in f(X)$. Hence, the chain cannot be extended to the left since $f^{-1}(y)$
+    is undefined.
+
+    \item 
+    If $C_x \in  A$, then every $y\in A$ is in $f(X)$. This implies that every $x\in X$
+    proceeding $y$ is in the doman of $f$.
+    So $X_1 \subseteq \text{dom} f$ and $Y_1 \subseteq \text{ran} f$. Hence, since $f$ is
+    by assumption 1-1 then $f: X_1 \rightarrow Y_1$ is onto also.
+
+    Similarly, if $C_y \in  B$, then every $x\in B$ is in $g(Y)$ since every element in $x\in X$
+    is proceeded by an element in $y$ with $g(y)=x$
+    So $Y_2 \subseteq \text{dom} g$ and $X_2 \subseteq \text{ran} g$. Hence, since $g$ is
+    by assumption 1-1 then $g: Y_2 \rightarrow X_2$ is onto also.
+
+    Now since $f:X_1 \rightarrow Y_1$ and $g: Y_2 \rightarrow X_2$ are bijections $f^{-1}, g_{-1}$
+    exist and are also bijections. 
+    
+    We are now ready to define a bijection $h: X \rightarrow Y$. Since
+    \begin{align*}
+        A &\text{ disjoint } B \\
+       \Rightarrow X_1 &\text{ disjoint } X_2 \\
+       \Rightarrow Y_1 &\text{ disjoint } Y_2
+    \end{align*}
+    $X_1 \cup X_2 = (A \cap X) \cup (B \cap X) = X \cap (A \cup B) = X$ since $A \cup B$ is the
+    set of all possible chains. Similarly, $Y_1 \cup Y_2 = Y$.
+
+    So we define 
+    \begin{align*}
+        h(x) = 
+        \begin{cases}
+            f(x) & x \in X_1 \\
+            g^{-1}(x) & x \in X_2
+        \end{cases}
+    \end{align*}
+    Since $X_1$ and $X_2$ are disjoint, $h$ is well-defined. In addition, since $X_1 \cup X_2 = X$
+    and $Y_1 \cup Y_2 = Y$ $h$ is 1-1 and onto. Similarly,
+    \begin{align*}
+        h^{-1}(x) = 
+        \begin{cases}
+            f^{-1}(x) & x \in Y_1 \\
+            g(x) & x \in Y_2
+        \end{cases}
+    \end{align*}
+    Since we have found bijection between $X$ and $Y$, $X \sim Y$.
+
+\end{enumerate}
