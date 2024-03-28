@@ -1,0 +1,239 @@
+\subsection{The Algebraic and Order Limit Theorems}
+
+\ex{1}
+\begin{proof}
+    Let $\varepsilon > 0$ be arbitrary. Then 
+    \begin{align*}
+        |a_n - a| = 0 < \varepsilon \quad \forall n \geq \mathbb{N} = 1
+    \end{align*}
+\end{proof}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    (a) is a special case of (b) so we only prove (b).
+
+    \item 
+    \begin{align*}
+        x &= \lim x_n \\
+        &= \lim{\sqrt{x_n} \sqrt{x_n}} \\
+        &= \lim \sqrt{x_n} \lim \sqrt{x_n} \\
+        &= (\lim \sqrt{x_n})^2 
+    \end{align*}
+    Hence, $\lim \sqrt{x_n} = \sqrt x$.
+\end{enumerate}
+
+
+\ex{3}
+By the order limit theorem,
+\begin{align*}
+    x_n \leq y_n \leq z_n \Rightarrow \lim x_n \leq \lim  y_n \leq \lim z_n
+\end{align*}
+So if $\lim x_n = \lim z_n = l$ then $\lim y_n = l$.
+
+\ex{4}
+\begin{align*}
+    0 &= \lim 0 = \lim{a_n - a_n} \\
+    &= \lim a_n - \lim a_n \\
+    &= l_1 - l_2 \\
+    \Rightarrow l_1 &= l_2
+\end{align*}
+
+
+\ex{5}
+\begin{proof}
+    $(\Rightarrow)$ For arbitrary $\varepsilon > 0$ choose $N \in \mathbb{N}$
+    s.t. 
+    \begin{align*}
+        |z_n - z| < \varepsilon \quad \forall n \geq N
+    \end{align*}
+
+    Define 
+    \begin{align*}
+        N_1 = 
+        \begin{cases}
+            (N+2)/2 & N \text{ even} \\
+            (N+1)/2 & N \text{ odd} \\
+        \end{cases}
+    \end{align*}
+    so for $n_1 \geq N_1$
+    \begin{align*}
+        |x_{n_1} - z| = |z_{2n_1-1} - z| < \varepsilon
+    \end{align*}
+    and
+    \begin{align*}
+        |y_{n_1} - z| = |z_{2y_1} - z| < \varepsilon
+    \end{align*}
+    so $\lim x_n = z = \lim y_n$.
+
+    $(\Leftarrow)$ Suppose $(x_n) \rightarrow z, (y_n) \rightarrow z$, then
+    \begin{align*}
+        |z_n - z| = 
+        \begin{cases}
+            |x_n - z| & n \text{ odd} \\
+            |y_n - z| & n \text{ even}
+        \end{cases}
+    \end{align*}
+    Now $\exists$ $N_1, N_2 \in \mathbb{N}$ s.t. $\forall$ $n_1 \geq N_1$
+    and $n_2 \geq N_2$
+    \begin{align*}
+        |x_n-z| &< \varepsilon \\
+        |y_n-z| &< \varepsilon
+    \end{align*}
+    so choose $N = \max \{N_1, N_2\}$ so that 
+    \begin{align*}
+        |z_n-z| < \varepsilon
+    \end{align*}
+    so $\lim z_n = z$.
+\end{proof}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Let $\varepsilon > 0$. Next choose $N=\max\{N_1, N_2\}$ s.t.
+        \begin{align*}
+            |b_{n_1}-b| < \varepsilon \quad \forall n_1 \geq N_1
+        \end{align*}
+        and  
+        \begin{align*}
+            |b_{n_2}-b| < |b| \quad \forall n_2 \geq N_2
+        \end{align*}
+        So we are guaranteed to be far enough into the sequence such that
+        the remaining terms match the sign of $b$ i.e. $\text{sgn } b_n = \text{sgn } b$.
+        So
+        \begin{align*}
+            \varepsilon > |b_n-b| = ||b_n| - |b||
+        \end{align*}
+        So $(|b_n|) \rightarrow b$.
+    \end{proof}
+
+    \item 
+    The converse of (a) is not true. 
+    Take the sequence $(b_n) = \{1,-1,1,-1,...\}$ which is divergent but
+    $(|b_n|) \rightarrow 1$.
+\end{enumerate}
+
+\ex{7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Let $\varepsilon > 0$ be arbitrary. Then choose
+         $N \in \mathbb{N}$ s.t. 
+         \begin{align*}
+            |b_n| < \varepsilon / M \quad \forall n\geq N
+         \end{align*}
+         where $M = \sup a_n$. Then
+         \begin{align*}
+            |a_nb_n| \leq M |b_n| < M \frac{\varepsilon}{M} < \varepsilon
+         \end{align*}
+    \end{proof}
+    
+    We cannot use the algebraic limit theorm since both Sequences
+    need to converge but we cannot assume this about $(a_n)$.
+
+    \item 
+    If $(b_n)$ converges to a non-zero limit then no general conclusion can 
+    be made since if $(a_n) =\{ 1,-1,1,-1,...\}$ then the sequence $(a_nb_n)$
+    would oscillate between $b$ and $-b$ but never converge i.e. there is no
+    response for example for $\varepsilon = |b|$.
+
+    \item
+    \begin{proof}
+        Since we assume $(a_n) \rightarrow 0$ and
+        $(1/b_n)$ is bounded then by (a) $(a_nb_n) \rightarrow 0$.
+    \end{proof}
+\end{enumerate}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Sequences $(x_n), (y_n)$ where $x_n=n, y_n=-n$ diverge but 
+    $(x_n+y_n) = (0)$ converges.
+
+    \item 
+    Impossible, since $y_n = (x_n + y_n) - x_n$ so by the algebraic limit 
+    theorem
+    \begin{align*}
+        \lim y_n = \lim{x_n+y_n} - \lim x_n
+    \end{align*}
+    since the RHS converges then the LHS also converges.
+    
+    \item
+    Consider sequence $(b_n) $ where $b_n = 1/n$.
+
+    \item 
+    Impossible since $(b_n)$ converges then it is bounded also. Since $(a_n-b_n)$ is bounded
+    then this would imply $(a_n)$ is bounded also.
+
+    \item 
+    This is simply \Ex{7}. Consider $(b_n) = \{1,-1,1,-1,...\}$ and 
+    $(a_n)\rightarrow 0$ then $(a_nb_n)$ will surely converge.
+\end{enumerate}
+
+\ex{9}
+If we try to assume stricit inequalities then none of the statements of the
+order limit theorem continue to hold. We provide counter examples for each.
+\begin{enumerate}[label=(\roman*)]
+    \item 
+    Consider $(a_n)\rightarrow a$ where $a_n = 1/n > 0$ but $a=0$.
+    
+    \item 
+    This case reduces to the previous if we assume $a_n=0$ for all $n$.
+
+    \item 
+    If $c=0$ and $c = 0 < b_n$ for all $n$. This is reduces to the first case.
+    Suppose $a_n <c =  0$ for all $n$. Then $-a_n > 0$ which reduces to the 
+    first case again.
+\end{enumerate}
+
+\ex{10}
+\begin{proof}
+    For $\varepsilon > 0$. Choose $N \in \mathbb{N}$ s.t. 
+    \begin{align*}
+        |a_n| < \varepsilon \quad \forall n \geq N
+    \end{align*}
+    Then
+    \begin{align*}
+        |b_n - b| < |a_n| < \varepsilon
+    \end{align*}
+\end{proof}
+
+\ex{11}
+\begin{proof}
+    Let $\varepsilon > 0$ be arbitrary.
+    Observe $x_n < M \, \forall n$ then by the order limit theorem $|x_n - x| \, \forall n$.
+    So we choose $N > M \ varepsilon$ then
+    \begin{align*}
+        |y_n - x| \leq \sum_m^n \frac{|x_n-x|}{n} < \frac{M}{M/\varepsilon} < \varepsilon
+    \end{align*}
+
+    The second equality follows since
+    \begin{align*}
+        |y_n - x| &=  \left| \frac{1}{n}\sum_m^n x_m - x\right| \\
+        &= \frac{1}{n} \left| \sum_m^n x_m - nx \right| \\
+        &= \frac{1}{n} \left| \sum_m^n (x_m - x) \right| \\
+        &\leq \frac{1}{n}  \sum_m^n \left|x_m - x \right|
+    \end{align*}
+\end{proof}
+
+\ex{12}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    We expect $\lim_{m,n}a_{m,n}$ to represent what happens to the tail 
+    of hte doubly indexed sequence. 
+
+    \begin{align*}
+        \lim_n \lim_m a_{m,n} &= 1 \\
+        \lim_m \lim_n a_{m,n} &= 0
+    \end{align*}
+
+    \item 
+    \begin{definition}
+        $(a_{m,n}) \rightarrow a$ if $\forall \, \varepsilon > 0 \, \exists$
+        $N \in \mathbb{N}$ s.t. 
+        \begin{align*}
+            |a_{m,n} - a| < \varepsilon \quad \forall m,n \geq N
+        \end{align*} 
+    \end{definition}
+\end{enumerate}

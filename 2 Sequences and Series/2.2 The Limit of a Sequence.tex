@@ -1,0 +1,137 @@
+\subsection{The Limit of a Sequence}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $\lim \frac{1}{6n^2+1} = 0$
+
+    Scratchwork: We require that for some $\varepsilon > 0$
+    \begin{align*}
+        \frac{1}{6n^2+1} &< \varepsilon \\
+        \Rightarrow n &> \sqrt{\frac{1}{6}\left( \frac{1}{\varepsilon} - 1 \right)}
+    \end{align*}
+    So we choose $N > \sqrt{\frac{1}{6}\left( \frac{1}{\varepsilon} - 1 \right)}$.
+
+    \begin{proof}
+        Let $\varepsilon>0$ be arbitrary. 
+        For $n \geq N > \sqrt{\frac{1}{6}\left( \frac{1}{\varepsilon} - 1 \right)}$ where $n, N\in \mathbb N$
+        then
+        \begin{align*}
+            \left| \frac{1}{6n^2+1}\right| &< \left| \frac{1}{6N^2+1}\right| \\
+                                            &< \varepsilon
+        \end{align*}
+        
+    \end{proof}
+
+    \item 
+    $\lim \frac{3n+1}{2n+5} = 3/2$
+
+    \begin{proof}
+        Let $\varepsilon>0$ be arbitrary. 
+        For $n \geq N > \frac{1}{4}\left( \frac{13}{\varepsilon} - 10 \right)$ where $n, N\in \mathbb N$
+        then
+        \begin{align*}
+            \left|  \frac{3n+1}{2n+5} - \frac{3}{2} \right| < \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    $\lim \frac{2}{\sqrt{n+3}} = 0$
+
+    \begin{proof}
+        Let $\varepsilon>0$ be arbitrary. 
+        For $n \geq N > \frac{4}{\varepsilon^2}-3$ where $n, N\in \mathbb N$
+        then
+        \begin{align*}
+            \left|  \frac{2}{\sqrt{n+3}} \right| < \varepsilon
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+\ex{2}
+Consider this sequence which is vercongent but divergent
+\begin{align*}
+    (-1,1,-1,1,...)
+\end{align*}
+The defintion of vercongence is simply that the sequence be bounded above and 
+below. The bound is called $\varepsilon$.
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item Find a college in the US with no students above seven feet.
+    \item Find a college in the US where every professor has given a
+    grade other than an A or B.
+    \item Find a student at every US college which is below six feet.
+\end{enumerate}
+
+\ex{4}
+The greatest distance between the largest and smallest terms of the sequence
+ are $0$ and $1$ so for any $\varepsilon > 1$ then 
+ \begin{align*}
+    |a_n - 0| \leq 1 < \varepsilon
+ \end{align*}
+ for any $n \leq N = 1$ where $n, N \in \mathbb{N}$. Conversely, for $\varepsilon \leq 1$
+ there exists no suitable response.
+
+ \ex{5}
+ \begin{enumerate}[label=(\alph*)]
+    \item 
+    Observe $a_n = 0$ for $n > 1$ so 
+    \begin{align*}
+        |a_n - 0| = 0 \quad \forall n \geq N > 1 
+    \end{align*}
+    So $(a_n) \rightarrow 0$.
+
+    \item 
+    Observe, for $n>10$ $10+n < 2n$ so the tail of the sequence is imply zeros so
+    $N = 11$ is a suitable response to any $\varepsilon > 0$.
+ \end{enumerate}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item larger
+    \item larger
+\end{enumerate}
+
+\ex{7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{definition}
+        A sequence $(a_n)$ converges to infinity if for every 
+        $\varepsilon > 0$, there exists $N \in \mathbb{N}$ s.t. 
+        for all $n \geq N$ it follows $|a_n| > \varepsilon$.
+    \end{definition}
+
+    We now prove $(\sqrt n)$ converges to infinity.
+    \begin{proof}
+        Let $\varepsilon > 0$ be arbitrary, then
+        \begin{align*}
+            |\sqrt n | > \varepsilon \quad \forall n \geq \mathbb{N} > \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item 
+    This sequence does not converge to infinity since oscillates.
+\end{enumerate}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item frequently
+    \item Eventually is stronger than frequently since eventually 
+    $\Rightarrow $ frequently.
+
+    \item
+    \begin{definition}
+        A sequence $(a_n)$ converges to a if, given any $\varepsilon$-neighbourhood
+         $V_\varepsilon(a)$, $(a_n)$ is eventually in $V_\varepsilon(a)$.
+    \end{definition}
+
+    \item 
+    It is frequently but not necessarily eventually in $(1.9, 2.1)$.
+    For instance, consider the sequence
+    \begin{equation*}
+        (x_n) = (2,0,2,0,2,0,...)
+    \end{equation*}
+\end{enumerate}
+
+
