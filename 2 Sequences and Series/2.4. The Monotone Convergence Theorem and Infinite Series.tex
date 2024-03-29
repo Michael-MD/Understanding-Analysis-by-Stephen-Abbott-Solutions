@@ -1,0 +1,280 @@
+\subsection{The Monotone Convergence Theorem and Infinite Series}
+
+\ex{1}
+\begin{theorem}
+    Suppose $(bn)$ is decreasing and satisfies $bn \geq 0$ for all $n \in N$. 
+    If $(b_n)$ converges then
+    \begin{align*}
+        \sum_n^\infty 2^n b_n = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16} + \cdots
+    \end{align*}
+    converges
+\end{theorem}
+\begin{proof}
+    Let $s_n, t_n$ be the partial sums of $\sum_m b_m$ and $\sum_m 2^m b_m$ respectively. 
+    We will prove the contrapositive of this statement. So we aim to prove that if 
+    $(t_n)$ diverges then so does $(s_n)$.
+    Observe
+    \begin{align*}
+        s_{2^{k+1}} &= b_1 + (b_2) + (b_3 + b_4) + (b_5 + b_6 + b_7 + b_8) \\
+        & + \cdots + (b_{2^k+1} + \cdots + b_{2^{k+1}}) \\ 
+        &\geq b_1 + b_2 + 2b_4 + 4b_8 + \cdots + 2^{k}b_{2^{k+1}}\\
+        &= \frac{b_1}{2} + \frac{1}{2}\left( b_1 + 2b_2 + \cdots + 2^{k+1} b_{2^{k+1}} \right) \\
+        &= \frac{b_1}{2} + \frac{t_{2^{k+1}}}{2}
+    \end{align*}
+    So if $(t_n)$ diverges and we know the sequence is 
+    monotone increasing then it must be unbounded, this implies $(s_n)$ is also unbounded
+    and therefore cannot converge.
+\end{proof}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We prove this statement by proving the sequence is monotone and bounded.
+        
+        We begin by proving monotonicity using induction.
+        \begin{itemize}
+            \item Base case: For $n=1$, $x_2 = 3 \leq x_1 = 1$.
+            \item Inductive step: For $n>1$, by the induction hypothesis $x_n \leq x_{n-1}$.
+            This implies 
+            \begin{align*}
+                x_n = 4 - \frac{1}{n_{n+1}} &\leq x_{n-1} = 4 - \frac{1}{n_{n}} \\
+                \Rightarrow \frac{1}{x_{n+1}} &\geq \frac{1}{x_n} \\
+                \Rightarrow x_{n+1} &\leq x_n
+            \end{align*}
+        \end{itemize}
+    \end{proof}
+
+    \item 
+    $(x_{n+1})$ and $(x_n)$ have the same tail and only the tail behaviour 
+    influences the limit.
+
+    \item 
+    \begin{align*}
+        x = \lim x_{n+1} &= \lim \frac{1}{4-x_n} \\
+                    &= \frac{1}{4-\lim x_n} \\
+                    &=         \frac{1}{4-x} \\
+                    \Rightarrow x = 2\pm \sqrt 3
+    \end{align*}
+    Since $x_n \leq 3$ $\lim x_n = 2 - \sqrt 3$.
+\end{enumerate}
+
+\ex{3}
+\begin{proof}
+    We will prove this result using the monotone convergenec \Thm.
+    First we prove the sequence is monotonic increasing using 
+    induction.
+
+    \begin{itemize}
+        \item Base case: $y_2 \geq y_1 $ $\Rightarrow$ $\frac{1}{y_2} \leq \frac{1}{y_1}$
+        $\Rightarrow$ $y_3 = 4 - \frac{1}{y_2} \geq 4 - \frac{1}{y_1} = y_2$.
+        So $y_3 \geq y_2$.
+
+        \item Inductive step: $y_n \geq y_{n-1} $ $\Rightarrow$ $\frac{1}{y_{n}} \leq \frac{1}{y_{n-1}}$
+        $\Rightarrow$ $y_{n+1} = 4 - \frac{1}{y_n} \geq 4 - \frac{1}{y_{n-1}} = y_n$.
+        So $y_{n+1} \geq y_n$.
+    \end{itemize} 
+    The result follows by the induction hypothesis.
+
+    Since the sequence, $(y_n)$, is bounded below by $0$ and so $\frac{1}{y_n} \geq 0$
+     so $y_n = 4-\frac{1}{y-{n-1}}\leq 4$. 
+     Then by the Monotone convergence \Thm the sequence is convergent.
+\end{proof}
+
+We can now proceed to find the limit 
+\begin{align*}
+    y = \lim y_{n+1} &= \lim 1 - \frac{1}{y_n} \\ 
+                &= 1 - \frac{1}{\lim y_n} \\
+                &= 1 - \frac{1}{y} \\
+                & \Rightarrow y = 2\pm \sqrt 3
+\end{align*}
+By the order limit \Thm since $y_n \geq 1 \forall n \in \mathbb{N}$ then $y \geq 1$ so $y = 2+\sqrt 3$.  
+
+\ex{4}
+\begin{proof}
+    Let $(z_n)$ be the sequence of interest. First we prove $(z_n)$ is bounded above by $2$ using
+    induction.
+    \begin{itemize}
+        \item Base step: $z_1 \leq 2$
+        \item Inductive step: $z_{n+1} \leq \sqrt 2 \sqrt{z_{n}}$ but $\sqrt{z_{n}} \leq \sqrt 2$ 
+        $\Rightarrow$ $z_{n+1}\leq \sqrt 2 \sqrt{\sqrt 2} \leq \sqrt 2 \sqrt 2 = 2$.
+    \end{itemize}
+    It follows by the induction hypothesis that $z_n \leq 2 \forall n \in \mathbb{N}$ 
+    so $(z_n)$ is bounded.
+
+    Next we show the sequence is monotonic increasing, this is easy to see if we obtain an explicit formula
+    for $(z_n)$ given by 
+    \begin{align*}
+        z_n = \prod_{m=1}^n 2^{\frac{1}{2^m}}
+    \end{align*}
+    So 
+    \begin{align*}
+        z_{n+1} &= \prod_{m=1}^{n+1} 2^{\frac{1}{2^m}} \\
+                &= 2^{\frac{1}{2^{n+1}}}\prod_{m=1}^{n} 2^{\frac{1}{2^m}} \\
+                &= 2^{\frac{1}{2^{n+1}}} z_n
+    \end{align*}
+    Since $2^{\frac{1}{2^{n+1}}} \geq 1 \Rightarrow z_{n+1} \leq z_n$. Hence by the Monotone convergence
+    theorem $(z_n)$ converges.
+\end{proof}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        First we prove $x_n^2 > 2$. Now $n=1$, $x_1^2=2^2 = 4 > 2$.
+        For $n > 1$
+        \begin{align*}
+            x_n^2 - 2 &= \frac{1}{2}\left( x_{n-1} + \frac{2}{x_{n-1}} \right)^2 - 2 \\
+                    &= \frac{1}{4} \left( x_{n-1}^2 + \frac{4}{x_{n-1}^2} - 4 \right) \\
+                    &= \frac{1}{4}\left( x_{n-1} - \frac{2}{x_{n-1}} \right)^2 \\
+                    &> 0
+        \end{align*}
+        $x_{n} > 2$.
+
+        Next we prove $x_n - x_{n+1} \geq 0$:
+        \begin{align*}
+            x_n - x_{n+1} &= x_n - \frac{1}{2}\left( x_n + \frac{2}{x_n} \right) \\
+                        &= \frac{-1}{2}\left( -x_n + \frac{2}{x_n} \right) \\
+                        &= \frac{1}{2x_n}\left( x_n^2 - 2 \right) \\
+                        &\geq 0
+        \end{align*}
+        Since $x_n > 0$ and $x_n^2 > 2 \, \forall n \in \mathbb{N}$.
+        Since the sequence is monotone decreasing and bounded it must converge.
+        Taking the limit on both sides we obtain
+        \begin{align*}
+            x = \frac{1}{2}\left( x + \frac{2}{x} \right)
+        \end{align*}
+        so $x = \sqrt 2$.
+    \end{proof}
+
+    \item 
+    If we modify the sequence s.t. 
+    \begin{align*}
+        x_{n+1} = \frac{1}{2}\left( x_n + \frac{c}{x+n}\right)
+    \end{align*}
+    where $x_1=c$.
+    and we follow the steps as we did in (a) we will find $(x_n) \rightarrow \sqrt c$.
+\end{enumerate}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Let $T_n = \{ a_k : k \geq n \}$.
+
+        Now $T_{m+1}$ is the same as $T_m$ with $a_m$ removed so 
+        \begin{itemize}
+            \item If $a_m \leq a_n $ for some $a_n \in T_{n+1}$ then 
+            $\sup T_n = \sup T_{n+1}$.
+            
+            \item If $a_m \geq a_n $ for all $a_n \in T_{n+1}$ then 
+            $\sup T_n \geq \sup T_{n+1}$.
+        \end{itemize}
+        Hence $y_{n+1} \leq y_n$ so $(y_n)$ is monotonic.
+
+        Now $(a_n)$ being bounded implies $(T_n)$ is bounded since
+        $T_n \subseteq (a_n)$. Hence, 
+        \begin{align*}
+            |y_n| = |\sup T_n| < M
+        \end{align*}
+        where $M$ is an upper bound for $(x_n)$ then $(y_n)$ is bounded.
+
+        Since $(y_n)$ is monotonic and bounde above, by the
+         Monotone convergence \Thm
+         $(y_n)$ converges.
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        Let $T_n = \{ a_k : k \geq n \}$.
+
+        Now $T_{m+1}$ is the same as $T_m$ with $a_m$ removed so 
+        \begin{itemize}
+            \item If $a_m \geq a_n $ for some $a_n \in T_{n+1}$ then 
+            $\inf T_n = \inf T_{n+1}$.
+            
+            \item If $a_m \leq a_n $ for all $a_n \in T_{n+1}$ then 
+            $\sup T_n \leq \sup T_{n+1}$.
+        \end{itemize}
+        Hence $x_{n+1} \geq x_n$ so $(y_n)$ is monotonic.
+
+        Now $(a_n)$ being bounded implies $(T_n)$ is bounded since
+        $T_n \subseteq (a_n)$. Hence, 
+        \begin{align*}
+            -M < |\inf T_n| = |x_n|
+        \end{align*}
+        where $-M$ is an lower bound for $(x_n)$ then $(x_n)$ is bounded.
+
+        Since $(x_n)$ is monotonic and bounded below, by the
+         Monotone convergence \Thm $(x_n)$ converges.
+    \end{proof}
+
+    \item 
+    Now $y_n = \sup T_n \geq \inf T_n = x_n$ so by the order limit \Thm, 
+    $\lim y_n \geq \lim x_n$.
+
+    The inequality becomes strict for sequence $(a_n) = \{ 1,-1,1,-1,... \}$ 
+    since $\limsup a_n = 1 > \liminf a_n = -1$.
+
+    \item 
+    \begin{proof}
+        $(\Rightarrow)$ Suppose $\liminf a_n = \limsup a_n = \alpha$. 
+        For $\varepsilon > 0$ choose $N_1, N_2 \in \mathbb{N}$
+        s.t. 
+        \begin{gather*}
+            |x_{n_1} - \alpha| < \varepsilon/3 \quad \forall n_1 \geq N_1\\
+            |y_{n_2} - \alpha| < \varepsilon/3 \quad \forall n_1 \geq N_2
+        \end{gather*}
+        so
+        \begin{align*}
+            |x_n - y_n| &\leq |x_n - \alpha + \alpha - y_n| \\
+            &\leq |x_n - \alpha| + |\alpha - y_n| \\
+            &= 2\varepsilon/3
+        \end{align*}
+        Then take $N = \max\{ N_1, N_2 \}$ so that for all $n \geq N$
+        \begin{align*}
+            x_n \leq a_n \leq y_n
+        \end{align*}
+        and observe
+        \begin{align*}
+            |a_n - \alpha| &= |a_n - y_n + y_n - \alpha| \\
+                            &\leq |a_n - y_n| + |y_n - \alpha| \\
+                            &\leq |z_n - y_n| + |y_n - \alpha| \\
+                            &< 2\varepsilon/3 + \varepsilon/3 \\
+                            &= \varepsilon
+        \end{align*}
+
+        $(\Leftarrow)$ Suppose $(a_n) \rightarrow \alpha$, then 
+        $\exists N \in \mathbb{N}$ s.t. 
+        \begin{align*}
+            |a_n - \alpha| < \varepsilon /2
+        \end{align*} 
+        for $n \geq N$ and this implies
+        \begin{align*}
+            \alpha - \varepsilon /2 < a_n < \alpha + \varepsilon /2
+        \end{align*}
+        so 
+        \begin{gather*}
+            x_n \geq x_N \geq \alpha - \varepsilon /2 \\
+            y_n \leq y_N \leq \alpha + \varepsilon /2
+        \end{gather*}
+        where have used the facts that $x_n$ is monotonicity increasing and
+        $y_n$ is monotonicity decreasing.
+        So 
+        \begin{align*}
+            \alpha - \varepsilon /2 \leq x_N \leq x_n \leq a_n \leq y_n \leq y_N \leq \alpha + \varepsilon /2
+        \end{align*}
+        This chain of inequalities implies 
+        \begin{gather*}
+            \alpha - \varepsilon  < \alpha - \varepsilon /2 \leq x_n \leq \alpha + \varepsilon /2 < \alpha + \varepsilon \\
+            \alpha - \varepsilon < \alpha - \varepsilon /2 \leq y_n \leq \alpha + \varepsilon /2 < \alpha + \varepsilon
+        \end{gather*}
+        which implies
+        \begin{gather*}
+            |x_n - \alpha| < \varepsilon \\ 
+            |y_n - \alpha| < \varepsilon \\ 
+        \end{gather*}
+        so $(x_n)\rightarrow \alpha$ and $(y_n)\rightarrow \alpha$.
+    \end{proof}
+\end{enumerate}
+
