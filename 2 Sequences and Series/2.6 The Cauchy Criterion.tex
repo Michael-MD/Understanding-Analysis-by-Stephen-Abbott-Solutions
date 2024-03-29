@@ -1,0 +1,185 @@
+\subsection{The Cauchy Criterion}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item Consider $\{ \frac{(-1)^n}{n} \}$
+    \item Consider $\{ n : n \in \mathbb{N} \}$
+    \item Impossible, since a cauchy sequence is convergent and every 
+    subsequence of a convergent sequence is convergent.
+    \item Consider $\{ 1, 1/2, 2, 1/3, 3, 1/4, 4, ... \}$ 
+\end{enumerate}
+
+\ex{2}
+\begin{proof}
+    Suppose $(a_n) \rightarrow a$, then $\exists N \in \mathbb{N}$ s.t.
+    \begin{align*}
+        |a_n-a| < \varepsilon/2 \forall n \geq N
+    \end{align*}
+    so for $n,m \geq N$
+    \begin{align*}
+        |a_n - a_m| &= |a_n - a + a - a_m| \\
+                    &\leq |a_n - a| + |a - a_m| \\
+                    &< \varepsilon
+    \end{align*}
+\end{proof}
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item A pseudo cauchy sequence only requires adjacent terms of the tail to 
+    be a maximum distance from eachother. A cauchy sequence requires any two  
+    terms in the tail to be within some maximum distance.
+
+    \item 
+    Consider the partial sums of the geometric series which diverges but
+    \begin{align*}
+        |s_{n+1} - s_n| = \frac{1}{n+1} < \varepsilon
+    \end{align*}
+    for $\varepsilon > 0$ by the Archimedean property.
+\end{enumerate}
+
+\ex{4}
+If $(a_n - b_n)$ is cauchy then it converges 
+$\Rightarrow |a_n - b_n|$ converges $\Rightarrow (a_n - b_n)$ is cauchy.
+
+ \ex{5}
+ \begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Since $(x_n)$ and $(y_n)$ are cauchy then $\exists$ $N_1, N_2 \in \mathbb{N}$
+        s.t. 
+        \begin{align*}
+            |x_{n_1} - x_{m_1}| < \varepsilon \, \forall n_1, m_1 \geq N_1 \\
+            |y_{n_2} - y_{m_2}| < \varepsilon \, \forall n_2, m_2 \geq N_2 
+        \end{align*}
+
+        Choose $N = \max{N_1, N_2}$ so that
+        \begin{align*}
+            |x_n + y_n - x_m - y_m| &= |x_n - x_m + y_n - y_m| \\
+                                    &\leq |x_n - x_m| + |y_n - y_m| \\
+                                    &< \varepsilon
+        \end{align*}
+    \end{proof}
+    
+    \item 
+    \begin{proof}
+        Choose $N \in \mathbb{N}$ s.t. 
+        \begin{gather*}
+            |x_n - x_m| \leq \frac{\varepsilon}{2M_2} \\
+            |y_n - y_m| \leq \frac{\varepsilon}{2M_1}
+        \end{gather*}
+        where $M_1, M_2$ are upper bounds on $(x_n)$ and $(y_n)$ respectively.
+
+        So for $n,m \geq N$
+        \begin{align*}
+            |x_ny_n - x_my_m| &= |x_ny_n  - x_ny_m + x_ny_m - x_my_m| \\
+                            &\leq |x_ny_n  - x_ny_m| + |x_ny_m - x_my_m| \\
+                            &= |x_n||y_n  - y_m| + |y_m||x_n - x_m| \\
+                            &\leq M_1|y_n  - y_m| + M_2|x_n - x_m| \\
+                            &< \varepsilon
+        \end{align*}
+    \end{proof}
+ \end{enumerate}
+
+ \ex{6}
+ Note: Throughout this question notation defined in one part can be used in 
+ subsequent parts.
+ \begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Suppose a set $C$ is bounded by $M$. 
+    
+        Now consider interval $I_1 = [-M, M]$, subdivide this interval into 
+        parts $[-M,0]$ and $[0, M]$ and choose $I_2$ as follows:
+        \begin{itemize}
+            \item $I_2 = [0,M]$ if $\exists \, c\in C$ s.t. $c \geq 0$
+            \item Otherwise choose $I_2 = [-M,0]$
+        \end{itemize}
+        By construction $I_2 \subseteq I_1$, we repeat this process 
+        indefinitely s.t. 
+        \begin{align*}
+            I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
+        \end{align*}
+        By the NIP $\exists \, s \in \bigcap_n I_n$. This will be our 
+        candidate for the greatest lower bound of $A$.
+
+        \begin{itemize}
+            \item First we check if $s$ is an upper bound for $A$:
+                Suppose $\exists \, c \in C$ s.t. $c > s$. Now we know the 
+                lengths of the $m^{\text{th}}$ interval is given by $2M / 2^{m-1}$,
+                so all intervals where $m > \log_2(M \varepsilon)+1$ will have length 
+                less than $\varepsilon/2 > 0$.
+
+                In particular choose $\varepsilon = |c-s|$ so exist intervals $I_t, I_n$ where $t > \log_2(M \varepsilon)+1 > n$.
+                For some $t < m < n$ $c \in I_M$ but $c \not\in I_{m+1}$
+                but this cannot happen since the upper bound of $I_{m} = [a_{m},b_m]$ is reduced
+                to produce $I_{m+1}=[a_{m+1}, b_{m+1}]$ 
+                only if there are no $c\in C$ in the inerval $[(a_{m}+b_m)/2, b_m]$ so $s$ is indeed
+                an upper bound.
+
+                \item Next we check if $s$ is a least upper bound: 
+                Since $I_n$ must contain at least a singe element of $C$ for all $n \in \mathbb{N}$, then
+                we simply choose an interval with width less than $\varepsilon > 0$, say this corresponds to
+                $I_m$. Now $c, s \in C$ with $c \leq s$ and $|c-s| < \varepsilon$.
+                This implies
+                \begin{align*}
+                    -\varepsilon < c - s < \varepsilon \Rightarrow s - \varepsilon < c
+                \end{align*} 
+                so $s$ is indeed a least upper bound.
+            \end{itemize}
+            so NIP $ \Rightarrow $ AoC.
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        Consider intervals 
+        \begin{align*}
+            I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
+        \end{align*}
+
+        Construct sequence, $(z_n)$, as follows: $z_n \in I_n$ and $z_n \leq b \in I_{n+1}$.
+        Clearly this sequence is monotone increasing and bounded above since the upper bound for
+        $I_1$ serves as an upper bound for the entire sequence. So by the MCT $(z_n)\rightarrow z$.
+
+        We now argue that $z \in \bigcap_n I_n$: Since $z_n$ converges $\exists\, N$ s.t. 
+        \begin{align*}
+            |z_n - z| < \varepsilon \quad \forall n \geq N
+        \end{align*}
+        for $\varepsilon > 0$.
+        
+        Suppose $\exists \, m$ s.t. $a \not\in I_m$, in this case choose $\varepsilon = |z - b_m|$ 
+        i.e. the distance from the interval's upper bound and $z$. So $\exists \, a_t \in (b_m, 2z-b_m)$
+        where $t > m$ which implies the intervals are not nested which is a contradiction 
+        so $a \in \bigcap_n I_n$. 
+        Hence, MCT $\Rightarrow $ NIP.
+
+        \item 
+        Construct sequence, $(z_n)$, in the same way as we did in (b).
+        Now since $(z_n)$ is bounded, by BW there exists a subsequence $(z_{n_k}) \rightarrow z$.
+        
+        We now prove $z \in \bigcap_n I_n$: By construction
+        $ z_{n_k} \in I_m $ for all $n_k \geq m$. 
+        
+        So suppose $z \not\in I_m$ for some $m$, since there exists $N$ s.t. 
+        $|z_{n_k} - z| < |z -b_m|$ so all $z_{n_k}$ where $n_k \geq N$ are not in $I_m$ but this cannot
+        happen since we assume the tail of $(z_{n_k})$ is eventually in $I_m$.
+        so $a \in \bigcap_n I_n$. 
+        Hence, BW $\Rightarrow $ NIP.
+    \end{proof}
+
+    \item 
+    Consider bounded sequence $(z_n)$. Suppose $(z_n)$ is bounded by $M$ where $M$ is 
+    positive, then choose
+    $I_1 = [-M,M]$ and choose $a_{n_1} \in I_1$. Next subdivide this region in two parts $[-M,0]$
+    and $[0,M]$ and choose $I_2$ to be the region with infinitely many points. $z_{n_2}$ is chosen
+    to be in $I_2$ with $n_2 > n_1$. This repeats indefinitely to construct nested intervals and 
+    subsequence $(z_{n_k})$. By construction $z_{n_k} \in I_m$ for all $ k \geq m$.
+    Since the $m^{th}$ interval has length $\frac{2M}{2^{m-1}}$ then for any $\varepsilon > 0$
+    there exists $m$ s.t. the length of the interval is less than $\varepsilon$ which implies
+    \begin{align*}
+        |z_{m_k} - z_{n_k}| \leq |b_m - a_m| < \varepsilon 
+    \end{align*}
+    for $n_k,m_k \geq N > \log_2(2M\varepsilon) + 1$ and we have found a convergent subsequence
+    $(z_{n_k})$ inside $(z_n)$.
+    Hence, CC $\Rightarrow$ BW.
+
+ \end{enumerate}
