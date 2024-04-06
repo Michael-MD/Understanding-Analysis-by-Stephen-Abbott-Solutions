@@ -1,0 +1,459 @@
+\subsection{Properties of Infinite Series}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Now if $n-m$ is even then
+        \begin{align*}
+            |s_n - s_m| &= |(a_{m+1} - a_{m+2}) + \cdots + (a_{n-1} - a_{n})| \\
+            &\leq |a_{m+1}|
+        \end{align*}
+        If $n-m$ is odd then
+        \begin{align*}
+            |s_n - s_m| &= |(a_{m+1} - a_{m+2}) + \cdots + (a_{n-2} - a_{n-1}) +  a_{n}| \\
+            &\leq |a_{m+1}|
+        \end{align*}
+        However since $(a_{n}) \rightarrow 0$ then for $\varepsilon$ there exists $N$ s.t.
+        \begin{align*}
+            |a_{n}| < \varepsilon 
+        \end{align*}
+        for $n \geq N$. So $|s_n - s_m| \leq |a_{m+1}| < \varepsilon$ for $n \geq N$.
+    \end{proof}
+
+    \item
+    Before we proceed with the result it will be useful to prove a lemma first.
+    \begin{lemma}
+        Let $e_n=s_{2n}$ and $o_n=s_{2n+1}$. Then $o_n \geq e_m$ for $n\geq m$
+    \end{lemma}
+    \begin{proof}
+        Observe
+        \begin{align*}
+            o_n - e_m &= |(a_{2n+1} - a_{2n}) + \cdots + (a_{2m+2} - a_{2m+1}) + a_{2m}| \\
+            &\geq 0 \\
+            \Rightarrow o_n &\geq e_m
+        \end{align*}
+        where the first equality follows since 
+        we know such a pairing is always possible since $2n+1-2m=2(n+m)+1$ so there are
+        an odd number of terms always.
+    \end{proof}
+
+    We now proceed with the proof of the alternating series test using the NIP.
+    \begin{proof}
+        Observe $(e_n)$ is monotonically increasing and $(o_n)$ is montonically decreasing.
+        So we can choose intervals $I_n= [e_n, o_n]$. The length of an interval is given by
+        \begin{align*}
+            |I_n| = |o_n-e_n| = |a_{n+1}| < \varepsilon
+        \end{align*}
+        for $n \geq N$. These intervals are nested because of the previous lemma so by
+        the NIP $x \in \cap_n I_n$.
+        So
+        \begin{align*}
+            |s_n - x| = \begin{cases}
+                |e_n - x| \leq |e_n - o_n| < \varepsilon & n \text{ is even} \\
+                |o_n - x| \leq |e_n - o_n| < \varepsilon & n \text{ is odd}
+            \end{cases}
+        \end{align*}
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        Suppose $e_n=s_{2n}$ and $o_n=s_{2n+1}$.
+        Observe $(e_n)$ is monotonically increasing and $(o_n)$ is montonically decreasing.
+        Additionally $e_n \leq a_1$ and $o_n \geq 0$ so by the Monotone convergence \Thm
+        $(e_n)\rightarrow e$ and $(o_n)\rightarrow o$.
+        
+        Now
+        \begin{align*}
+            |o-e| &= |o-o_n + o_n - e_n + e_n -e| \\
+                &\leq |o-o_n| + |o_n - e_n| + |e_n -e|
+        \end{align*}
+        Since $(o_n)\rightarrow o, (e_n)\rightarrow e, (a_n)\rightarrow 0$ then 
+        there exist $N_1, N_2, N_3 \in \mathbb{N}$ s.t.
+        \begin{gather*}
+            |o_{n_1} - o| < \varepsilon/3 \quad \text{ for } n_1 \geq N_1 \\
+            |e_{n_2} - e| < \varepsilon/3 \quad \text{ for } n_2 \geq N_2 \\
+            |a_{n_3} - a| < \varepsilon/3 \quad \text{ for } n_3 \geq N_3
+        \end{gather*} 
+        So for $N = \max\{ N_1, N_2, N_3 \}$ $|o-e| < \varepsilon \Rightarrow o=e=a$.
+
+        For $m \geq N$, then
+        \begin{align*}
+            |s_m - a| = \begin{cases}
+                |e_m - a| < \varepsilon/3 < \varepsilon & m \text{ is even} \\
+                |o_m - a| < \varepsilon/3 < \varepsilon & m \text{ is odd}
+            \end{cases}
+        \end{align*}
+        so $(s_n) \rightarrow a$.
+    \end{proof}
+\end{enumerate}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{enumerate}[label=(\roman*)]
+        \item 
+        \begin{proof}
+            Suppose $\sum b_k$ converges, so for any $\varepsilon>0$
+            there exists $N$ s.t. 
+            \begin{align*}
+                |b_{m+1}+\cdots + b_n| < \varepsilon
+            \end{align*}
+            for $n>m\geq N$. Since
+            \begin{align*}
+                |a_{m+1}+\cdots + a_n| < |b_{m+1}+\cdots + b_n| < \varepsilon
+            \end{align*}
+            for $n>m\geq N$ then $\sum a_k$ converges also.
+        \end{proof}
+        
+        \item 
+        \begin{proof}
+            Suppose $\sum a_k$ diveregs, then there exists some
+            $\varepsilon>0$ s.t. for every $N\in \mathbb{N}$
+            there exists $n>m\geq N$ s.t. 
+            \begin{align*}
+                |a_{m+1}+\cdots + a_n| > \varepsilon
+            \end{align*}
+            Since 
+            \begin{align*}
+                |b_{m+1}+\cdots + b_n| > |a_{m+1}+\cdots + a_n| > \varepsilon
+            \end{align*}
+            so $\sum b_k$ diverges also.
+        \end{proof}
+    \end{enumerate}
+
+    \item 
+    \begin{enumerate}[label=(\roman*)]
+        \item 
+        \begin{proof}
+            Suppose $\sum b_k$ converges. Suppose $(s_n)$ and
+            $t_n$ are the partial sums of $\sum a_k$ and $\sum b_k$
+            repectively.
+
+            Then since $\sum b_k$ converges then $(t_n)$ converges and must 
+            be bounded. However since 
+            \begin{align*}
+                s_n \leq b_n
+            \end{align*}
+            for all $n$ then $s_n$ is also bounded. Since we assume the 
+            terms of the series are nonnegative then by the Monotone
+            convergence \Thm $(s_n)$ also converges.
+        \end{proof}
+
+        \item 
+        \begin{proof}
+            Suppose $\sum a_k$ diverges. Suppose $(s_n)$ and
+            $t_n$ are the partial sums of $\sum a_k$ and $\sum b_k$
+            repectively.
+
+            Then since $\sum a_k$ then $(s_n)$ diverges. However since
+            $(s_n)$ is monotonic then it cannot be bounded. But 
+            \begin{align*}
+                s_n \leq b_n
+            \end{align*}
+            for all $n$ then $t_n$ is also unbounded. Since we assume the 
+            terms of the series are nonnegative then $(t_n)$ 
+            must be unbounded and therefore divergent also.
+        \end{proof}
+    \end{enumerate}
+\end{enumerate}
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    % \begin{proof}
+    %     Since $\sum a_k$ is divergent then there exists some $\varepsilon$
+    %     s.t. for all $N \in \mathbb{N}$ there exists $n>m\geq N$ s.t.
+    %     \begin{align*}
+    %         |s_n - s_{m}| > \varepsilon
+    %     \end{align*} 
+    %     However, observe
+    %     \begin{align*}
+    %         |s_n - s_{m}| &= |a_n + \cdots a_{m+1}| \\
+    %         &= |\sum p_k + \sum q_k| \\
+    %     \end{align*}
+    %     Then
+    %     \begin{align*}
+    %         \varepsilon < |s_n - s_{m}| &\leq |\sum p_k|
+    %     \end{align*}
+    %     and/or
+    %     \begin{align*}
+    %         \varepsilon < |s_n - s_{m}| &\leq |\sum q_k|
+    %     \end{align*}
+    %     Hence, for the same $\varepsilon$ and $n>m\geq N$,
+    %     either $\sum p_k$ or $\sum q_k$ violoates the 
+    %     bound of $\varepsilon$ placed or both.
+    % \end{proof}
+
+    \begin{proof}
+        Since $\sum a_n$ diverges then $\sum |a_n|$
+        diverges also. Now the sequence of partial sums is montonic increasing
+        so the seqeuence must be unbounded. However, observe
+        $|a_n| = |p_n| + |q_n|$ so $\sum |p_n| + |q_n|$ is unbounded. 
+        So at least $\sum p_n$ or $\sum q_n$ is unbounded also.
+    \end{proof}
+
+    \item 
+    We know at least $\sum p_n$ or $\sum q_n$ is divergent and unbounded.
+    Suppose only $\sum p_n$ is divergent. Since $\sum q_n$ is assumed to be
+    bounded then lets assume it is bounded by $B>0$. For any $M>0$ there exists
+    $N$ s.t. $\sum_n^k p_n > M+B$ for $k\geq N$ so
+    \begin{align*}
+        |\sum_n^k a_n| &\geq ||\sum_n^k p_n| - |\sum_n^k q_n|| \\
+        & \geq |M+B - B| \\
+        &= M
+    \end{align*}
+    so $\sum a_n$ also becomes arbitrarily large and is therefore unbounded. We
+    have a contradition since we assumed $\sum a_n$ is convergent so $\sum p_n$
+    and $\sum q_n$ both diverge. A similar arguement applied when we start by 
+    assuming $\sum q_n$ diverges but $\sum p_n$ converges. 
+\end{enumerate}
+
+\ex{4}
+Take $x_n=1/n$ and $y_n=1/n$ then 
+\begin{align*}
+    \sum x_n y_n = \sum \frac{1}{n^2}
+\end{align*}
+which converges.
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        $\sum |a_n|$ converges $\Rightarrow$ $(|a_n|)\rightarrow 0$.
+        So there exists $N$ s.t. $|a_n|<1$ for $n \geq N$.
+        Hence, $|a_n|^2 < |a_n|$ for $n \geq N$. Hence, by the comparison
+        test $\sum |a_n|^2$ converges also.
+    \end{proof}
+
+    Note, this result requires absolute convergence since
+    \begin{align*}
+        \sum \frac{(-1)^{n+1}}{\sqrt{n}}
+    \end{align*}
+    converges by since it does not converge absolutely then
+    \begin{align*}
+        \sum \left( \frac{(-1)^{n+1}}{\sqrt{n}} \right)^2 = \sum \frac{1}{n}
+    \end{align*}
+    which does not converge.
+
+    \item
+    No, since 
+    \begin{align*}
+        \sum \frac{1}{n^2}
+    \end{align*}
+    converges but 
+    \begin{align*}
+        \sum \sqrt{\frac{1}{n^2}} = \sum \frac{1}{n}
+    \end{align*}
+    is divergent.
+\end{enumerate}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Suppose $(y_n)$ is bounded by $M>0$.
+        Since $\sum x_k = x$ converges abolsutely then choose
+        $N$ s.t.
+        \begin{align*}
+            ||\sum_k^n x_k| - |x|| < \varepsilon / M
+        \end{align*}
+        for $n \geq N$ so
+        \begin{align*}
+            & |x_{m+1}y_{m+1} + \cdots + x_{n}y_{n}|  \\
+            \leq &|x_{m+1}||y_{m+1}| + \cdots + |x_{n}||y_{n}| \\
+            \leq &M(|x_{m+1}| + \cdots + |x_{n}|) \\ 
+            < &M \frac{\varepsilon}{M} \\
+            = &\varepsilon 
+        \end{align*} 
+    \end{proof}
+
+    \item 
+    Consider series $\sum \frac{(-1)^{n+1}}{\sqrt n}$
+    which converges conditionally and $y_n = \frac{(-1)^{n+1}}{\sqrt n}$
+    which is bounded. Then 
+    \begin{align*}
+        \sum x_n y_n = \sum \frac{1}{n}
+    \end{align*}
+    which diverges.
+\end{enumerate}
+
+\ex{7}
+\begin{proof}
+    Suppose $\sum_n \frac{1}{n^p}$ is convergent, so $(\frac{1}{n^p}) \geq 0$
+    and decreasing. By the cauchy condensation test this converges iff
+    \begin{align*}
+        \sum_{n=0} 2^n b_{2n} = 1 + \sum_{n=1} \frac{1}{2^{n(p-1)}}
+    \end{align*}
+    converges. This converges iff $\sum_{n=1} \frac{1}{2^{n(p-1)}}$ converges.
+    This is a geometric series where $r = \frac{1}{2^{(p-1)}}$ and converges 
+    iff $r<1 \Leftrightarrow p-1>0 \Leftrightarrow p>1$.
+\end{proof}
+
+\ex{8}
+\begin{proof}
+    Suppose $\sum a_n = A$ and $\sum b_n = B$ with partial sums $(s_n)$ and 
+    $(t_m)$ respectively. By the algebraic limit \Thm of sequences 
+    \begin{align*}
+        \lim s_n + t_n = \lim s_n + \lim t_n = A+B
+    \end{align*}
+    so $\sum a_n + b_n = A+B$.
+\end{proof}
+
+\ex{9}
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Since $(|\frac{a_{n+1}}{a_n}|) \rightarrow r$ then for arbitrary 
+        $\varepsilon>0$ there exists $N\in \mathbb{N}$ s.t. 
+        \begin{align*}
+            ||\frac{a_{n+1}}{a_n}| - r| < \varepsilon
+        \end{align*} 
+        for $n\geq N$. In particular, choose $\varepsilon = r'-r$ where 
+        $r'>r$. This implies 
+        \begin{align*}
+            r-r' < |\frac{a_{n+1}}{a_n}| - r < r'-r
+        \end{align*}
+        This implies $|\frac{a_{n+1}}{a_n}| < r'$ so $ |a_{n+1}| <|a_n| r' $.
+    
+        \item
+        $\sum (r')^n$ is a convergent geometric series since $r'<1$.
+        By the algebraic limit \Thm for series $|a_N|\sum (r')^n$ converges
+        also.
+    
+        \item
+        By (a) we know $|a_{n+1}| <|a_n| r'$ for $n \geq N$. So for the same $N$
+        $|a_n| \leq |a_N|r'$ so by the comparison test $\sum |a_n|$ converges also.
+    \end{enumerate}
+\end{proof}
+
+\ex{10}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Observe for $\varepsilon < \ell/2$ $\nexists N$ s.t. $|s_n-s_m| < \varepsilon$
+        for $n>m\geq N$ since $\exists M \in \mathbb{N}$ s.t. 
+        \begin{align*}
+            |ta_t -l| <l/2 \Rightarrow ta_t > \ell/2
+        \end{align*}
+        for $t\geq M$ which implies 
+        \begin{align*}
+            |a_n + \cdots + a_{m+1}| \geq (n-m) \min\{a_n, ..., a_{m+1}\} \geq l/2
+        \end{align*}
+        so choose $n_0, m_0$ s.t. $(n_0-m_0) \geq M$.
+        So the partial sums of $\sum a_n$ are not a cauchy sequence so the
+        series is divergent.
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        Observe for $\varepsilon$ we know for $n \geq N$
+        \begin{align*}
+            n^2 a_n < 2l \Rightarrow a_n < \frac{2l}{n^2}
+        \end{align*}
+        We know $\sum \frac{2l}{n^2}$ converges so by the comparison test
+        so does $\sum a_n$.
+    \end{proof}
+\end{enumerate}
+
+\ex{11}
+Pick your favourite convergent series, I will choose $\sum 1/n^2$.
+We can construct $\sum a_n$ and $\sum b_n$ as follows 
+\begin{gather*}
+    \sum a_n = \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2} + \frac{1}{6^2} + \frac{1}{6^2} + \cdots\\
+    \sum b_n = \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{2^2} + \frac{1}{2^2} + \frac{1}{2^2} + \frac{1}{6^2} + \frac{1}{7^2} + \cdots \\
+\end{gather*}
+No matter how far into the tail we go there will always be a set of terms which add to unity
+to spoil the cauchy criterion for the convergence of a series.
+However 
+\begin{align*}
+    \sum \min\{ a_n, b_n \} = \sum \frac{1}{n^2}
+\end{align*}
+which converges.
+
+\ex{12}
+\begin{align*}
+    \sum_{j=m+1}^{n} x_j y_j &= \sum_{j=m+1}^{n} (s_j - s_{j-1}) y_j \\
+     &= \sum_{j=m+1}^{n} s_j y_j - \sum_{j=m+1}^{n} s_{j-1} y_j \\
+     &= \sum_{j=m+1}^{n} s_j y_j - \sum_{j=m}^{n-1} s_{j} y_{j+1} \\
+     &= \sum_{j=m+1}^{n} s_j y_j - \sum_{j=m}^{n} s_{j} y_{j+1} + s_ny_{n+1} -  s_m y_{m+1}\\
+     &= \sum_{j=m+1}^{n} s_j (y_j - y_{j+1}) + s_ny_{n+1}-  s_m y_{m+1}
+\end{align*}
+
+\ex{13}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        \begin{align*}
+            |\sum_{m+1}^n x_j y_j| &= |\sum_{j=m+1}^{n} s_j (y_j - y_{j+1}) + s_ny_{n+1}-  s_m y_{m+1}| \\
+            &\leq  |\sum_{j=m+1}^{n} M (y_j - y_{j+1}) + s_ny_{n+1}-  s_m y_{m+1}| \\
+            &\leq  |\sum_{j=m+1}^{n} M y_j - \sum_{j=m+2}^{n+1} M y_{j} + s_ny_{n+1}-  s_m y_{m+1}| \\
+            &\leq  | -My_{n+1} + My_{m+1} + s_ny_{n+1}-  s_m y_{m+1}| \\
+            &\leq  | -y_{n+1}|M-s_n| + y_{m+1}|M - s_m|| \\
+            &\leq  | y_{m+1}(M - s_m)| \\
+            &\leq  M | y_{m+1}| + M | y_{m+1}| \\
+            &\leq 2M |y_{m+1}| 
+        \end{align*}
+        where $(s_n)$ are the parital sums of $\sum x_n$.
+    \end{proof}
+
+    \item
+    Choose $N\in \mathbb{N}$ s.t.
+    \begin{align*}
+        |y_{m}| < \frac{\varepsilon}{2M}
+    \end{align*} 
+    for $m \geq N$. So for $n > m \geq N$
+    \begin{align*}
+        |\sum_{m+1}^n x_j y_j| \leq 2M|y_{m+1}| < 2M \frac{\varepsilon}{2M} < \varepsilon
+    \end{align*}
+
+    \item
+    Let $x_n = (-1)^{n+1}$, then the result follows.
+\end{enumerate}
+
+\ex{13}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{enumerate}[label=(\roman*)]
+        \item 
+        Abel's test does not assume $(y_n)$ converges.
+
+        \item
+        Abel's test assumes $\sum x_n$ is convergent while Dirichlet's
+        test only requires that it be bounded.
+    \end{enumerate}
+
+    \item 
+    The limit of $(y_n)$ was not used in (a) of \Ex{12}. We only 
+    require that $\sum a_n$ be bounded which is true since it converges 
+    so the result follows immediately by setting $m=0$
+    \begin{align*}
+        |\sum_{j=1}^n a_j b_j| \leq 2A |b_{1}| 
+    \end{align*}
+
+    \item 
+    \begin{proof}
+        For arbitrary $\varepsilon > 0$ we know there exists 
+        $N \in \mathbb{N}$ s.t.
+        \begin{align*}
+            |\sum_{m+1}^n| < \frac{\varepsilon}{2b_1}
+        \end{align*}
+        for $n > m \geq N$. For any $m \geq N$
+        define sequences $a_j = x_{m+j}$ and $b_j = y_{m+j}$
+        which implies 
+        \begin{align*}
+            |\sum_{j=1}^{n'} a_j b_j| &= |\sum_{j=1}^{n'} x_{m+j} y_{m+j}| \\
+            &= |\sum_{j=m+1}^{n} x_{j} y_{j}| \\
+            &< 2b_1 \frac{\varepsilon}{2b_1}
+        \end{align*}
+        where for simplicity we have redefined $n=n'+m$ so $n > m$
+        since $n'\geq 1$.
+
+        So for any chosen $m\geq N$, any $n>m$ will satisfy 
+        \begin{align*}
+            |\sum_{j=m+1}^{n} x_{j} y_{j}| < \varepsilon
+        \end{align*}
+        To achieve this we needed to fix $m$ to apply the results of (b)
+        to a contrived sequence.
+    \end{proof}
+\end{enumerate}
