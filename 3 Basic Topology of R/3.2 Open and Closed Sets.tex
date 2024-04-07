@@ -1,0 +1,313 @@
+\subsection{Open and Closed Sets}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    The proof assumes there exists $V_\varepsilon(a) \subseteq \bigcap O_k$.
+    If we allow for an infinite number of intersections then the intersection 
+    may be a singleton set which is closed $\nexists$ $V_\varepsilon(a) \subseteq \bigcap O_k$.
+    
+    \item
+    Consider 
+    \begin{align*}
+        O = \bigcap (a-\frac{1}{n}, a+\frac{1}{n}) 
+    \end{align*}
+\end{enumerate}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $b_n = \frac{(-1)^n n }{n+1}$ has two convergent subsequences, 
+    these being 
+    $(\frac{n }{n+1}) \rightarrow 1$ and $(\frac{-n}{n+1}) \rightarrow -1$.
+    So the limit points are $\pm 1$.
+
+    \item
+    No, since it does not contain all of its limit points
+
+    \item 
+    No, since every point is an isolated point.
+
+    \item
+    Yes, every point is isolated since
+    \begin{align*}
+        V_\varepsilon(b_n) \bigcap B = \emptyset
+    \end{align*}
+    for $\varepsilon = \min\{ |b_n - b_{n+2}|, |b_n - b_{n-2}|, |b_n - b_{n-1}|, |b_n - b_{n+1}| \}$ i.e.
+    the distance between terms surrounding $b_n$.
+
+    \item
+    $\bar B = B \cup \{\pm 1\}$
+\end{enumerate}
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $\mathbb{Q}$ is not open since any neighbourhood
+    of a rational point will contain an irrational number.
+    $\mathbb{Q}$ is not closed since every irrational number is
+    a limit point of $\mathbb{Q}$. These are all consequences
+    of the density of $\mathbb{Q}$ i $\mathbb{R}$.
+
+    \item 
+    $\mathbb{N}$ is not open since every point is isolated.
+    $\mathbb{N}$ is closed since it has no limit points 
+    other than those corresponding to $\{n,n,n,n,n,...\}$.
+
+    \item 
+    This set is open since every element has an open neighbourhood
+    contained in the set. It is not clsoed since the limit 
+    $(1/n)$ is not in the set so it does not contain all of its limit 
+    points.
+
+    \item 
+    This interval is not open or closed since the limit of $(1/n)$
+    is not in the set and $\nexists V_\varepsilon(1) \subseteq \{ x\in \mathbb{R} : x>0 \}$.
+
+    \item
+    These are the partial sums of $(1/n^2)$, since $0$
+    is not in the set then this set is not closed.
+    It is not open since every point is an isolated point.
+\end{enumerate}
+
+\ex{4}
+\begin{proof}
+    Suppose $x=\lim a_n$ then for any $\varepsilon$-neighbourhood
+    there exists $N\in \mathbb{N}$ s.t. 
+    \begin{align*}
+        |x-a_n| < \varepsilon \forall n \geq N
+    \end{align*}
+    with $a_n \neq x$ so $a_n \in V_\varepsilon(x)\cap A \forall n\geq N$.
+    Since $\varepsilon$ was arbitrary then $x$ is a limit point.
+\end{proof}
+
+\ex{5}
+\begin{proof}
+    $(\Rightarrow)$ Suppose $a$ is an isolated point then by 
+    definition $a$ is not a limit point so there exists some 
+    $\varepsilon$-neighbourhood s.t. 
+    \begin{align*}
+        V_\varepsilon(a) \cap A = \{ a \}
+    \end{align*}
+
+    $(\Leftarrow)$ Suppose $V_\varepsilon(a)\cap A = \{ a \}$.
+    Then $a$ is not a limit point since we have found an $\varepsilon$-neighbourhood
+    with only $a$ inside so $a$ is an isolated point. 
+\end{proof}
+
+\ex{6}
+\begin{proof}
+    Suppose $F \subseteq \mathbb{R}$ is closed
+    $\Leftrightarrow$ $F$ contains all its limit points $\{ x_n \}$
+    $\Leftrightarrow$ for each limit point there exists a sequence 
+    $(a_n)\in F$ with $a_n \neq x_n$ and $(a_n)\rightarrow x_n$
+    $\Leftrightarrow$ $(a_n)$ is a cauchy sequence.
+\end{proof}
+
+\ex{7}
+\begin{proof}
+    Since $x \in O$ then there exists an $\varepsilon$-neighbourhood
+     $V_\varepsilon(x)\subseteq O$. However, since $(a_n)\rightarrow x$
+     then there exists $N\in \mathbb{N}$ s.t. $a_n \in V_\varepsilon(x) $
+     for $n \geq N$. Since the tail of the sequence is infinite then the 
+     set of terms not contained in $O$ i.e. $\{x_1, x_2, ..., x_{N-1}\}$
+     is finite since it contains $N-1$ terms.
+\end{proof}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Suppose $L$ is not closed so there exists 
+        $(l_n) \rightarrow s$ with $l_i \in L$ and $s\not\in A$.
+        For $\varepsilon>0$ there exists $l_n \in V_{\varepsilon/2}(s)$.
+
+        However, since $l_n$ is a limit point of $A$ then there exists 
+        $a_n \in  A$ s.t. $a_n \in V_{\varepsilon/2}(l_n)$.
+        This implies
+        \begin{align}
+            |s-a_n| &= |s-l_n+l_n-a_n| \\
+                    &\leq |s-l_n|+|l_n-a_n| \\
+                    &< \varepsilon/2 + \varepsilon/2 \\
+                    &=\varepsilon
+        \end{align}
+        If we choose $\varepsilon_n = 1/n$ we can make sequence
+         $(a_n)$ which is in $A$ and converges to a limit point of 
+         $L$ so every limit point of $L$ is a limit point of $A$ 
+         which by defintiion is contained in $L$ so $L$ is closed.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        If $x$ is a limit point of $A\cup L$ then either $x$ is a
+        limit point of $A$ or $L$ or both. If it is a limit point of 
+        both then there exists a subsequence only in $A$ or only in $L$
+        which converges to the same value so we can regard $x$ as a limit point
+        of $A$ or $L$. We previously showed if $x$ is a limit point of $L$
+        then it is a limit point of $A$ so $x$ is a limit point of $A$ always.
+        
+        Any limit point of $A\cup L$ is also 
+        a limit point of $A$ which is in $A\cup L$ so $A\cup L$ is closed. 
+        $\bar A$ is the smallest possible set containing $A$ since we remove an element, $t$,  
+        then if $t \in A$ then $A\nsubseteq \bar A$. If we remove a limit point then $\bar A$
+        is not closed so this is the smallest possible set which achieves both.
+    \end{proof}
+\end{enumerate}
+
+\ex{9}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    If $y$ is a limit point of $A\cup B$ then there exists sequence $(y_n)\rightarrow y$
+    where $y_n \in A\cup B$. If $(y_n)$ is eventually in $A$ or $B$ then $y$ is a limit point
+    of $A$ or $B$ respectively. If $(y_n)$ si frequently in both then $A$ and $B$ have a limit point
+    in common, this should not be misunderstood as $y$ is a limit of $A\cup B$.
+
+    \item 
+    So $\overline{A\cup B} = A\cup B \cup L_A \cup L_B \cup (L_{A\cap B}) = 
+    \bar{A\cup B} = (A\cup L_A)  \cup ( B  \cup L_B) = \bar A \cup \bar B$.
+
+    \item
+    No, consider this counter example. 
+    \begin{align*}
+        \overline{\bigcup_n^\infty (\frac{1}{n}, 1)} = [0,1]
+    \end{align*}
+    However,
+    \begin{align*}
+        \overline{\bigcup_n^\infty (\frac{1}{n}, 1)} &\neq \bigcup_n^\infty \overline{(\frac{1}{n}, 1)} \\
+                                                    &= \bigcup_n^\infty [\frac{1}{n}, 1] \\
+                                                    &= (0,1]
+    \end{align*}
+\end{enumerate}
+
+\ex{10}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        First we prove $(\cup E_\lambda)^c = \cap E_\lambda^c$.
+
+        Suppose $x\in (\cup E_\lambda)^c$, then $x\not\in E_\lambda \forall \lambda$
+        so $x \in \cap E_\lambda^c$. This implies $(\cup E_\lambda)^c \subseteq \cap E_\lambda^c$.
+
+        Conversely, suppose $x\in \cap E_\lambda^c \Rightarrow x\in E_\lambda^c \forall \lambda$
+         $\Rightarrow x\not\in E_\lambda \forall \lambda \Rightarrow x\not\in \cup E_\lambda$
+         $\Rightarrow x\in (\cup E_\lambda)^c$. This implies $\cap E_\lambda^c \subseteq (\cup E_\lambda)^c$.
+
+        Hence, $\cap E_\lambda^c = (\cup E_\lambda)^c$.
+
+        We can apply this result to $\{F_\lambda = E_\lambda^c\}$ so 
+        \begin{align*}
+            \cap F_\lambda^c &= (\cup F_\lambda)^c \\
+            \cap (E_\lambda^c)^c &= (\cup E_\lambda^c)^c \\
+            \cap E_\lambda &= (\cup E_\lambda^c)^c
+        \end{align*}
+        Taking the complement we obtain
+        \begin{align*}
+            (\cap E_\lambda)^c &= \cup E_\lambda^c
+        \end{align*}
+        which is the second result we needed to prove.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        From \Thm 3.2.3 we know that the union of an arbitrary number of 
+        open sets is open i.e. $\cup O_\lambda$.
+        We also now the complement of an open set is closed so applying De Morgan's
+        laws we obtain
+        \begin{align*}
+            (\cup O_\lambda)^c &= \cap O_\lambda^c \\
+            (\cap O_\lambda)^c &= \cup O_\lambda^c
+        \end{align*} 
+        The first line states the LHS is closed and the RHS is the intersection of an arbitrary number of 
+        closed sets.
+
+        The second line states the LHS is closed and the RHS is the union of a finite number of 
+        closed sets.
+    \end{proof}
+\end{enumerate}
+
+\ex{11}
+\begin{proof}
+    For $\varepsilon_n=1/n$
+    \begin{align*}
+        s-\varepsilon_n < a_n < s
+    \end{align*}
+    so $a_n \in V_{\varepsilon_n}(s)$ so we have found a sequence with 
+    $(a_n) \rightarrow s$ and $a_n \in A \forall n\in \mathbb{N}$
+    so $s \in \bar A$.
+\end{proof}
+
+\ex{12}
+\begin{enumerate}[label=(\alph*)]
+    \item True, the closure of a set is closed and the complement of a closed set is open.
+    \item True, since there exists an open neighbourhood not contained in A.
+    \item \begin{proof}
+        $(\Rightarrow)$ Suppose $A$ is closed, then it contains all its limit points
+        so $A=A\cup L=\bar A$.
+        $(\Leftarrow)$ Suppose $A=\bar A$, then $A$ contains all its limit points so $A$ 
+        is closed.
+    \end{proof}
+    \item True, we proved this in \Ex{11}.
+    \item True, since every sequence in a finite set which converges must have a constant tail
+    using an element of the set.
+    \begin{proof}
+        True. We can prove this by contradiction. Suppose there is an irrational number $y\in A$ not
+        in the set so it is an isolated point i.e. $V_\varepsilon(y)\cap A = \{y\}$.
+        However, the rationals are dense in $\mathbb{R}$ so there must exist a ration number 
+        in $V_\varepsilon(y)$ and we have reached a contradiction.
+    \end{proof}
+\end{enumerate}
+
+\ex{13}
+\begin{proof}
+    Suppose $S$ is both open and closed, then $S$ cannot be finite
+    since every point is isolated and so $S$ is not open. So $S$ must be
+    empty or infinite.
+
+    Suppose $S$ is infinite, since $S$ is open then it can be written as the union of open intervals
+    i.e.
+    \begin{align*}
+        S = \bigcup_i (x_i, y_{i})
+    \end{align*}
+    where $x_i, y_{i}$ are the start and end of the $i$-th interval.
+    So $x_i, y_i \in S^c$ which is also open so there eixts $V_{\varepsilon_{x_i}}(x_i) \subseteq S$.
+    However, any neighbourhood of $x_i$ contains elements of $S$ so $S^c=\emptyset$ so $S=\mathbb{R}$. 
+\end{proof}
+
+\ex{14}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        [a,b] = \cap (a-1/n, b+1/n)
+    \end{align*}
+
+    \item
+    \begin{align*}
+        (a,b] &= \cap (a, b+1/n) \\
+        (a,b] &= \cup [a+1/n, b] 
+    \end{align*}
+
+    \item
+    \begin{itemize}
+        \item 
+        Consider set $S$ which is the intersection of open sets given by
+        \begin{align*}
+            S = \cap_i (qi, q_{i+1})
+        \end{align*}
+        where $q_i \in \mathbb{Q}$. Since $\mathbb{Q}$ is countable then these sets are countable.
+        
+        Observe
+        \begin{align*}
+            \mathbb{Q} = (\cap_i (qi, q_{i+1}))^c \\
+            &= =cap_i (qi, q_{i+1})^c
+        \end{align*}
+        so $\mathbb{Q}$ is an $F_\sigma$ set.
+
+        \item
+        \begin{align*}
+            \mathbb{I} = \overline{\mathbb{Q}} = \cap_i (qi, q_{i+1})
+        \end{align*}
+        so $\mathbb{I}$ is an $G_\delta$ set.
+    \end{itemize}
+\end{enumerate}
+
+

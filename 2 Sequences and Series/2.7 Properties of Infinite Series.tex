@@ -436,7 +436,7 @@ which converges.
         For arbitrary $\varepsilon > 0$ we know there exists 
         $N \in \mathbb{N}$ s.t.
         \begin{align*}
-            |\sum_{m+1}^n| < \frac{\varepsilon}{2b_1}
+            |\sum_{m+1}^n| < \frac{\varepsilon}{2y_1}
         \end{align*}
         for $n > m \geq N$. For any $m \geq N$
         define sequences $a_j = x_{m+j}$ and $b_j = y_{m+j}$
@@ -444,7 +444,8 @@ which converges.
         \begin{align*}
             |\sum_{j=1}^{n'} a_j b_j| &= |\sum_{j=1}^{n'} x_{m+j} y_{m+j}| \\
             &= |\sum_{j=m+1}^{n} x_{j} y_{j}| \\
-            &< 2b_1 \frac{\varepsilon}{2b_1}
+            &< 2y_{m+1} \frac{\varepsilon}{2y_1} \\
+            &< 2y_{1} \frac{\varepsilon}{2y_1}
         \end{align*}
         where for simplicity we have redefined $n=n'+m$ so $n > m$
         since $n'\geq 1$.
