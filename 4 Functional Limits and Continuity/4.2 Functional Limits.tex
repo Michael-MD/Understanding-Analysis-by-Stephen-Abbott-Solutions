@@ -1,0 +1,268 @@
+\subsection{Functional Limits}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        For arbitrary $\varepsilon>0$, choose $\delta = \varepsilon/2$
+        so
+        \begin{align*}
+            |f(x)-8| &= |2x+4-8| \\
+                    &= |2x-4| \\
+                    &= 2|x-2| \\
+                    & < \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        For arbitrary $\varepsilon>0$, choose $\delta = \min\{ 1, \sqrt[3]{\varepsilon} \}$.
+        So for $0<|x| < \delta$
+        \begin{align*}
+            |x^3| &= |x|^3 \\
+                    &< \delta^3 \\
+                    & < \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        For arbitrary $\varepsilon>0$, choose $\delta = \min\{ 1, \frac{\varepsilon}{19} \}$.
+        So for $0<|x-2| < \delta$
+        \begin{align*}
+            |x^3-8| &= |x^3 - 2^3| \\
+                    &= |x-2||x^2+2x+4| \\
+                    & < |x-2||19|   \\
+                    & < \varepsilon
+        \end{align*}
+        where the third equailty follows since $x_{\text{max}} = 2 + 1 = 3$ 
+        since $\delta_\text{max}=1$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        For arbitrary $\varepsilon>0$, choose $\delta = 1/10$.
+        So for $0<|x-\pi| < \delta$
+        \begin{align*}
+            |[[x]]- 3| &= |3 - 3| \\
+                    &= 0 \\
+                    & < \varepsilon
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+\ex{2}
+We can always restrict the region further so smaller $\delta$ is fine.
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item
+    Observe for $x_n=-1/n$ and $y_n=1/n$ then $(x_n)\rightarrow -1$
+    but $(y_n)\rightarrow 1$. Then $\lim_{x\rightarrow 0} |x|/x$ 
+    does not exist.
+
+    \item 
+    Observe for $x_n=1-1/n$ and $y_n=1-\sqrt{2}/n$ then $(x_n)\rightarrow 1$
+    but $(y_n)\rightarrow 0$. Then $\lim_{x\rightarrow 1} g(x)$ 
+    does not exist.
+\end{enumerate}
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Consider $x_n=1-1/n$, $y_n=1+1/n$, $z_n=1+\sqrt{2}/n$.
+
+    \item
+    \begin{align*}
+        \lim_{n} t(x_n) &=  0\\
+        \lim_{n} t(y_n) &= 0\\
+        \lim_{n} t(z_n) &= 0
+    \end{align*}
+    since for instance, $t(x_n)=t((n-1)/n)=1/n$.
+
+    \item
+    We conjecture that $\lim_{x \rightarrow} t(x) = 0$.
+    
+    For $\varepsilon>0$, choose $\delta = \frac{1}{n_0}$ where
+    $\frac{1}{n_0} \geq \varepsilon$ where $n_0$ is as large as possible.
+    Then $t(x)$ in the interval $(1-\frac{1}{n_0}, 1+\frac{1}{n_0})$
+    will satisfy $t(x)\leq \frac{1}{n_0+1} < \varepsilon$.
+    In other words, for $x\in V_{1/n_0}(1)$ $t(x)\in V_\varepsilon(0)$
+    so our conjecture is true.
+\end{enumerate}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        If $\lim f(x)=L$ and $\lim g(x)=M$ then 
+        every sequence $(x_n)\rightarrow c$ with $x_n\neq c$ implies
+        $\lim_n f(x_n)=L$ and $\lim_n g(x_n) = M$.
+        By the sequential Algebraic limit \Thm, for any $(x_n)$
+        $\lim_n f(x_n) + \lim_n g(x_n) = L+M$ which implies
+        $\lim f(x)+g(x)$ exists and 
+        \begin{align}
+            \lim f(x) + g(x)  = L+M = \lim f(x) + \lim g(x)
+        \end{align}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        For $\varepsilon>0$ choose $\delta_1, \delta_2$ s.t. 
+        \begin{gather*}
+            |f(x)-L| < \varepsilon/2 \text{ for } 0<|x-c|<\delta_1 \\
+            |g(x)-M| < \varepsilon/2 \text{ for } 0<|x-c|<\delta_2
+        \end{gather*}
+
+        Then for $\delta = \min\{\delta_1, \delta_2\}$
+        \begin{align*}
+            |f(x)+g(x)- L - M| &= |f(x)-L+g(x) - M| \\
+                            &\leq  |f(x)-L|+|g(x) - M| \\
+                            &<  \varepsilon/2 + \varepsilon/2 \\
+                            &= \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{enumerate}
+        \item 
+        \begin{proof}
+            If $\lim f(x)=L$ and $\lim g(x)=M$ then 
+            every sequence $(x_n)\rightarrow c$ with $x_n\neq c$ implies
+            $\lim_n f(x_n)=L$ and $\lim_n g(x_n) = M$.
+            By the sequential Algebraic limit \Thm, for any $(x_n)$
+            $\lim_n f(x_n) g(x_n) = LM$ which implies
+            $\lim f(x) g(x)$ exists and 
+            \begin{align}
+                \lim f(x) g(x)  = L+M = \lim f(x) \lim g(x)
+            \end{align}
+        \end{proof}
+    
+
+        \item 
+        \begin{proof}
+            For $\varepsilon>0$ choose $\delta_1, \delta_2$ s.t. 
+            \begin{gather*}
+                |f(x)-L| < \frac{\varepsilon}{2M} \text{ for } 0<|x-c|<\delta_1 \\
+            \end{gather*}
+            This implies
+            \begin{align*}
+                |f(x)| < \frac{\varepsilon}{2M} + |L|
+            \end{align*}
+            for $0<|x-c|<\delta_1$.
+            Next, choose
+            \begin{align*}
+                |g(x)-M| < \frac{\varepsilon/2}{\frac{\varepsilon}{2M} + |L|} \text{ for } 0<|x-c|<\delta_2
+            \end{align*}
+            for $0<|x-c|<\delta_2$.
+
+            Then for $\delta = \min\{\delta_1, \delta_2\}$
+            \begin{align*}
+                &|f(x)g(x)- LM| \\
+                &= |f(x)g(x) -f(x)M + f(x)M- LM| \\
+                            &= |f(x)(g(x) - M) + M(f(x)- L)| \\
+                            &\leq |f(x)||g(x) - M| + |M||f(x)- L| \\
+                            &\leq (\frac{\varepsilon}{2M} + |L|)|g(x) - M| + |M||f(x)- L| \\
+                            &< \varepsilon/2 + \varepsilon/2 \\
+                            &= \varepsilon
+            \end{align*}
+        \end{proof}
+    \end{enumerate}
+\end{enumerate}
+
+\ex{6}
+\begin{proof}
+    Since $\lim g(x) = 0$ exists then choose for arbitrary $\varepsilon$
+    choose $\delta$ s.t. 
+    \begin{align*}
+        |g(x)| < \varepsilon/M
+    \end{align*} 
+    for $0<|x|<\delta$. Then
+    \begin{align*}
+        |g(x)f(x)| \leq |g(x)|M < \varepsilon 
+    \end{align*}
+\end{proof}
+
+\ex{7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{definition}
+        Let $f: A \rightarrow \mathbb{R}$ and $c$ be a limit point of 
+        A. Then $\lim_{x\rightarrow c} f(x)= \infty$ provided for all
+        $\varepsilon>0$ there exists $\delta>0$ s.t. when $0<|x-c|<\delta$
+        $|f(x)|>\varepsilon$.
+    \end{definition}
+
+    \begin{proof}
+        We can use this prove that $\lim_{x\rightarrow 0}1/x^2=\infty$
+        since for arbitrary $\varepsilon>0$, choose $\delta = \frac{1}{\sqrt{\varepsilon}}$
+        so that 
+        \begin{align*}
+            |\frac{1}{x^2}| \geq \varepsilon
+        \end{align*}
+        for $0<|x|<\delta$.
+    \end{proof}
+    
+    \item 
+    \begin{definition}
+        Let $f: A \rightarrow \mathbb{R}$.
+         Then $\lim_{x\rightarrow \infty} f(x)= L$ provided for all
+        $\varepsilon>0$ there exists $\delta>0$ s.t. when $|x|>\delta$
+        $|f(x)-L|<\varepsilon$.
+    \end{definition}
+
+    \begin{proof}
+        We can use this prove that $\lim_{x\rightarrow \infty}1/x=0$
+        since for arbitrary $\varepsilon>0$, choose $\delta = \frac{1}{\varepsilon}$
+        so that 
+        \begin{align*}
+            |\frac{1}{x}| \leq \varepsilon
+        \end{align*}
+        for $0<|x|>\delta$.
+    \end{proof}
+
+    \item
+    \begin{definition}
+        Let $f: A \rightarrow \mathbb{R}$.
+         Then $\lim_{x\rightarrow \infty} f(x)= \infty$ provided for all
+        $\varepsilon>0$ there exists $\delta>0$ s.t. when $|x|>\delta$
+        $|f(x)|>\varepsilon$.
+    \end{definition}
+
+    An example of this is
+    \begin{align*}
+        \lim_{x\rightarrow \infty} x = \infty
+    \end{align*}
+\end{enumerate}
+
+\ex{8}
+\begin{proof}
+    Consider limit point of $c\in A$ where $\lim_{x\rightarrow c} f(x)$
+    and $\lim_{x\rightarrow c} g(x)$ exist then by the albegraic limit \Thm
+    for functional limits $\lim_{x\rightarrow c} f(x) - g(x)$ exists.
+
+    Since this exists then every convergent sequence in $A$ which converges to 
+    $c$ has satisfies
+    \begin{align*}
+        \lim_{x\rightarrow c} f(x) - g(x) &= \lim_n f(x_n) - g(x_n) \\
+                                            &= \lim_n f(x_n) - \lim_n g(x_n) \\
+                                            &\geq 0
+    \end{align*}
+    since $f(x_n) \geq g(x_n) \forall n$. So
+    \begin{gather*}
+        \lim_{x\rightarrow c} f(x) - g(x) \geq 0 \\
+        \lim_{x\rightarrow c} f(x) - \lim_{x\rightarrow c} g(x) \geq 0 \\
+        \lim_{x\rightarrow c} f(x) \geq  \lim_{x\rightarrow c} g(x)
+    \end{gather*}
+\end{proof}
+
+\ex{9}
+By \Ex{8} we know if $f(x) \leq g(x) \leq h(x)$ then 
+\begin{align}
+    \lim_{x\rightarrow c} f(x) \leq \lim_{x\rightarrow c} g(x) \leq \lim_{x\rightarrow c} h(x)
+\end{align}
+Then if $\lim_{x\rightarrow c} f(x) = L = \lim_{x\rightarrow c} h(x)$ then 
+\begin{align}
+    L \leq \lim_{x\rightarrow c} g(x) \leq L
+\end{align}
+which implies $\lim_{x\rightarrow c} g(x) = L$.
