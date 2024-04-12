@@ -1,3 +1,205 @@
 \subsection{Compact Sets}
 
 \ex{1}
+\begin{proof}
+    Since $s=\sup K$, then we know 
+    \begin{align*}
+        s - 1/n < x_n \in K
+    \end{align*}
+    We can use this to construct a sequence where 
+    $s - 1/n<x_n<s - 1/(n+1)$ and we know $(x_n)\rightarrow s$.
+    Since $K$ is compact then it is closed so $s\in K$.
+
+    Similarly, since $i=\inf K$, then we know 
+    \begin{align*}
+        i + 1/n > y_n \in K
+    \end{align*}
+    We can use this to construct a sequence where 
+    $i + 1/n<y_n<i + 1/(n+1)$ and we know $(y_n)\rightarrow i$.
+    Since $K$ is compact then it is closed so $i\in K$.
+\end{proof}
+
+\ex{2}
+\begin{proof}
+    Consider any set $(x_n)$ in $K$, since $K$ is bounded then 
+    $(x_n)$ is bounded also so by the Bolzano-Weierstrass \Thm
+    $(x_n)$ has a convergent subsequence $(x_{n_k}) \rightarrow x$.
+    Since $K$ is closed then $x\in K$. So $K$ is compact. 
+\end{proof}
+
+\ex{3}
+\begin{proof}
+    We know
+    \begin{align*}
+        C = \left[ (\infty, 0) \cup (1/3,2/3) \cup \cdots \right]^c
+    \end{align*}
+    Since we know the union of open sets is open, then the complement must be closed.
+    Additionally since the Cantor set is bounded by unity then $C$ must be 
+    compact by the Heine-Borel \Thm.
+\end{proof}
+
+\ex{4}
+\begin{proof}
+    The intersection of closed sets is closed to $K \cap F$ is closed.
+    
+    $K\cap F \subseteq K$ so if $K$ is bounded then $K\cap F$ is bounded.
+    
+    Hence, $K\cap F$ is compact.
+\end{proof}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item $\mathbb{Q}$ is not compact since it is not bounded or closed.
+    \item $\mathbb{Q}\cap[0,1]$ is now bounded but it is still not closed. For
+    example,
+    there exists a convergent sequence in $\mathbb{Q}\cap[0,1]$ whcih converges to 
+    $\ln 2$ which is not contained in $\mathbb{Q}\cap[0,1]$. So $\mathbb{Q}\cap[0,1]$
+    is not compact.
+
+    \item $\mathbb{R}$ is not closed but not bounded so $\mathbb{R}$ is not comapct.
+    
+    \item $\mathbb{R}\cap[0,1]=[0,1]$ which is comapct.
+    \item This set is not closed since this is a seqeunce which converges to zero
+    which is not in the set. So this set is not comapct.
+    \item This set is bounded by $1$ and closed so it is compact.
+    
+\end{enumerate}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    For $x_1, y_1 \in C$ s.t. $x_1+y_1=s$:
+    
+    \begin{align*}
+        x_1=\begin{cases}
+            s/2 & s/2 \in C_n \\
+            s/2+1/3 & \text{otherwise} \\
+        \end{cases}
+    \end{align*}
+
+    \begin{align*}
+        y_1=\begin{cases}
+            s/2 & s/2 \in C_n \\
+            s/2-1/3 & \text{otherwise} \\
+        \end{cases}
+    \end{align*}
+
+    Since the cantor set is a fractal, a 
+    construction of $x_n$ and $y_n$ in $C_n$
+     is as  follows:
+
+    \begin{align*}
+        x_n=\begin{cases}
+            s/2 & s/2 \in C_n \\
+            s/2+1/3^n & \text{otherwise} \\
+        \end{cases}
+    \end{align*}
+
+    \begin{align*}
+        y_n=\begin{cases}
+            s/2 & s/2 \in C_n \\
+            s/2-1/3^n & \text{otherwise} \\
+        \end{cases}
+    \end{align*}
+
+    \item
+    $(x_n)$ and $(y_n)$ are bounded sequences so by the 
+    Bolzano-Weierstrass \Thm there exist convergent 
+    subsequences $(x_{n_k}) \rightarrow x$ and
+     $(y_{n_k})\rightarrow y$. 
+
+     Since $C_{n+1} \subseteq C_{n}$ then if $x_{n_k}\in C_n$ then 
+     $x_{n_k} \in C_m$ for $m \geq n_k$. For any $C_m$, there exists a 
+     point in the subsequence $(x_{n_k})$ s.t. $x_{n_k}\in C_m$. 
+     So the tail of $(x_{n_k})$ is in every $C_m$ and converges to $x$.
+     Since $C_m$ is closed $x \in C_m$ for all $m$. A similar arguement applies for
+     $(y_{n_k})$. Hence $x,y\in C$.
+\end{enumerate}
+
+\ex{7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    True, since the arbitrary intersection of closed sets is closed and 
+    bounded since each set is bounded.
+
+    \item 
+    False, consider $A=(0,1)$ and $K=[0,1]$ then $A\cap K=A$ which is not
+    compact.
+
+    \item False, consider the sets $F_n=[n, \infty)$, then 
+    \begin{align*}
+        \bigcap_n F_n = \bigcap_n [n, \infty) = \emptyset
+    \end{align*}
+
+    \item True, since a finite set is always closed and bounded.
+    \item False, $\mathbb{Q}$ is countable but not compact.
+\end{enumerate}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Since $K \subseteq (A_1\cap K) \cup (B_1\cap K)$ then if both had 
+    finite subcovers then the union of finite subcovers of $(A_1\cap K)$
+    and $(B_1\cap K$ would be a finite subcover of $K$ also.
+
+    \item 
+    Choose $I_1$ to be the interval of $I_0$ where the intersection 
+    with $K$ has no finite subcover.
+    $I_1$ can again be bisected into $A_2, B_2$, for the same reason as outlined in (a)
+    $A_2\cap K$ or $ B_2\cap K$ or both do not have a finite subcover.This process is 
+    repeated indefinitely to obtained nested intervals 
+    \begin{align}
+        I_0 \supseteq I_1 \supseteq I_2 \supseteq \cdots
+    \end{align}
+    By construction each of these sets cannot be finitely covered.
+    Also, since $|I_n| = |I_0|/2^n$ then $\lim |I_n| = 0$.
+
+    \item 
+    Since $I_0, I_1, I_2, ...$ are all compact sets so $I_n \cap K$ is
+    also compact. $I_n \cap K$ is nonempty for all $n$ since every interval 
+    when intersected with $K$ has no finite subcover. If $I_n\cap K$ was 
+    not empty then a finite subcover exists.
+    
+    Then by the NIP for compact sets 
+    there exists $x \in \cap (I_n\cap K)$. So $x\in I_n\cap K$ for all $n$ 
+    so $x\in I_n$ and $x\in K$.
+
+    \item
+    Since $x\in K$ then there must exist an open set $O_{\lambda_0}$
+    where $x\in O_{\lambda_0}$. Within $O_{\lambda_0}$ there is an open interval 
+    centered around $x$ with width $\varepsilon$. We know that there exists $N\in \mathbb{N}$
+    such that $|I_n|< \varepsilon$ for $n\geq N$. However, we have reached a contradiction
+    since we assumed every interval had no finite subcover, yet $O_{\lambda_0}$ is a
+    cover. Hence, $K$ must have a finite subcover.
+\end{enumerate}
+
+\ex{9}
+\begin{enumerate}[label=]
+    \item (b)
+    Consider $A=(0,1)$ and $K=[0,1]$ then $A\cap K=A$ which is not
+    compact. Then 
+    \begin{align*}
+        \{O_n = (1/n,1) : n\in \mathbb{N}\}
+    \end{align*}
+    is an open cover of $A$ which has no finite subcover.
+
+    \item (e)
+    $\mathbb{Q}$ is a countable set yet
+    \begin{align*}
+        \{O_n = (-n,n) : n\in \mathbb{N}\}
+    \end{align*}
+    is an open cover which cannot be made finite while still covering $\mathbb{Q}$.
+\end{enumerate}
+
+\ex{10}
+For any set a closed cover for set $S$ is
+\begin{align*}
+    \{ [x,x] : x\in S \}
+\end{align*}
+Hence, if $S$ is infinite then there cannot exist a finite closed subcover.
+
+Conversely, suppose $S$ is finite. Then from any (potentially) infinite closed 
+subcover ${F_\lambda}$, for every $s\in S$ choose $\lambda_s$ s.t. $s\in F_{\lambda_x}$.
+This is will be a closed finite subcover.
+
+Hence, a set is clompact if and only if it is finite.
