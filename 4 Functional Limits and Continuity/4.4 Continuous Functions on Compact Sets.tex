@@ -1,0 +1,407 @@
+\subsection{Continuous Functions on Compact Sets}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We know $a(x) = x$ is continous on $\mathbb{R}$ and $f(x) 
+        = (a\circ a\circ a)(x)$ and we know the composition of continuous 
+        functions is continuous so since $a$ is continous then $f$ is also 
+        continuous.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Choose sequences $x_n = n$ and $y_n=n+1/n$. 
+        That is,
+        \begin{gather*}
+            x_1 = 1 \quad y_1 = 1+1/1 \\
+            x_2 = 2 \quad y_2 = 2+1/2 \\
+            x_3 = 3 \quad y_3 = 3+1/3 \\
+            \vdots \qquad \qquad \vdots
+        \end{gather*} 
+        Clearly, $|x_n-y_n| = |1/n|\rightarrow 0$. However, 
+        \begin{align*}
+            |n^3| - (n+\frac{1}{n})^3| &= |\frac{1}{n^3}+\frac{3}{n}+3n| \\
+            &\geq |3n| \\
+            &\geq 3
+        \end{align*}
+        Hence, $f$ is not uniformly continuous.
+    \end{proof}
+
+    \item
+    Now
+    \begin{align*}
+        |x^3-y^3| &= |x-y||x^2+xy+y^2| \\
+        &\leq |x-y|(|x|^2+|x||y|+|y|^2)
+    \end{align*}
+    Since the domain of $f$ is now bounded by $M$ then 
+    $|x|, |y| \leq M$ which implies $|x|^2+|x||y|+|y|^2 \leq 3M^2$.
+    Hence, if we choose $\delta = \frac{\varepsilon}{3M^2}$ then 
+    \begin{align*}
+        |x^3-y^3| &= |x-y||x^2+xy+y^2| \\
+        &< \varepsilon
+    \end{align*}    
+\end{enumerate}
+
+\ex{2}
+\begin{itemize}
+    \item For the interval $[1, \infty)$:
+    \begin{align*}
+        |\frac{1}{x^2} - \frac{1}{y^2}| &= |\frac{x^2-y^2}{x^2y^2}| \\
+                                        &= \frac{|x-y||x+y|}{|x^2y^2|}
+    \end{align*}
+    Now
+    \begin{align*}
+        |\frac{x+y}{x^2y^2}| &= |\frac{1}{xy^2} - \frac{1}{yx^2}| \\
+        &\leq |\frac{1}{xy^2}| + |\frac{1}{yx^2}|
+    \end{align*}
+    $\frac{1}{xy^2} \leq 1$ and $\frac{1}{yx^2} \leq 1$. This implies 
+    $|\frac{x+y}{x^2y^2}| \leq 2$.
+    Hence,
+    \begin{align*}
+        |\frac{1}{x^2} - \frac{1}{y^2}| \leq 2|x-y|
+    \end{align*}
+    so we can choose $\delta = \varepsilon/2$.
+
+    \item For the interval $(0, 1]$:
+    For $x_n=1/n$ and $y_n=\frac{1}{2n}$
+    \begin{align*}
+        |\frac{1}{n}-\frac{1}{2n}| \leq \frac{1}{n} + \frac{1}{2n} \rightarrow 0
+    \end{align*}
+    Observe,
+    \begin{align*}
+        |\frac{1}{n}-\frac{1}{2n}| = \frac{3}{4n^2}
+    \end{align*}
+    Since $n\in (0,1] \Rightarrow n\leq 1 \Rightarrow 1/n^2\geq 1$
+    so $|\frac{1}{n}-\frac{1}{2n}| \geq \frac{3}{4}$.
+\end{itemize}
+
+
+\ex{3}
+\begin{proof}
+    $f$ is continuous $\Rightarrow f(K)$ is compact. 
+    By Exercise 3.3.1. 
+    \begin{align*}
+        \sup f(K), \inf f(K) \in f(K)
+    \end{align*}
+    so there exists $x_0, x_1$ s.t. $f(x_0) = \inf f(K), f(x_1) = \sup f(K)$
+    so for all $x\in K$ $f(x_0) \leq f(x) \leq f(x_1)$.
+\end{proof}
+
+\ex{4}
+\begin{proof}
+    $f$ is continuous and $[a,b]$ is compact so by the Extreme Value 
+    \Thm there exists $x_0,x_1\in [a,b]$ s.t. 
+    \begin{gather*}
+        f(x_0)\leq f(x)\leq f(x_1) \\
+        \frac{1}{f(x_1)}\leq \frac{1}{f(x)} \leq \frac{1}{f(x_0)} \\
+    \end{gather*}
+    So $1/f$ is bounded.
+\end{proof}
+
+\ex{5}
+\begin{proof}
+    If $f$ is not uniformly continuous then there exists $\varepsilon_0>0$
+    s.t. for any $\delta$ there exist $x,y$ s.t. 
+    \begin{align*}
+        |x-y|<\delta \text{ and } |f(x)-f(y)|>\varepsilon_0
+    \end{align*}
+    so for every $\delta_n=1/n$ thre exist $x_n, y_n$ where 
+    \begin{align*}
+        |x_n-y_n|<\delta_n \text{ and } |f(x_n)-f(y_n)|>\varepsilon_0
+    \end{align*}
+    Taking the limit on both sides of $|x_n-y_n|<\delta_n$ we obtain
+    $|x_n-y_n| \rightarrow 0$ since by the order limit \Thm $0 \leq 
+    |x_n-y_n|\leq \lim 1/n = 0$.
+\end{proof}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Consider $f(x)=1/x$ and $x_n=1/n$, $(x_n) \rightarrow 0$ so $(x_n)$
+    is cauchy but $f(x_n)$ is divergent.
+
+    \item
+    Impossible, if $(x_n)\rightarrow x$ then $0\leq x \leq 1$ so if $f$
+    is continuous then $f(x_n)\rightarrow f(x)$.
+
+    In (a) this was not the case since $x$ can be outisde 
+    the domain so the continuity of the function is no help.
+
+    Continuity only guarantees that any sequence with limit in 
+    the domain of $f$ will result in $f(x_n)$ converging.
+
+    \item
+    Impossible, such a request is always impossible on a compact set 
+    where the limit of a convergent sequence will always be within the 
+    sequence.
+
+    \item
+    Consider,
+    \begin{align*}
+        f(x) = x(1-x)
+    \end{align*}
+    which has maximum at $x=1/2$.
+\end{enumerate}
+
+\ex{7}
+\begin{proof}
+    If $g$ is uniformly continuous on $(a,b]$ and $[b,c)$ then 
+    for some $\varepsilon>0$ there exist $\delta_1, \delta_2>0$ s.t. 
+    \begin{gather*}
+        |g(x) - g(y)| < \varepsilon/2 \text{ for } |x-y| < \delta_1 \quad x, y\in (a,b] \\
+        |g(x) - g(y)| < \varepsilon/2 \text{ for } |x-y| < \delta_2 \quad x, y\in [b,c)
+    \end{gather*}
+    So we choose $\delta = \min\{\delta_1, \delta_2\}$ then if $x,y$ are 
+    both in $(a,b]$ or $[b,c)$ then $\delta$ works. If $x,y$ are in different 
+    intervals then 
+    \begin{align*}
+        |g(x)-g(y)| &\leq |g(x)-g(b)| + |g(b)-g(y)| \\
+                    &< \varepsilon/2 + \varepsilon/2 \\
+                    &= \varepsilon
+    \end{align*}
+    So $f$ is uniformly continuous on $(a,b)$.
+\end{proof}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We can use the arguement from \Ex{7} on the two intervals $[0,b]$ and 
+        $[b,\infty)$ since the arguement did not rely on whether the intervals 
+        where closed or finite. We note that a function is always uniformly
+        continuous on a bounded interval so $f$ is uniformly continuous on 
+        $[0,b]$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        We begin by arguing $f(x)$ is continuous on the interval $[1,\infty)$:
+        We will prove that $\sqrt x$ is lipschitz continuous in this interval.
+        Observe,
+        \begin{align*}
+            |\sqrt x - \sqrt y| &= \frac{|\sqrt x - \sqrt y||\sqrt x + \sqrt y|}{|\sqrt x + \sqrt y|} \\
+            &= \frac{|x-y|}{|\sqrt x + \sqrt y|} \\
+            &\leq \frac{1}{2}|x-y|
+        \end{align*}
+        since $\sqrt x, \sqrt y \geq 1 \Rightarrow \sqrt x+\sqrt y \geq 2 
+        \Rightarrow \frac{1}{|\sqrt x + \sqrt y|} \leq 1/2$. So
+        \begin{align*}
+            \frac{|\sqrt x - \sqrt y|}{|x-y|} \leq \frac{1}{2}
+        \end{align*}
+        We will prove in the \Ex{9} that this implies $f$ is 
+        uniformly continuous on $[1,\infty)$.
+
+        We now prove $\sqrt x$ is continuous on $[0,1]$:
+        For any sequence $(x_n) \rightarrow x$ where $0 \leq (x_n)\leq 1$, 
+        then by Exercise 2.2.2 (b) this implies $\sqrt x_n \rightarrow x$.
+        Since this is true for any sequence $\sqrt x$ must be continuous.
+
+        Then by (a) we know $\sqrt x$ is uniformly continuous.
+    \end{proof}
+\end{enumerate}
+
+\ex{9}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        For arbitrary $\varepsilon>0$ choose $\delta = \varepsilon/M$ then 
+        \begin{align*}
+            |f(x)-f(y)| \leq M |x-y| < \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    The converse is not true. 
+    Consider $f(x)=1/x$ which is uniformly continuous on $(1,\infty)$
+    but the slope is unbounded since the the slope increases as $x,y$ get 
+    closer to $1$. 
+\end{enumerate}
+
+\ex{10}
+This is indeed true. 
+\begin{proof}
+    We will prove this by contradiction. 
+    Suppose $A$ is bounded but $f(A)$ is unbounded. 
+    We can make unbounded sequence $(y_n)\in f(a)$
+    where $y_n\in f(A)\cap \{ r>n : r\in \mathbb{R} \}$
+    so $y_n$ is unbounded.
+
+    Define $x_n$ s.t. $y_n=f(x_n)$. Now $(x_n)$ is 
+    bounded so by the Bolzano-Weirstrass \Thm there exists a 
+    convergent subsequence $(x_{n_k})\rightarrow x$.
+
+    We will show in \Ex{13} (a) that uniformly continuous 
+    functions preserve cauchy seqeunces so if 
+    $(x_{n_k})$ is cauchy then $(y_{n_k})$ is cauchy. 
+    However, we have reached a contradition since by 
+    contruction $(y_{n_k})$ is unbounded so it cannot be 
+    cauchy. Hence, our starting assumption was invalid and 
+    $f(A)$ is indeed bounded.
+\end{proof}
+
+% This is indeed true. 
+% \begin{proof}
+%     If $f$ is uniformly continuous on $A$
+%     then there is a continuous extension to $\overline A$. If $A$
+%     is bounded then $\overline A$ is bounded so $\overline A$
+%     is compact. We know continuous functions preserve compactness 
+%     so $f(\overline A)$ is compact. Hence, 
+%     $ f(A) \subseteq f(\overline A)$ which implies $f(A)$ is also 
+%     bounded.
+% \end{proof}
+% We will prove the continuous extension theorem in \Ex{13}
+% for intervals but the result can be quickly generalized to 
+% an arbitrary set.
+
+\ex{11}
+\begin{proof}
+    $(\Rightarrow)$ Assume $g$ is continuous. For every $x\in g^{-1}(O)$
+    there exists $y=g(x)$. Since $O$ is open there exists 
+    some $\varepsilon>0$ s.t. $V_\varepsilon(y)\subseteq O$. 
+    Since $g$ is continuous there exists $\delta>0$ s.t. $g(V_\delta(x)) 
+    \subseteq V_\varepsilon(y)$. $V_\delta(x)$ is in the domain of 
+    $g$ since $\text{dom } g=\mathbb{R}$. Since $x$ was arbitrary, then every 
+    $x\in g^{-1}(O)$ has an open neighbourhood in $g^{-1}(O)$. Hence,
+    $g^{-1}(O)$ is open.
+
+    $(\Leftarrow)$ Suppose $g^{-1}(O)$ is open for all open sets $O$.
+    For every $x\in g^{-1}(O)$ there exists $y=g(x)$.
+    For arbitrary $\varepsilon>0$ we know 
+    $g^{-1}(V_\varepsilon(y))$ is an open set containing $x\in g^{-1}(O)$
+    so choose $\delta>0$ s.t. $V_\delta(x)\subseteq g^{-1}(O)$ with 
+    $x \in V_\delta(x)$. Since $y$ and $\varepsilon$ were arbitrary, then 
+    $f$ is continuous for any $x \in \mathbb{R}$.
+\end{proof}
+
+\ex{12}
+\begin{proof}
+    For arbitrary $\varepsilon>0$ choose an open cover as follows:
+    \begin{align*}
+        \{ O_y=(y-\varepsilon/3, y+\varepsilon/3) : y\in f(K) \}
+    \end{align*}
+    Since $f(K)$ is compact then there exists a finite open cover given by
+    \begin{align}
+        F = \{ O_{y_1},O_{y_2},...,O_{y_n}  \}
+    \end{align}
+    where $n\in \mathbb{N}$ and define $x_i$ s.t. $y_i = g(x_i)$ for 
+    $1 \leq i \leq n$. 
+    Now choose $\delta_i$ s.t. 
+    $f(V_{\delta_i}(x_i))\subseteq f(V_{\varepsilon/3}(y_i))$. Hence, if we 
+    choose $\delta = \min_i \delta_i$ then $f(V_{\delta}(x_i))\subseteq 
+    f(V_{\varepsilon/3}(y_i))$ for all $1 \leq i \leq n$.
+
+
+    Now for arbitrary $y\in f(K)$ there exists $x\in K$ s.t. $y=g(x)$. 
+    Since $F$ is a finite open cover then 
+    $y \in O_{y_i}$ for some $i$. For $|x-z|<\delta$ with $z\in K$, $x \in V_{\varepsilon/3}(y_i)$
+    but $z \in V_{\varepsilon/3}(y_j)$ where $0\leq j \leq n$ and $j$ may be different to 
+    $i$. We will assume $y_j$ is chosen to be as close as possible to $y_i$ which implies 
+    $|y_i-y_j| < \varepsilon/3$.
+    Then
+    \begin{align*}
+        |f(z)-y| &= |f(z)-y_j+y_j-y_i+y_i-y| \\
+                &\leq |f(z)-y_j| + |y_j-y_i| +|y_i-y| \\
+                &< \varepsilon/3 + \varepsilon/3 + \varepsilon/3 \\
+                &= \varepsilon
+    \end{align*}
+    where $|x-z| < \delta$.
+\end{proof}
+
+\ex{13}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Since $f$ is uniformly continuous then for arbitrary
+        $\varepsilon>0$ there exists $\delta >0$ s.t. 
+        \begin{align*}
+            |f(x)-f(y)|<\varepsilon
+        \end{align*}
+        given $|x-y|<\delta$.
+        Hence, for any cauchy sequence $(x_n)\in A$ there exists 
+        $N\in \mathbb{N}$ s.t. 
+        \begin{align*}
+            |x_n-x_m|< \delta 
+        \end{align*}
+        for $n>m\geq N$.
+        This implies 
+        \begin{align*}
+            |f(x_n)-f(x_m)|<\varepsilon
+        \end{align*}
+        for $n>m\geq N$. Hence, $f(x_n)$ is a cauchy sequence.
+    \end{proof}
+
+    We we could not use the continouity of $f$ since we are 
+    not guaranteed to have the limit in the domain of $f$.
+
+    \item
+    \begin{proof}
+        $(\Rightarrow)$ 
+        Suppose $g$ is uniformly continuous on 
+        $(a,b)$. We know there exist sequences s.t. $(x_n)\rightarrow a$
+        and $(y_n)\rightarrow b$. By (a) this implies $g(x_n),g(y_n)$
+        are cauchy and therefore converge
+
+        Let's define 
+        \begin{gather*}
+            g(a) = \lim g(x_n) \\
+            g(b) = \lim g(y_n)
+        \end{gather*}
+
+        Since $g$ is uniformly continuous, then there exists
+        $\delta >0$ s.t. for $x, y\in (a,b)$
+        \begin{align*}
+            |x-y| < \delta \Rightarrow |f(x)-f(y)| < \varepsilon/2
+        \end{align*}
+        Consider some sequence $(z_n)\rightarrow a$ where 
+        $(z_n)\neq (x_n)$.
+        Now there exists $N_0$ s.t. 
+        \begin{gather*}
+            n_0 \geq N_0 \Rightarrow |x_{n_0}-a| < \delta/2 \\
+            n_0 \geq N_0 \Rightarrow |z_{n_0}-a| < \delta/2
+        \end{gather*}
+        Then
+        \begin{align*}
+            |x_{n_0}-z_{n_0}| &\leq |x_{n_0}-a| + |a-z_{n_0}| \\
+            &< \delta/2 + \delta /2 \\
+            &< \delta
+        \end{align*}
+        So for $x_n, z_n$ where ${n_0}\geq N_0$
+        \begin{align*}
+            |x_{n_0}-z_{n_0}| < \delta \Rightarrow |g(x_{n_0}) - g(z_{n_0})| < \varepsilon/2
+        \end{align*}
+
+        Aditionally, since $g(x_n) \rightarrow g(a)$ then there exists $N_1$ s.t. 
+        \begin{align*}
+            n_1\geq N_1 \Rightarrow |g(a)-g(x_{n_1})| < \varepsilon/2
+        \end{align*}
+
+        Hence if we choose $n\geq N=\max\{ N_0, N_1 \}$ then 
+        \begin{align*}
+            |g(z_n)-g(a)| &\leq |g(z_n) - g(x_n)| + |g(x_n) - g(a)| \\
+                            &< \varepsilon/2 + \varepsilon/2 \\
+                            &= \varepsilon
+        \end{align*}
+        Hence, for any $(z_n)\rightarrow a$ with $(z_n)\in A$
+        \begin{align*}
+            \lim g(z_n) = g(a) = g(\lim z_n)
+        \end{align*}
+        An identical proof would also imply
+        that for any $(z_n)\rightarrow b$ with $(z_n)\in A$
+        \begin{align*}
+            \lim g(z_n) = g(b) = g(\lim z_n)
+        \end{align*}
+
+        Hence, for any $(z_n)\in [a,b]$ with $(z_n)\rightarrow z$
+        \begin{align*}
+            \lim g(z_n) = g(\lim z_n) = 
+        \end{align*}
+        Hence, $g$ is continuous on $[a,b]$ with the proposed extension.
+    
+    $(\Leftarrow)$ 
+    Suppose $g$ is continuous on $[a,b]$. Since $[a,b]$
+    is compact then this implies $g$ must be uniformly 
+    continuous.
+    \end{proof}
+\end{enumerate}
