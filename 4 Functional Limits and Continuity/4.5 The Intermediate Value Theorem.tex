@@ -1,0 +1,129 @@
+\subsection{The Intermediate Value Theorem}
+
+\ex{1}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    False, consider $f:(0,1)\rightarrow \mathbb{R}$
+    where $f(x)=1/x$. Then $f$ is continuous on a 
+    bounded domain but $f(0,1)$ is unbounded.
+
+    \item
+    False, since consider $f:(0,2) \rightarrow \mathbb{R}$
+    given by $f(x)=(x-1)^2$. It is clear $f$ is continuous 
+    on $(0,2)$ which is bounded and open, yet the codomain 
+    is given by $[0,1)$ which is not open.
+
+    \item
+    True, bounded closed sets are compact by the 
+    Heine-Borel \Thm and continuous functions preserve 
+    comapctness.
+\end{enumerate}
+
+\ex{3}
+This is impossible since take compact set 
+$K\subset \mathbb{R}$. Then $f(K)\subseteq \mathbb{Q}$
+is compact but any subset of $\mathbb{Q}$ is not 
+compact since it cannot be closed even if it were bounded 
+so such a function cannot exist.
+
+\ex{4}
+\begin{proof}
+    Suppose $c\in (a,b)$ then $a<c<b \Rightarrow f(a)\leq f(c)\leq f(b)$.
+
+    Now for arbitrary $\varepsilon>0$ and without loss
+    of generailty we assume $V_\varepsilon(f(c))\subset (f(a),f(b))$
+    \begin{align*}
+        b_l = \max\{f(c)-\varepsilon/2, a\} \leq f(c) \leq
+         b_u=\min\{f(c)+\varepsilon/2,b\}
+    \end{align*}
+
+    By IVP of $f$ $\exists x\in [a,c)$ s.t. $f(x)=b_l$ 
+    (If $b_l=f(a)$ then $x=a$).
+    Similarly, $\exists y\in (c,b]$ s.t. $f(y)=b_u$. So
+    \begin{align*}
+        f(a) \leq f(x)\leq f(c)\leq f(y) \leq f(b)
+    \end{align*}
+    $\Rightarrow a<x<c<y<b$ so choose $\delta$ s.t. 
+    \begin{align*}
+        V_\delta(c) \subset (x,y)
+    \end{align*}
+    Since $f$ is increasing this implies 
+    \begin{align*}
+        f(V_\delta(c)) \subseteq V_{\varepsilon/2}(f(c)) \subset
+         V_{\varepsilon}(f(c))
+    \end{align*}
+
+    If $c=a$ then 
+    \begin{align*}
+        f(c) \leq b_u=f(c)+\varepsilon/2 \leq f(b)
+    \end{align*}
+    By IVP of $f$ $\exists y\in (a,b)$ s.t. $f(y)=b_u$ so  
+    \begin{align*}
+        f(c)\leq f(y)\leq f(b)
+    \end{align*}
+    $\Rightarrow c<y<b$. Next choose $\delta$ s.t. 
+    \begin{align*}
+        V_\delta(c) \subset [a,y)
+    \end{align*}
+    and the rest of the proof proceeds in the same way.
+
+    An analgous arguement can be used to conclude $f$ is
+    continuous at $b$. 
+    
+    Hence, $f$ is continuous on $[a,b]$.
+\end{proof}
+
+\ex{5}
+\begin{proof}
+    If we wish to prove the IVT for $h$ which is continuous on 
+    $(a,b)$ then to simplify the proof we define 
+    function $f(x)=h(x) - L$ so that $f(a)<0<f(b)$.
+    We need to show $\exists c$ s.t. $f(c)=0$.
+
+    We begin by arguing $K$ is closed.
+    For some convergent sequence $(x_n)\in K$ with 
+    $\lim x_n = x$,
+    by the order limit \Thm we know $f(x_n)\leq 0$ for all 
+    $n$ which implies $f(x)\leq 0$ so $x\in K$.
+    Hence, $c\in K$ so $f(c)\leq 0$.
+    
+    Consider seqeunce $(y_n)\rightarrow c$ where $c<y_n<b$ 
+    (which is always possible since 
+    $b\neq c$ since $b\not\in K$). Now since $f$ is 
+    continuous
+    $f(y_n)\geq 0$ implies $f(\lim y)=f(c)\geq 0$.
+    Since $f(c)\geq 0$ and $f(c)\leq 0$ then $f(c)=0$
+    so $f(c)=h(c)-L=0 \Rightarrow h(c)=L$.
+\end{proof}
+
+\ex{6}
+\begin{proof}
+    Consider $(a_n), (b_n)$ where $I_n=[a_n,b_n]$.
+    Both sequences are monotone and bounded so both converge.
+    Since $I_n$ are nested then by the NIP $\exists x\in \cap_n I_n$.
+    For any $\varepsilon>0$ there exists $N$ s.t. $|I_n|<\varepsilon/2$ 
+    for $n\geq N$ which implies 
+    \begin{gather*}
+        |a_n-x| < \varepsilon \\
+        |b_n-x| < \varepsilon
+    \end{gather*}
+    for $n\geq N$. Hence, $(a_n)\rightarrow x$ and $(b_n)\rightarrow x$.
+    Now $f(a_n)\leq 0$ and $f(a_n)\geq 0$ $\forall n$. Hence, 
+    $f(x)\leq 0$ and $f(x)\geq 0$ which implies $f(x)=0$. 
+\end{proof}
+
+\ex{7}
+\begin{proof}
+    Let's define function $h(x)=f(x)-x$ and we are tasked with finding 
+    a root to this function. 
+    Now $h(0)=f(0)\geq 0$ and $h(1)=f(1)-1\leq 0$.
+    \begin{itemize}
+        \item Suppose $h(0)>0, h(1)<0$: Then by IVT there exists 
+        $c\in [0,1]$ s.t. $h(c)=0$.
+
+        \item $h(0)=0$: Then $h(0)=0$.
+        \item $h(1)=1$: Then $h(1)=0$
+    \end{itemize}
+\end{proof}
