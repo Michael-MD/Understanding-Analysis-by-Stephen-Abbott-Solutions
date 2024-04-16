@@ -1,0 +1,380 @@
+\subsection{Derivatives and the Intermediate Value Property}
+
+\ex{1}
+\begin{enumerate}[label=(\roman*)]
+    \item 
+    \begin{proof}
+        We will use the sequential criterion for function limits:
+        For any sequence $(x_n)\rightarrow c$ with everything in 
+        $A$ then 
+        \begin{align*}
+            & \lim_n \frac{f(x_n)+g(x_n)-f(c)-g(c)}{x_n-c} \\
+            &= \lim_n \frac{f(x_n)-f(c)}{x_n-c} + \frac{g(x_n)-g(c)}{x_n-c} \\
+            &= \lim_n \frac{f(x_n)-f(c)}{x_n-c} + \lim_n \frac{g(x_n)-g(c)}{x_n-c} \\
+            &= f'(c) + g'(c)
+        \end{align*}
+        where the third equailty follows by the algebraic limit theorem and 
+        the assumption that $f'(c)$ and $g'(c)$ exist.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        This time we will use the function limit definition:
+        \begin{align*}
+            \lim \frac{kf(x)-kf(c)}{x-c} &= k\lim \frac{f(x)-f(c)}{x-c} \\
+                                        &= kf'(c)
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        f'(c) = \lim \frac{\frac{1}{x}-\frac{1}{c}}{x-c} &= \lim \frac{c-x}{xc(x-c)} \\
+        &= \frac{-1}{c} \lim \frac{1}{x} \\
+        &= \frac{-1}{c^2}
+    \end{align*}
+
+    \item
+    \begin{proof}
+        Since $(1/x)'=-1/x^2$ 
+        
+        Let $h(x)=1/x$ so $(f h\circ g)(x)=f(x)/g(x)$.
+        Using the chain rule
+        \begin{align*}
+            (f h\circ g)'(c) &= f'(c) (h\circ g)(c)  + f(c)(h\circ g)'(c)  \\ 
+                             &= \frac{ f'(c)}{g(x)}  + f(c)[h'(g(c))g'(c)]  \\
+                             &=  \frac{ f'(c)}{g(x)}  + f(c)\frac{-g'(c)}{g(c)^2}  \\
+                             &=  \frac{f'(c)g(c) - f(c)g'(c)}{g(c)^2}
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        \begin{align*}
+            (f(x)/g(x))'(c) &= \lim \frac{f(x)/g(x) - f(c)/g(c)}{x-c} \\
+                        &= \lim \frac{f(x)g(c)-g(x)f(c)}{g(x)g(c)(x-c)} \\
+                        &= \lim \frac{f(x)g(c)-f(c)g(c)+f(c)g(c)-g(x)f(c)}{g(x)g(c)(x-c)} \\
+                        &= \lim \frac{g(c)(f(x)-f(c))+f(c)(g(c)-g(x))}{g(x)g(c)(x-c)} \\
+                        &= \lim \frac{1}{g(c)^2}[\frac{g(c)^2}{g(x)}\frac{f(x)-f(c)}{x-c}+f(c)\frac{g(x)-g(c)}{x-c}\frac{g(c)}{g(x)}] \\
+                        &= \lim \frac{1}{g(c)^2}[f'(c)g(c)+g(c)g'(c)]
+        \end{align*}
+        where we have used the fact that $g'(c), f'(c)$ exists and $g(x)$ is continuous at $c$
+        so that $\lim g(x)=g(c)$.
+    \end{proof}
+\end{enumerate}
+
+\ex{3}
+Now 
+\begin{align*}
+    h'(0) = \lim \frac{h(x)-h(0)}{x} = \lim \frac{h(x)}{x}
+\end{align*}
+Observe, for any ration sequence which converges to zero 
+\begin{align*}
+    \lim \frac{h(q_n)}{q_n} = \lim \frac{q_n}{q_n} = 1
+\end{align*}
+
+For any irration sequence which converges to zero 
+\begin{align*}
+    \lim \frac{h(i_n)}{i_n} = \lim \frac{i_n}{i_n} = 0
+\end{align*}
+
+Inspired by this we contruct our own function 
+\begin{align*}
+    g(x) = \begin{cases}
+        x^2 & x\in \mathbb{Q} \\
+        0 & x\not\in \mathbb{Q}
+    \end{cases}
+\end{align*}
+Observe, for any ration sequence which converges to zero 
+\begin{align*}
+    \lim \frac{g(q_n)}{q_n} = \lim \frac{q_n^2}{q_n} = 0
+\end{align*}
+
+For any irration sequence which converges to zero 
+\begin{align*}
+    \lim \frac{h(i_n)}{i_n} = \lim \frac{i_n^2}{i_n} = 0
+\end{align*}
+so the derivative exists at $x=0$ while still not existing 
+anywhere else since $g$ remains discontinuous.
+
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    We require 
+    \begin{align*}
+        |f_a(x)-f_a(0)| = |f_a(x)| < \varepsilon
+    \end{align*}
+    which implies $|x^a| < \varepsilon$ so we require $a>0$.
+
+    \item
+    Consider sequences $(x_n)\leq 0$ and $(y_n)\geq 0$ then 
+    \begin{gather*}
+        \frac{f_a(x_n)-f_a(0)}{x_n} = \frac{f_a(x_n)}{x_n} = 0 \\
+        \frac{f_a(y_n)-f_a(0)}{y_n} = \frac{f_a(y_n)}{y_n} = \frac{1}{y_n^{1-a}}
+    \end{gather*}
+    When we take the limit we wish for both these sequences to converge to zero.
+    For $\frac{1}{y_n^{1-a}}$ to converge to zero we require $1-a<0$
+    which implies $a>1$.
+
+    For this set of values, we now check if $f_a$ is continuous.
+    We can now be confident $f_a$ is differentiable everywhere since zero 
+    is where the function changes.
+
+    Hence
+    \begin{align*}
+        f_a'(c) &= \begin{cases}
+            ax^{a-1} & x\geq 0 \\
+            0 & x < 0
+        \end{cases} \\ 
+        &= a\begin{cases}
+            x^{a-1} & x\geq 0 \\
+            0 & x < 0
+        \end{cases}
+    \end{align*}
+    from (a) we know the function will be continuous at zero 
+    if the exponent is greater than 1 so $a-1>0 \Rightarrow a>1$.
+
+    \item
+    From (b) we know we require the exponent to be greater than one so 
+    $a-1>1 \Rightarrow a>2$.
+\end{enumerate}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    The dilema is at zero so this is where we focus:
+    \begin{align*}
+        \lim \frac{x^a \sin(1/x)}{x} = \lim x^{a-1} \sin(1/x)
+    \end{align*}
+    We need the function to be approaching zero as it gets closer to the 
+    origin so we require $a-1>0 \Rightarrow a>1$ for $g_a$ to be differentiable
+    everywhere.
+
+    Now 
+    \begin{align*}
+        g_a'(x) &= ax^{a-1}\sin(1/x)+x^a(-1/x^2)\cos(1/x) \\
+                &= ax^{a-1}\sin(1/x)-x^{a-1}\cos(1/x) \\
+    \end{align*}
+    If we want this function to be unbounded on $[0,1]$ then
+    simply we require
+    \begin{gather*}
+        a-1<0 \quad a-2<0 \\
+        a<1    \quad a<2
+    \end{gather*} 
+    So we want to preserve differentiability on $\mathbb{R}$ so we choose $1<a<2$.
+
+    \item
+    For differentiability of $g_a$ we require $a>1$.
+    For $g_a'$ to be continuous we require 
+    \begin{gather*}
+        a-1>0 \text{ and } a-2>0 \\
+        a>1 \text{ and } a>2
+    \end{gather*}
+    to tame the oscillations.
+
+    Hence,
+    \begin{align*}
+        g_a'(0) &= \lim \frac{x^a \sin(1/x)}{x} \\
+                &= x^{a-1} \sin(1/x) \\
+                &= 0
+    \end{align*}
+    So
+    \begin{align*}
+        g_a''(0) &= \frac{g'(0)-0}{x} \\
+                &= x^{a-2} \sin(1/x) - x^{a-3} \cos(1/x)
+    \end{align*}
+    For this limit to exist we require 
+    \begin{gather*}
+        a-2>0 \text{ and } a-3>0 \\
+        a>2 \text{ and } a>3
+    \end{gather*}
+    So to be discontinuous we require $a\leq 2$ or $a\leq 3$.
+    so for $g_a$ to be differentiabe on $\mathbb{R}$ with 
+    $g'$ continuous but not differentiabe at zero we require $2<x\leq 3$.
+
+    \item
+    For $g_a$ to be differentiabe we require $a>1$.
+
+    For $g_a'$ to be differentiabe we require $a-2>0$ and $a-3>0 \Rightarrow$  
+    $a>2$ and $a>3$ or simply $a>3$.
+
+    Now 
+    \begin{align*}
+        g_a''(0) &= \lim \frac{g'(x)-g'(0)}{x} \\
+                &= \lim \frac{g_a'(x)}{x} \\
+                &= \lim - x^{-3+a} \cos{\left(\frac{1}{x}\right)} + a x^{-2+a} \sin{\left(\frac{1}{x}\right)} \\
+                &= 0
+    \end{align*}
+    so
+    \begin{align*}
+        g_a''(x) &= 2 x^{-3+a} \cos{\left(\frac{1}{x}\right)} \\
+        &\quad - 2a x^{-3+a} \cos{\left(\frac{1}{x}\right)} \\
+        &\quad - x^{-4+a} \sin{\left(\frac{1}{x}\right)} \\
+        &\quad - a x^{-2+a} \sin{\left(\frac{1}{x}\right)} \\
+        &\quad + a^{2} x^{-2+a} \sin{\left(\frac{1}{x}\right)}
+        \end{align*}
+        
+        For this not to be continuous at zero we need to the oscilations to remain constant 
+        or grow so we require 
+        \begin{gather*}
+            a-3\leq 0 \text{ or } a-4\leq 0 \\ 
+            a\leq 3 \text{ or } a\leq 4
+        \end{gather*}
+        so we choose $3<x\leq 4$.
+\end{enumerate}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Consdier sequences $(x_n)\rightarrow a$ and $(y_n)\rightarrow b$
+    where $(x_n),(y_n)\in (a,b)$.
+    Now since $g'(a)$ exists then 
+    \begin{align*}
+        \lim \frac{g(x)-g(a)}{x-a}
+    \end{align*}
+    exists. Since  $g'(a)<0$ then there exists $N\in \mathbb{N}$ s.t.
+    \begin{align*}
+        \frac{g(x_n)-g(a)}{x_n-a} < 0
+    \end{align*}
+    for all $n\geq N$.
+    This implies 
+    \begin{align*}
+        g(a) > g(x_n)
+    \end{align*}
+    for all $n\geq N$.
+
+    Similarly, since $g'(b)$ exists then 
+    \begin{align*}
+        \lim \frac{g(x)-g(b)}{x-b}
+    \end{align*}
+    exists. Since  $g'(b)>0$ then there exists $N\in \mathbb{N}$ s.t.
+    \begin{align*}
+        \frac{g(y_n)-g(b)}{y_n-b} > 0
+    \end{align*}
+    for all $n\geq N$.
+    This implies 
+    \begin{align*}
+        g(b) > g(y_n)
+    \end{align*}
+    for all $n\geq N$. Note, since $y_n-b<0$ we flip the inequailty.
+
+    \item
+    \begin{proof}
+        $g$ si continous which implies there exists $x_0,x_1 \in [a,b]$
+        s.t. $g(x_0)\leq g(x)\leq g(b)$ for all $x\in [a,b]$ by the 
+        extreme value \Thm. Since in (a) we proved $g(a),g(b)$ cannot 
+        be the minimum then $x_0\neq a,b$ so $x\in (a,b)$.
+        By the Interior Extremum \Thm/Fermat's \Thm we know $g'(x_0)=0$
+        i.e. $g'(x_0) = f'(x_0)-\alpha=0$ which implies $f'(x_0)=\alpha$. 
+    \end{proof}
+\end{enumerate}
+
+\ex{7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    A function is differentiabe at $c$ given 
+    \begin{align*}
+        \lim \frac{f(x)-f(c)}{x-c}
+    \end{align*}
+    exists. If this limit exists then for every $\varepsilon>0$
+    \begin{align*}
+        |x-c|<\delta \Rightarrow |f'(c)-\frac{f(x)-f(c)}{x-c}| <\varepsilon
+    \end{align*}
+    Motivated by this an equivilent definition is given by:
+    \begin{definition}
+        A function is differentiabe at $c$ iff 
+        \begin{align*}
+            \lim |\frac{f(c+h)-f(c)-h f'(c)}{h}|=0
+        \end{align*}
+    \end{definition}
+    This definition lends itself nicely to defining 
+    uniform differentiability.
+    \begin{definition}
+        A function is uniformly differentiabe if given 
+        $\varepsilon>0$ there exists $\delta>0$ s.t. 
+        \begin{align*}
+            0<|h|<\delta \Rightarrow |\frac{f(c+h)-f(c)-h f'(c)}{h}|<\varepsilon
+        \end{align*}
+        for all $c$.
+    \end{definition}
+
+    Simply put, a uniformly differentiabe function is one in which
+    for any point $c$, the 
+    gradient will be within $\varepsilon$ of the true value 
+    given the slope calculated from two points is within $\delta>0$.
+
+    \item
+    $f(x)=x$ is an example of a uniformly continuous function.
+
+    \item
+    Differentiable functions on a compact set are not necessarily 
+    uniformly differentiabe. Take for instance,
+    \begin{align*}
+        g_2(x) = x^2 \sin(1/x)
+    \end{align*}
+    which is differentiable everywhere but the derivative is 
+    not continuous at zero. 
+
+    It can be shown that  a differentible function is uniformly differentiable iff
+    it has a continuous derivative. Hence, $g_2$ is not uniformly differentiabe.
+    
+    However, we can also check this geometrically.
+    We know $g_2'$ is not continuous at zero. No matter 
+    how small $\delta>0$ is made, since the oscillations bunch 
+    up at zero, the gradient through two points will always 
+    vary from $-1$ to $1$ since 
+    \begin{align*}
+        g_2'(x)=-\cos\left(\frac{1}{x}\right) + 2x\sin\left(\frac{1}{x}\right)
+    \end{align*} 
+    This is due the $\cos$ in the expression.
+\end{enumerate}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item True, since by Darboux's \Thm the derivative possesses 
+    the IVP so if $f'(a) \neq f'(b)$ then there exists $\alpha \in \mathbb{I}$
+    s.t. $f'(a)< \alpha < f'(b)$ and $x\in (a,b)$ s.t. $f(x)=\alpha$.
+
+    \item
+    False, we proved this true for contonious functions but a derivative 
+    does not need to be continuous.
+
+    Take for example,
+    \begin{align}
+        f(x)=x/2 + x^2 \sin(1/x)
+    \end{align}
+    We know the derivative will have oscillations of magnitude greater than 
+    or equal to unity and the oscillations will get packed closer together
+    nearer the origin. So no matter how small $\delta>0$ is made at least 
+    one cycle oof oscillations will be present within $\delta$ from 
+    the origin. The offset by $x/2$ is to offset the derivative by 
+    $1/2$ so that the oscillations dip below the x-axis. This value is 
+    not unique.
+
+    \item
+    \begin{proof}
+        Now since $f'(0)$ exists then $\exists \delta_1 >0 $ s.t. 
+        \begin{align}
+            0<|x|<\delta_1 \Rightarrow |\frac{f(x)-f(0)}{x}| < \varepsilon/2
+        \end{align}
+        Since $\lim_{x\rightarrow 0} f'(x)=L$ then 
+        there exists  $\exists \delta_2 >0 $ s.t. 
+        \begin{align}
+            0<|x|<\delta_2 \Rightarrow |f'(x)-L| < \varepsilon/2
+        \end{align}
+        
+        We need to show 
+        \begin{align*}
+            L=\lim \frac{f(x)-f(c)}{x-c}
+        \end{align*}
+
+        Let $\delta = \min\{\delta_1,\delta_2\}$ then for $0<|x|<\delta$
+        \begin{align}
+            |f'(x) - f'(0)| &\leq |f'(x) - f(x)| + |f(x) - f'(0)| \\
+                            &\leq |f'(x) - f(x)| + |f(x) - f'(0)| \\
+        \end{align}
+    \end{proof}
+\end{enumerate}
