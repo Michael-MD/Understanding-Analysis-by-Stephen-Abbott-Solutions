@@ -1,0 +1,145 @@
+\subsection{Uniform Convergence and Differentiation}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Observe, for $N>1/\varepsilon$
+    \begin{align*}
+        |h_n(x)| &\leq \frac{1}{n} \\
+                &< \varepsilon
+    \end{align*}
+    for $n\geq N$. Since this applies for all $x$ i.e. 
+    $N$ is not a function of $x$ then 
+    $h_n \rightarrow 0$ uniformly.
+
+    Now
+    \begin{align*}
+        h'_n(x) = \cos(n x)
+    \end{align*}
+    As $n$ increases the oscillations increase. However, 
+    they increase in multiples of the fundamental angular frequency
+    $2\pi$. So $h_n$ converges for $x=2\pi m$ for $m\in \mathbb{N}$.
+    
+    \item
+    We want the amplitude of the oscillations to get smaller with $n$
+    however when we differentiate we want the oscillations to grow
+    indefinitely.
+    This is achieved using 
+    \begin{align*}
+        h_n(x) = \frac{\sin(nx)}{\sqrt{n}}
+    \end{align*}
+    Then
+    \begin{align*}
+        h_n'(x) = \sqrt{n}\cos(nx)
+    \end{align*}
+    Notice, we didn't need to use squareroot.
+\end{enumerate}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Since $|x^n/n|\leq 1/n$ then for $N>1/\varepsilon$
+    \begin{align*}
+        |g_n(x)| &\leq \frac{1}{n} \\
+                &< \varepsilon
+    \end{align*}
+    for $n\geq N$. Since this applies for all $x$ i.e. 
+    $N$ is not a function of $x$ then 
+    $g_n \rightarrow g = 0$ uniformly. Clearly $g$ is
+    differentiable and $g'(x)=0$.
+
+    \item
+    Now 
+    \begin{align*}
+        g_n'(x) = x^{n-1}
+    \end{align*}
+    This is the same as studying $(x^n)\rightarrow h$. Then 
+    \begin{align*}
+        h(x) = \begin{cases}
+            0 & x \neq 1 \\
+            1 & x = 1
+        \end{cases}
+    \end{align*}
+    The convergence cannot be uniform since $g'_n$ is continuous 
+    but $g'$ is discontinuous.
+    
+    Since the convergence is not uniform we see as 
+    expected $h\neq g'$.
+\end{enumerate}
+
+\ex{3}
+We know $\lim f_n(x)=0$.
+Now 
+\begin{align*}
+    f'_n(x) = \frac{1-nx^2}{(1+nx^2)^2}
+\end{align*}
+We need to find all the points where the convergence of $f'_n(x)\rightarrow 0$.
+Observe for $x=0$ the sequence converges to $0$. For $x\neq 0$
+\begin{align*}
+    \lim_n \frac{nx^2-1}{n^2 x^4+2nx^2+1} &= \lim_n \frac{\frac{x^2}{n}-\frac{1}{n^2}}{x^2+\frac{2x^2}{n}+\frac{1}{n^2}} \\
+    &= \frac{0 - 0}{x^4+0+0} \\
+    &= 0
+\end{align*}
+so $f'(x)=\lim_n f_n'(x)$ for $x\neq 0$.
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Now 
+    \begin{align*}
+        \lim_n g_n(x) = \frac{nx+x^2}{2n} \\
+        &= \frac{x+\frac{x^2}{n}}{2} \\
+        &= \frac{x}{2}
+    \end{align*}
+    Hence, $g'(x)=1/2$.
+
+    \item
+    Now
+    \begin{align*}
+        g_n'(x) = \frac{1}{2} + \frac{x}{n}
+    \end{align*}
+    For interval $[-M,M]$ and $\varepsilon$ choose $N>\frac{M}{\varepsilon}$
+    which ensures
+    \begin{align*}
+        |x/n| \leq M/n < \varepsilon
+    \end{align*}
+    for all $x\in [-M,M]$. Hence $g'_n$ converges uniformly. 
+    Hence, we know $\lim g'_n = g'$. So $g'(x)=1/2$.
+
+    \item
+
+\end{enumerate}
+
+\ex{5}
+\begin{proof}
+    Fix $x\in [a,b]$ and observe
+    \begin{align*}
+        |f_n(x) - f_m(x)| \leq |(f_n(x) - f_m(x)) - (f_n(x_0) - f_m(x_0))| + |f_n(x_0) - f_m(x_0)|
+    \end{align*}
+    Since $f_n(x_0)$ converges then there exists $N_1$ s.t. 
+    \begin{align*}
+        |f_n(x_0) - f_m(x_0)| < \varepsilon/2
+    \end{align*}
+    for $n>m\geq N_1$.
+
+    Since $f_n-f_m$ is differentiable then it is continuous so 
+    there exists $\alpha \in (x_0,x)$ (or $(x,x_0)$ if $x<x_0$) s.t. 
+    \begin{align*}
+        f_n'(\alpha) - f_m'(\alpha) = \frac{f_n'(x) - f_m'(x_0) + g_n'(x) - g_m'(x_0)}{x-x_0}|
+    \end{align*}
+    Now $f_n'$ converges uniformly so there exists $N_2$ s.t. 
+    \begin{align*}
+        |f_n'(\alpha) - f_m'(\alpha)| < \frac{\varepsilon}{2|x-x_0|}
+    \end{align*}
+    for $n>m\geq N_2$.
+
+    This implies
+    \begin{align*}
+        |f_n'(x) - f_m'(x_0) + g_n'(x) - g_m'(x_0)| < \varepsilon/2
+    \end{align*}
+    Choose $N=\max\{N_1,N_2\}$ which implies 
+    \begin{align*}
+        |f_n(x) - f_m(x)| < \varepsilon
+    \end{align*}
+    Since $x$ was chosen arbitrarily then $f_n$ converges uniformly.
+\end{proof}
