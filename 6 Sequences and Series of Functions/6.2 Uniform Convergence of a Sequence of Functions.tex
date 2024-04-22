@@ -1,0 +1,497 @@
+\subsection{Uniform Convergence of a Sequence of Functions}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        \lim_n f_n(x) = \lim \frac{x}{\frac{1}{n}+x^2} = \frac{x}{\lim \frac{1}{n}+x^2} = \frac{1}{x}
+    \end{align*}
+
+    \item
+    The convergence is not uniform since
+    \begin{align*}
+        |f_x(x)-f(x)| = \frac{1}{nx^3+x}
+    \end{align*}
+    We require 
+    \begin{align*}
+        \frac{1}{nx^3+x} < \varepsilon
+    \end{align*}
+    This occurs when
+    \begin{align*}
+        n > \frac{1-x\varepsilon}{x^3 \varepsilon}
+    \end{align*}
+    However, there is no upper bound in dependent of $x$ since as 
+    $x$ gets closer to the origin $ \frac{1-x\varepsilon}{x^3 \varepsilon}$
+    increases indefinitely.
+    
+    \item
+    $f_n \rightarrow f$ does not converge uniformly on $(0,1)$ since as 
+    we mentioned in (a) values near the origin are problematic.
+
+    \item
+    $f_n\rightarrow f$ uniformly on $(1\infty)$ since we require $nx^3+x>\frac{1}{\varepsilon}$
+    which is bounded below by 
+    \begin{align*}
+        nx^2+x > n+1
+    \end{align*}
+    This implies $|f_n(x)-f(x)|<\varepsilon$ for $n>\frac{1}{\varepsilon}-1$
+    for all $x\in (1,\infty)$.
+\end{enumerate}
+
+\ex{2}
+\begin{align*}
+    \lim_n g_n(x) &= \lim_n \frac{x}{2} + \lim_n \frac{\sin(nx)}{2n} \\
+                &= \frac{x}{2} + 0 \\
+                &= x/2
+\end{align*}
+The convergence is uniform on $\mathbb{R}$ since for some $\varepsilon>0$
+choose $N>\frac{1}{\varepsilon}$ which ensures
+\begin{align*}
+    |\frac{\sin(nx)}{2x}| \leq \frac{1}{2n} < \varepsilon/2 < \varepsilon
+\end{align*}
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        \lim_n h_n(x) = \frac{x}{1+\lim_n x^n}
+    \end{align*}
+    Then 
+    \begin{align*}
+        \lim_n h_n(x) = \begin{cases}
+            x & x < 1 \\
+            \frac{1}{x} & x=1 \\
+            0 & x>1
+        \end{cases}
+    \end{align*}
+    since $(x_n)\rightarrow 0$ for $x<1$.
+
+    \item
+    Since the limit function is discontinuous and $h_n$ is continuous
+    and uniform convergence preserves continuity then the converegence 
+    must be pointwise.
+
+    \item
+
+\end{enumerate}
+
+
+\ex{4}
+The solution to $f_n'(c)=0$ is $c=\pm \frac{1}{\sqrt n}$.
+The limiting function is given by $f(x)=0$. For some $\varepsilon>0$
+we require 
+\begin{align*}
+    |f_n(x)| < \varepsilon
+\end{align*}
+It is sufficient to ensure only that 
+\begin{align*}
+    |f_n(\frac{1}{\sqrt n})| < \varepsilon
+\end{align*}
+This implies $n>\frac{1}{4\varepsilon^2}$.
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    It is not difficult to see 
+    \begin{align*}
+        \lim_n f_n(x) = \begin{cases}
+            0 & x=0 \\
+            1 & x\neq 0
+        \end{cases}
+    \end{align*}
+    The convergence is not uniform since $f_n$ are continuous by 
+    $f$ is discontinuous.
+
+    \item
+    Consider,
+    \begin{align*}
+        f_n(x) = \frac{n x}{1+n x^2}
+    \end{align*}
+    However 
+    \begin{align*}
+        f(x) = \begin{cases}
+            0 & x=0 \\
+            \frac{1}{x} & x \neq 0
+        \end{cases}
+    \end{align*}
+\end{enumerate}
+
+\ex{6}
+\begin{proof}
+    $(\Rightarrow)$ Suppose $(f_n)$ converges uniformly, then 
+    for $\varepsilon>0$ there
+    exists $N\in \mathbb{N}$ s.t. 
+    \begin{align*}
+        |f_n(x)-f(x)| < \varepsilon/2
+    \end{align*}
+    for $n\geq N$. Hence, for $n>m/geq N$
+    \begin{align*}
+        |f_n(x)-f_m(x)| &\leq |f_n(x) - f(x)| + |f_m(x) - f(x)| \\
+                        &< \varepsilon/2 + \varepsilon/2 \\
+                        &= \varepsilon 
+    \end{align*}
+
+    $(\Leftarrow)$ Suppose there exists $N$ s.t. for all $x\in A$
+    \begin{align*}
+        |f_n(x)-f_m(x)| < \varepsilon/2
+    \end{align*} 
+    for $n>m\geq N$.
+
+    Now $(f_n(x))$ is a cauchy sequence for all $x\in A$ so the sequence is 
+    convergent so let $(f_x(x))\rightarrow f(x)$ for all $x\in A$.
+
+    Now since the absolute value function is continuous then 
+    \begin{align*}
+        \lim_n |f_m(x)-f_n(x)| = |f_m(x)-\lim_n f_n(x)| = |f_m(x)-f_n(x)| \leq \varepsilon/2
+    \end{align*}
+    for $m\geq N$.
+
+    Hence,
+    \begin{align*}
+        |f_n(x) - f(x)| & \leq |f_n(x)-f_m(x)| + |f_m(x)-f(x)| \\
+                        &\leq \varepsilon/2 + \varepsilon/2 \\
+                        &= \varepsilon
+    \end{align*}
+    for $n\geq N$. Implicit is the assumption that 
+    $m\geq N$. The first inequailty follows since we assumed $f_n$
+\end{proof}
+
+\ex{7}
+\begin{proof}
+    Since $f_n \rightarrow f$ uniformly choose $N \in \mathbb{N}$
+    s.t. 
+    \begin{gather*}
+        |f(x)-f_N(x)| < \varepsilon/3 \\
+    \end{gather*}
+    for all $x$.
+    Next choose $\delta>0$ s.t. 
+    \begin{align*}
+        |x-y|< \delta \Rightarrow |f_N(x)-f_N(y)|<\varepsilon/3
+    \end{align*}
+    Then 
+    \begin{align*}
+        |f(x)-f(y)| &\leq |f(x)-f_N(x)| + |f_N(x)-f_N(y)| + |f(x)-f(y)| \\
+        &< \varepsilon/3 + \varepsilon/3 + \varepsilon/3 \\
+        &= \varepsilon
+    \end{align*}
+    for $|x-y|< \delta$.
+\end{proof}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    False, consider compact set $[-5,5]$ where 
+    \begin{align*}
+        f_n(x) = \frac{nx}{1+nx^2}
+    \end{align*}
+    which converges to 
+    \begin{align*}
+        f(x) = \begin{cases}
+            0 & x=0 \\
+            1/x & x\neq 0
+        \end{cases}
+    \end{align*}
+    However, the convergence is not uniform since $f_n$
+    is continuous but $f$ is discontinuous.
+
+    \item
+    \begin{proof}
+        Suppose $f_n \rightarrow f$ uniformly and 
+        $g(x)<M$, then there exists 
+        $N\in \mathbb{N}$ s.t. 
+        \begin{align*}
+            |f_n(x)-f(x)| < \frac{\varepsilon}{M}
+        \end{align*}
+        We hypothesise that $f_n g \rightarrow fg$:
+        \begin{align*}
+            |f_n(x)g(x)-f(x)g(x)| &= |g(x)| |f_n(x)-f(x)| \\
+                                &< M |f_n(x)-f(x)| \\
+                                &< \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        \begin{align*}
+            |f(x)| &\leq |f(x)-f_n(x)| + |f_n(x)|
+        \end{align*}
+        Since $f_n \rightarrow f$ uniformly then we may choose 
+        $N$ s.t.
+        \begin{align*}
+            |f(x)-f_n(x)| < \varepsilon
+        \end{align*}
+        for $n\geq N$. Also, we assumed $f_n < M$ so 
+        \begin{align*}
+            |f(x)| &\leq \varepsilon + M
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Since $f_n\rightarrow f$ uniformly on $A,B$ then 
+        there exist $N_1, N_2$ s.t. 
+        \begin{gather*}
+            |f(x)-f_{n_1}(x)| < \varepsilon \quad n_1\geq N_1 \\
+            |f(x)-f_{n_2}(x)| < \varepsilon \quad n_2\geq N_2
+        \end{gather*}
+        Let $N=\max\{N_1, N_2\}$ then 
+        \begin{align*}
+            |f(x)-f_{n}(x)| < \varepsilon \quad n_\geq N
+        \end{align*}
+        on $A\cup B$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Suppose $f_n$ is increasing but $f$ is not. Since $f$
+        is not increasing then there exist $x,y$ s.t. $x<y$
+        but $f(x)>f(y)$. Since $f_n$ converges uniformly then 
+        there exists $N$ s.t. 
+        \begin{align*}
+            |f(x)-f_{n}(x)| < \varepsilon = |f(x)-f(y)|/3 \\
+            |f(y)-f_{y}(x)| < \varepsilon = |f(x)-f(y)|/3
+        \end{align*}
+        for $n\geq N$. This implies 
+        \begin{gather*}
+            f(x)-\varepsilon < f_n(x) < f(x)+\varepsilon \\
+            f(y)-\varepsilon < f_n(y) < f(y)+\varepsilon
+        \end{gather*}
+        Hence, 
+        \begin{align*}
+            f_n(y) < f(y)+\varepsilon < f(x)-\varepsilon<f_n(x)
+        \end{align*}
+        which is a contradiction since we assumed $f_n$ are 
+        increasing.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        As it turns out we do not require uniform continuity. 
+        We can see this using a different proof.
+        Since $f_n(x)\leq f_n(y)$ for $x<y$ then taking the 
+        limit on both sides we obtain 
+        \begin{align*}
+            \lim_n f_n(x) &\leq \lim_n f_n(y) \\
+            f(x) &\leq f(y)
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+\ex{9}
+\begin{proof}
+    Since $g$ is continuous on a compact set then by the extreme 
+    value \Thm there exist $x_0,x_1\in K$ s.t. $g(x_0) 
+    \leq g(x) \leq g(x_1)$. This implies $1/g(x_1) 
+    \leq 1/g(x) \leq g(x_0)$. Hence, $1/g$ is bounded on $K$. This 
+    then reduces to \Ex{6.2.8} (b).
+\end{proof}
+
+\ex{10}
+\begin{proof}
+    First we check that the limit exists 
+    \begin{align*}
+        \lim_n f_n(x) = \lim f(x+1/n) = f(x+\lim 1/n) = f(x)
+    \end{align*}
+
+    Now since $f$ is uniformly continuous then we expect that 
+    there exists $\delta$ s.t. 
+    \begin{align*}
+        |x-y| < \delta \Rightarrow |f(x) - f(y)|<\varepsilon
+    \end{align*}
+    In particular choose $y=x+1/n$, then $|x-y|=1/n$. So choose 
+    $N>1/\delta$ so that $|x-y|<\delta$ for $n\geq N$ which 
+    implies $|f(x)-f(x+1/n)|<\varepsilon$ so $f_n$ is uniformly
+    convergent. 
+\end{proof}
+
+As a counter example if $f$ is only assumed continuous, 
+consider $f(x)=x^2$ then 
+\begin{align*}
+    |f_n(x) - f(x)| &= |(x+1/n)^2 - x^2| \\
+    &= |\frac{2x}{n}+\frac{1}{n^2}|
+\end{align*}
+We require this result to be less than $\varepsilon$ which 
+occurs when $n>\frac{x+\sqrt{x+\varepsilon}}{\varepsilon}$
+which cannot be made independent of $x$.
+
+\ex{11}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We claim $(f_n+g_n)\rightarrow (f+g)$.
+        Now
+        \begin{align*}
+            |f(x)-g(x) - f_n(x)-g_n(x)| &\leq |g_n(x)-g(x)| +|g_n(x)-g(x)| 
+        \end{align*}
+        Since $f_n$ and $g_n$ are uniformly convergent then for some 
+        $\varepsilon>0$ there 
+        exist $N_1, N_2 \in \mathbb{N}$ s.t. 
+        \begin{align*}
+            |f_{n_1}(x)-f(x)| < \varepsilon/2 \quad n_1\geq N_1 \\
+            |g_{n_2}(x)-g(x)| < \varepsilon/2 \quad n_2\geq N_2
+        \end{align*}
+        If we choose $N=\max\{N_1, N_2\}$ then 
+        \begin{align*}
+            |f(x)-g(x) - f_n(x)-g_n(x)| &< \varepsilon/2 + \varepsilon/2 \\
+            &= \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    Consider $f_n(x)=g_n(x)=x+1/n$.
+
+    \item
+    \begin{proof}
+        Now 
+        \begin{align*}
+            &|f_n(x)g_n(x)-f(x)g(x)| \\ &= |f_n(x)g_n(x)-f_m(x)g_n(x)+f_m(x)g_n(x)-f_m(x)g_m(x)| \\
+            &\leq  |f_n(x)g_n(x)-f_m(x)g_n(x)|+|f_m(x)g_n(x)-f_m(x)g_m(x)| \\
+            &=  |f_n(x)-f_m(x)||g_n(x)|+|g_n(x)-g_m(x)||f_m(x)| \\
+            &\leq  |f_n(x)-f_m(x)|M+|g_n(x)-g_m(x)|M
+        \end{align*}
+        By the cauchy criterion we now there exists $N$ s.t. 
+        $n>m\geq N$ implies $|f_n(x)-f_m(x)|<\varepsilon/(2M)$ and 
+        $|g_n(x)-g_m(x)|<\varepsilon/(2M)$ which implies 
+        $|f_n(x)g_n(x)-f(x)g(x)|<\varepsilon$ as required.
+    \end{proof}
+\end{enumerate}
+
+\ex{12}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Assume $g_n \rightarrow 0$ pointwise
+    on a compact set $K$ and assume that for each $x\in K$ the sequence $g_n(x)$
+    is decreasing. Then if $g_n$ are continuous on $K$,
+    then the convergence is uniform.
+
+    \item
+    \begin{proof}
+        First we prove $K_n$ is comapct:
+        \begin{itemize}
+            \item $K_n\subseteq K$ which is bounded so $K_n$ is bonuded.
+            \item $K_n$ is closed since for any convergent sequence $(x_n)\in K_n$
+            which converges to $x$
+            \begin{align*}
+                g_n(x_n)\geq \varepsilon \Rightarrow \lim g_n(x_n) \geq \varepsilon
+            \end{align*}
+            Since $g$ is continuous then $ \lim g_n(x_n) = g_n(\lim x_n)=g(x)\geq \varepsilon$
+            so $x\in K_n$ and $K_n$ is closed.
+        \end{itemize}
+        Hence, $K_n$ is compact.
+
+        Now we argue $\{K_n\}$ are a nested sequence of sets:
+        If $x\in K_{n+1}$ then $g_{n+1}(x)\geq \varepsilon$. However, since $(g_n)$
+        is decreasing then we expect
+        \begin{align*}
+            \varepsilon \leq g_{n+1}(x) \leq g_n(x)
+        \end{align*}
+        which implies $x\in K_n$. So $K_{n+1} \subseteq K_n$.
+
+        We are now ready to argue for uniform convergence:
+        We know that there exists $x\in \cap_n K_n$. However, this implies $g_n(x)\geq \varepsilon$
+        for all $n$. Taking the limit we find $\lim_n g_n(x)\geq \varepsilon = 0$.
+        This implies $\varepsilon=0$ which is a contradiction since we assumed $\varepsilon>0$.
+
+        To resolve this contradiction, the NIP property cannot be applied if the intervals
+        are everntually empty. Hence, we conclude there exists $N$ s.t. $K_n=\emptyset$
+        for $n\geq N$. Hence, for any arbitrary $\varepsilon>0$ there exists $N$
+        s.t. $|g_n(x)| < \varepsilon$ for $n\geq N$ which means $g$ is uniformly convergent.
+        However, this immedietly implies $(f_n)$ is uniformly convergent.
+    \end{proof}
+\end{enumerate}
+
+\ex{13}
+
+\ex{14}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $f_n(x_1)$ is bounded so by BW there exists a convergent subsequence 
+    $f_{n_k}(x_1)$ which converges. 
+
+    \item
+    $f_{1,k}(x_2)$ is bounded so by BW there exists a convergent subsequence 
+    $f_{2,k}(x_2)$ which converges. $f_{2,k}(x_2)$ has the property that it converges 
+    at $x_1$ and $x_2$ now.
+
+    \item
+    Repeating the above process i.e. if $f_{m,k}$ corresponds to the subset of functions 
+    which where generated from $f_{m-1,k}$ which ensure $f_{m-1,k}(x_{m-1})$
+    converges then we can a nested seqeunce of sequences of functions which we denote 
+    by $(f_{m,k})$.
+
+    We can visualize this as is done with in Cantor’s
+    diagonalization technique as follows: 
+    \[
+        \begin{array}{c|ccccc}
+            x_1 & f_{1,1} & f_{1,2} & f_{1,3} & f_{1,4} & \cdots \\
+            x_2 & f_{2,1} & f_{2,2} & f_{2,3} & f_{2,4} & \cdots \\
+            x_3 & f_{3,1} & f_{3,2} & f_{3,3} & f_{3,4} & \cdots \\
+            \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+         \end{array}
+    \]
+
+    If we make a sequence of functions corresponding to the diagonal functions 
+    and name this sequence $(g_n)$ then 
+    in the above table then we obtain a sequence which converges at every point in 
+    $A$ since $g_n(x_m)$ converges for $n\geq m$.
+\end{enumerate}
+
+\ex{15}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Every $f_n$ is uniformly confinuous, moreover, we can find a single $\delta$
+    which ensures $|f_n(x)-f(x)|<\varepsilon$ for every function in the sequence
+    simultaniously.
+
+    \item
+    $(g_n)$ is not equicontinuous since $x^n$ gets steeper near unity with increasing $n$
+    so a $\delta>0$ which works for $g_n$ must everntually fail for sufficiently large $n$.
+
+    However, observe that $g_n$ are each indefinitely uniformly continuous.
+\end{enumerate}
+
+\ex{16}
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        The rationals are countable so we consider some enumeration
+        $\{r_1,r_2,...\}$ in $[0,1]$ and apply \Ex{14}.
+    
+        \item
+        For fixed $r_i$ we know $g_n(r_j)$ converges so the 
+        sequence is cauchy so there exists $N_i$ s.t. 
+        \begin{align*}
+            |g_s(r_j)-g_t(r_j)|<\varepsilon/3
+        \end{align*}
+        for $n\geq N_j$.
+        Since ${r_i}$ is a finite set we simply take $N=\max_i\{N_i\}$
+        then 
+        \begin{align*}
+            |g_s(r_i)-g_t(r_i)|<\varepsilon/3
+        \end{align*}
+        for $n\geq N$ for all $1 \leq i \leq m$.
+    
+        \item
+        For arbitrary $x\in[0,1]$ choose $i$ s.t. $x\in V_\delta(r_i)$.
+        By construction we know $|x-r_i|<\delta$ so 
+        \begin{align*}
+            |g_k(r_i)-g_k(x)| < \varepsilon/3
+        \end{align*}
+        for all $k$. 
+        Now
+        \begin{gather*}
+            |g_s(x)-g_s(r_i)| < \varepsilon/3 \\
+            |g_s(x)-g_s(r_i)| < \varepsilon/3
+        \end{gather*}
+        by equicontinuity.
+        \begin{align*}
+            |g_t(r_i)-g_t(x)| < \varepsilon/3
+        \end{align*}
+        for $s,t\geq N$ by (b).
+        Hence, 
+        \begin{align*}
+            |g_s(x)-g_t(x)| &\leq |g_s(x)-g_s(r_i)|+|g_s(r_i)-g_r(r_i)|+|g_t(r_i)-g_t(x)| \\
+            &< \varepsilon
+        \end{align*}
+    \end{enumerate}
+\end{proof}
