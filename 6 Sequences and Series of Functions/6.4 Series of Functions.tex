@@ -1,3 +1,149 @@
 \subsection{Series of Functions}
 
 \ex{1}
+\begin{proof}
+    Since $\sum g_n$ converges uniformly then the partial sums converge uniformly
+    so by the cauchy criterion there exists $N$ s.t. for all $x$
+    \begin{align*}
+        |g_n(x) + \hdots + g_{m+1}(x)| < \varepsilon
+    \end{align*}
+    for $n>m\geq N$. Specifically choose $n=m+1$ then 
+    \begin{align*}
+        |g_n(x)| < \varepsilon
+    \end{align*}
+    for $n\geq N$. Hence, $g_n \rightarrow 0$ uniformly.
+\end{proof}
+
+\ex{2}
+\begin{proof}
+    Observe
+    \begin{align*}
+        |f_n(x) + \hdots + f_{m+1}(x)| &\leq  |f_n(x)| + \hdots + |f_{m+1}(x)|  \\
+                                    &\leq |M_n| + \hdots + |M_{m+1}|
+    \end{align*}
+    Since $\sum M_n$ converges absolutely, then there exists $N$ s.t. 
+    \begin{align*}
+        |M_n| + \hdots + |M_{m+1}| < \varepsilon
+    \end{align*} 
+    for $n>m\geq N$. This implies
+    \begin{align*}
+        |f_n(x) + \hdots + f_{m+1}(x)| < \varepsilon
+    \end{align*}
+    for $n>m\geq N$. Since this is independent of $x$ then the convergence 
+    is uniform.
+\end{proof}
+
+\ex{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Since $|\cos(2^n x)/2^n|\leq 1/2^n$ and $\sum  1/2^n$
+        converges then by the M-test $\sum \cos(2^n x)/2^n$ converges 
+        uniformly. Since each term in the series is continuous and 
+        uniform convergence preserves continuity then $g$ is also 
+        continuous.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Since $|x^n/n^2|\leq 1/n^2$ on $[-1,1]$ and $\sum  1/n^2$
+        converges then by the M-test $\sum x^n/n^2$ converges 
+        uniformly on $[-1,1]$ . Since each term in the series is continuous and 
+        uniform convergence preserves continuity then $h$ is also 
+        continuous on $[-1,1]$.
+    \end{proof}
+\end{enumerate}
+
+\ex{4}
+\begin{proof}
+    Since $|h(2^n x)/2^n|\leq 1/2^n$ and $\sum  1/2^n$
+    converges then by the M-test $\sum h(2^n x)/2^n$ converges 
+    uniformly. Since each term in the series is continuous and 
+    uniform convergence preserves continuity then $g$ is also 
+    continuous.
+\end{proof}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Let $f_n(x) = \frac{\sin(kx)}{k^3}$, then $f'_n(x) = \cos(kx)/k^2$.
+        Now $|\cos(kx)/k^2|\leq 1/k^2$ and $\sum  1/k^2$
+        converges then by the M-test $\sum f_n'(x)$ converges 
+        uniformly. Observe,
+        \begin{align*}
+            \sum \sin(0)/k^3 = 0
+        \end{align*}
+        So we have found at least one convergent point which implies
+        $\sum f_n'(x) \rightarrow f'(x)$. Hence, $f$ is differentiable.
+        Furthermore, $f'$ is continuous since $\sum f_n'(x)$ converges 
+        uniformly.
+    \end{proof}
+
+    \item
+    Not easily apparently.
+\end{enumerate}
+
+\ex{6}
+\begin{proof}
+    Fix $x_0$ and study the convergence 
+    on the interval $[0,x_0]$ using the M-test.
+    Now $x^n \leq x_0^n/n<x_0^n$.
+    Now $\sum x_0^n$ is a geometric sequence which 
+    converges so $\sum x_0^n$ converges 
+    uniformly on $[0,x_0]$. Since $x_0$ was arbitrary then
+    the convergence is uniform on $[0,1)$.
+
+    Now each term of the series is continuous so 
+    the limiting function $f$ is continuous on $[0,1)$.
+\end{proof}
+
+\ex{7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Since $|\frac{1}{x^2+n^2}|\leq 1/n^2$ and $\sum  1/n^2$
+        converges then by the M-test $\sum \frac{1}{x^2+n^2}$ converges 
+        uniformly. Since each term in the series is continuous and 
+        uniform convergence preserves continuity then $h$ is also 
+        continuous.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Let $h_n(x) = \frac{1}{x^2+n^2}$, then $h'_n(x) =\frac{-2x}{n^4+x^4+2n^2x^2}$.
+        Now $|h'_n(x)|$ peaks at $\pm n/ \sqrt 3$ so $h'_n(x)\leq \frac{3\sqrt 3}{8n^2}$
+         and $\sum \frac{3\sqrt 3}{8n^2}$
+        converges then by the M-test $\sum g_n'(x)$ converges 
+        uniformly. We already know $h_n$ converges on $\mathbb{R}$ from (a)
+        so we have found at least one convergent point which implies
+        $\sum h_n'(x) \rightarrow h'(x)$. Hence, $h$ is differentiable.
+        Furthermore, $h'$ is continuous since $\sum h_n'(x)$ converges 
+        uniformly.
+    \end{proof}
+\end{enumerate}
+
+\ex{8}
+\begin{proof}
+    Since $|u_n(x)|\leq 1/2^n$ and $\sum  1/2^n$
+    converges then by the M-test $\sum u_n(x)$ converges 
+    uniformly. Since each term in the series is continuous at irrational points
+     and uniform convergence preserves continuity then $h$ is also 
+    continuous at irrational points.
+
+    To show $h$ is a monotone function, 
+    it is sufficient to show that the partial sums are monotone functions.
+    We prove this via induction:
+    \begin{itemize}
+        \item Base case: $s_1(x) = u_1(x)$ which is monotone monotone increasing.
+        \item Induction on $n$: $u_n$ is increasing then adding $u_{n+1}$ must 
+        also be increasing since for $x<y$, $s_{n+1}(x) = s_{n}(x)+u_{n+1}(x) 
+        \leq s_{n}(y)+u_{n+1}(y) = s_{n+1}(y)$
+    \end{itemize}
+    so $s_n$ is monotone increasing by the induction hypothesis.
+    So by the order limit \Thm this implies 
+    \begin{gather*}
+        \lim_n s_n(x) \leq \lim_n s_n(y) \\
+        h(x) \leq h(y)
+    \end{gather*}
+\end{proof}
