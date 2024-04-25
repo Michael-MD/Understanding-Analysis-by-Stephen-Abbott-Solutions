@@ -1,0 +1,236 @@
+\subsection{Power Series}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Observe $g(1)=\sum (-1)^{n+1}/n$ so the series 
+    is abolutely convergent at $|x|<|x_0|$.
+    This implies the series is uniformly convergent on 
+    any closed subset which implies the convergence is 
+    uniform on $(-1,1)$.
+
+    Since the terms of a power series are continuous on $(-1,1)$
+    then the limiting function $g$ is continuous on $(-1,1)$ also.
+
+    We know the series converges for $x\in (-1,1]$. However, 
+    observe $g(-1) = - \sum 1/n$ which diverges so the series is 
+    not convergent on $[-1,1]$. Hence, the radius of convergence 
+    must be $R=1$ so the series cannot converge for $|x|>1$.
+
+    \item
+    $g'$ is cerrtainly defined on $(-1,1)$.
+
+    However
+    \begin{align*}
+        g'(1) = \sum (-1)^{n+1}
+    \end{align*}
+    diverges and 
+    \begin{align*}
+        g'(-1) = \sum (-1)^{n+1} (-1)^{n-1} = \sum (-1)^{2n}
+    \end{align*}
+    which also diverges so $g'$ is defined for $x\in(-1,1)$ only.
+\end{enumerate}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Consider
+    \begin{align*}
+        \sum x^n/n^2
+    \end{align*}
+
+    \item
+    Consider
+    \begin{align*}
+        \sum (-1)^{n+1} x^n/n
+    \end{align*}
+    which converges at $1$ but diverges at $-1$. Furthermore,
+    the convergence at $1$ is conditional since $\sum x^n/n$ diverges at unity.
+    
+    This implies 
+    \begin{align*}
+        \sum (-1)^{n+1} (-x)^n/n
+    \end{align*}
+    converges conditionally at $-1$ but diverges at $1$.
+
+    \item
+    Consider
+    \begin{align*}
+        \sum (-1)^{n} x^{2n}/n
+    \end{align*}
+    which converges at $\pm 1$. However,
+    the convergence at $\pm1$ is conditional since $\sum 1/n$ diverges.
+
+    \item
+    Absolute convergence at $1$ implies 
+    \begin{align*}
+        \sum |a_n|
+    \end{align*}
+    converges. Then ther series at $-1$ corresponds to 
+    \begin{align*}
+        \sum a_n (-1)^n
+    \end{align*}
+    However, taking the absolute value of this we obtain
+    \begin{align*}
+        \sum |a_n|
+    \end{align*}
+    which we have already concluded converges so such a request is 
+    impossible.
+\end{enumerate}
+
+\ex{3}
+We now that every power series a radius of convergence. 
+Within which the convergence is absolute. However, 
+at the boundary i.e. $x=R$ the series may converge 
+or diverge possibily conditionally. Hence, 
+the only places a power series can converge conditionally 
+are $x=\pm R$.
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        A power series converging on $(-R,R)$ 
+        $\Rightarrow$ power series converges at $x_1 \in (-R,R)$ 
+        $\Rightarrow$ power series converges absolutely at $|x_0| < |x_1|$
+        by \Thm 6.5.1
+        $\Rightarrow$ power series converges uniformly on $[-|x_0|,|x_0|]$
+        by \Thm 6.5.2
+
+        Since $f_n(x)=a_n x^n$ is continuous on $[-|x_0|,|x_0|]$ then 
+        $f$ is continuous on $[-|x_0|,|x_0|]$.
+
+        For any $x_0\in(-R,R)$ choose $x_0 < x_1 < R$ and apply the proceeding arguement
+        which implies the series converges to a continuous function on the entire 
+        radius of convergence.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        A power series converging on $x=R$
+        $\Rightarrow$ power series converges absolutely at $[0,R]$
+        by Abel's \Thm
+        We can apply  \Thm 6.5.1 and  \Thm 6.5.2 to conclude the series is convrgent 
+        on $(-R,R)$ which implies it is convergent on $(-R,R]$.
+    \end{proof}
+\end{enumerate}
+
+\ex{5}
+\begin{proof}
+    Since $a_n x^n \leq |a_n x_0^n|$ by assumption then $\sum |a_n x_0^n|$ 
+    converges so by M-test $\sum a_n x^n$ converges uniformly on $[-|x_0|,|x_0|]$. 
+\end{proof}
+
+\ex{6}
+\begin{proof}
+    Now a compact set $K$ contains it's maximum $M$ and minimum $m$. 
+    Since we are assuming the convergence 
+    is pointwise at $M$ then by Abel's \Thm the series converges uniformly on $[0,M]$.
+
+    Since the series converges at $M$ then the convergence is absolute for $x\in (-M,M)$
+    by \Thm 6.5.1 and the convergence is uniform for any closed subinterval therein by 
+    \Thm 6.5.2. Hence convergence is uniform on $(-M,M)$. So we know the series 
+    must converge at $(-M,M]$. 
+
+    By a similar arguement we can conclude the series converges at $[-m,m)$. Hence, 
+    the series converges at $[-m,M]$. Since it must be the case that $K\subseteq [-m,M]$
+    then the power series converges on compact set $K$.
+\end{proof}
+
+\ex{7}
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Consider series $\sum n s^{n-1}$. We can check if this series 
+        converges using the ratio test.
+        \begin{align*}
+            \lim |\frac{(n+1)s^n}{s^{n-1}}| &= \lim |\frac{(n+1)s^n}{s}| \\
+            &= \lim s(1+\frac{1}{n}) \\
+            &= s < 1
+        \end{align*}
+        Hence, by the ratio test this series converges. However, we know 
+        every convergent series requires the terms to go to zero i.e. $ns^{n_1}\rightarrow 0$.
+        Hence, $ns^{n-1}$ is bounded.
+    
+        \item
+        If we assume the series $\sum a_n x^n$ converges with radius of convergence 
+        $R$. Fix $x\in (-R,R)$ choose some $t\in (-R,R)$ where $|x|<t<R$ for which 
+        we know the series converges.
+
+        Observe, for some $|x|<t<R$
+        \begin{align*}
+            |n a_n x^{n-1}| &= \frac{1}{t} (n |\frac{x^{n-1}}{t^{n-1}}|)|a_n t^n|
+        \end{align*}
+        Also observe 
+        \begin{align*}
+            |\frac{x^{n-1}}{t^{n-1}}| = |\frac{x}{t}|^{n_1}
+        \end{align*}
+        so let $s=|x/t|<1$.
+        
+        From (a) we know $ns^{n-1}$ is bounded i.e. $|a_n t^n| \leq M$
+        for some $M>0$.
+        So 
+        \begin{align*}
+            |n a_n x^{n-1}| &= \frac{1}{t} (n s^{n-1})|a_n t^n| \\
+                        &\leq \frac{M}{t}  |a_n t^n|
+        \end{align*}
+
+        We know $\sum a_n t^n$ converges absolutely so $\sum |a_n t^n|$ converges. 
+        By the M-test this implies $\sum n a_n x^{n-1}$ converges uniformly on
+        $[-|x|,|x|]$. Since $x$ was arbitrary we can conclude the convergence is uniform on 
+        $(-R,R)$. 
+
+        However, uniform convergence of the derivitive and in knowing there exists at least 
+        one point in $(-R,R)$ where the original series converges implies 
+        $f'(x)=\sum n a_n x^{n-1}$ where $f(x) = \sum a_n x^n$ on $(-R,R)$.
+
+        Furthermore, by \Thm 6.5.5 we know at the covnergence of $\sum n a_n x^{n-1}$ is uniform 
+        on any compact set contained in $(-R,R)$.
+    \end{enumerate}
+\end{proof}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We know by the ratio test a series will converge if the limit of the ratio 
+        is less than one. That is, we require 
+        \begin{align*}
+            \lim |\frac{a_{n+1}x^{n+1}}{a_nx^n}| = \lim |\frac{a_{n+1}}{a_n}||x| = L|x| < 1
+        \end{align*}
+        This implies $|x|<1/L$ or $x \in (-1/L,1/L)$. 
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Again, by the ratio test
+        \begin{align*}
+            L|x| = 0
+        \end{align*}
+        so by the ratio test $|x|$ does not matter for the series to converge so the series 
+        converges on all of $\mathbb{R}$.
+    \end{proof}
+
+    \item
+    
+    
+    \item
+
+\end{enumerate}
+
+\ex{9}
+\begin{proof}
+    When $x=0$ we immediately see $a_0 = b_0$. Differentiating we obtain
+    \begin{align*}
+        \sum_{n=1} a_n n x^{n-1} = \sum_{n=1} b_n n x^{n-1}
+    \end{align*}
+    Again, when $x=0$ we get $a_n=b_1$.
+
+    We can then use induction to conclude $a_n=b_n$ for all $n$.
+\end{proof}
+
+\ex{10}
+
+\ex{11}
+
+\ex{12}
