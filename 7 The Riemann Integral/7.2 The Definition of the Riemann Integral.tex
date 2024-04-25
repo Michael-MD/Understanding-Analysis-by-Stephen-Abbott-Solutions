@@ -122,6 +122,57 @@
 \end{enumerate}
 
 \ex{5}
+\begin{proof}
+    Now 
+    \begin{align*}
+        |U(f_n,P) - U(f,P)| \leq \sum_j |\sup\{ f_n(\Delta x_j) \} - \sup\{ f(\Delta x_j) \}| \Delta x_j
+    \end{align*}
+    where we have used $f_n(\Delta x_j)$ as shorthand for $f_n(\Delta x_j) 
+    = \{ f_n(x) : x\in [x_{j-1},x_j] \}$.
+
+    Since $f_n \rightarrow f$ uniformly then there exists $N_1$ s.t.
+    \begin{align*}
+        |f(x)-f_n(x)| < \frac{\varepsilon}{2(b-a)}
+    \end{align*}
+    for $n\geq N_1$ for all $x$.
+    Hence, 
+    \begin{align*}
+        |\sup\{ f_n(\Delta x_j) \} - \sup\{ f(\Delta x_j) \}| \leq \frac{\varepsilon}{2(b-a)}
+    \end{align*}
+    so 
+    \begin{align*}
+        |U(f_n,P) - U(f,P)| &\leq \sum_j \frac{\varepsilon}{2(b-a)} \Delta x_j \\
+        &< \varepsilon/2
+    \end{align*}
+
+    In the same way there exists $N_2$ s.t. 
+    \begin{align*}
+        |\inf\{ f_n(\Delta x_j) \} - \inf\{ f(\Delta x_j) \}| \leq \frac{\varepsilon}{2(b-a)}
+    \end{align*}
+    Choose $N=\max\{N_1, N_2\}$ then 
+    \begin{align*}
+        &|U(f_n,P) - L(f_n,P) - [U(f,P) - L(f,P)]| \\ &\leq |U(f_n,P) - U(f,P)| + |L(f_n,P)- L(f,P)| \\
+                                                &< \varepsilon
+    \end{align*}
+    for $n\geq N$ which implies  
+    \begin{align*}
+        \lim_n U(f_n,P) - L(f_n,P) = U(f,P) - L(f,P)
+    \end{align*}
+
+    We know $(f_n)$ are all integrable so for each there exists a 
+    partition $P_n$ which ensures 
+    \begin{align*}
+        U(f_n, P_n) - L(f_n, P_n) < \varepsilon/2
+    \end{align*}
+    Take $P = \cup_n P_n$. Since $P$ is a refinement we know 
+    the individual inequailities will continus to be satisfied. 
+    So 
+    \begin{align*}
+        U(f,P) - L(f,P) = \lim_n U(f_n,P) - L(f_n,P) \leq \varepsilon/2 < \varepsilon
+    \end{align*}
+    so $f$ is integrable.
+\end{proof}
+
 
 \ex{6}
 \begin{proof}
