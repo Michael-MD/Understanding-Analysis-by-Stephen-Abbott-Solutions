@@ -1,0 +1,148 @@
+\subsection{The Definition of the Riemann Integral}
+
+\ex{1}
+\begin{proof}
+    Suppose $L(f,P)>U(f)$ then $L(f,P) = U(f)+\varepsilon$ where 
+    $\varepsilon>0$. Then since $U(f) = \inf\{U(f,P)\}$ then 
+    there exists $P_i$ s.t. $U(f, P_i) < U(f)+\varepsilon = L(f, P)$.
+    However, we know this cannot occur since this contradicts Lemma 7.2.4.
+    Hence, $U(f)\geq L(f,P)$.
+    
+    Since $U(f)\geq L(f,P)$ then $U(f)$ is an upper bounded on 
+    $\{L(f,P)\}$. Howeever, the least upper bound $L(f)$ must satisfy
+    \begin{align*}
+        L(f) \leq U(f)
+    \end{align*}
+\end{proof}
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        L(f,P) &= f(1)(3/2-1) + f(3/2)(2-3/2) + f(2)(3-2) \\    
+                &= 3(1/2)+4(1/2)+5(1) \\
+                &= 17/2
+    \end{align*}
+
+    \begin{align*}
+        U(f,P) &= f(3/2)(3/2-1) + f(2)(2-3/2) + f(3)(3-2) \\    
+                &= 4(1/2)+5(1/2)+7(1) \\
+                &= 23/2
+    \end{align*}
+
+    Hence, 
+    \begin{align*}
+        U(f,P) - L(f,P) = 23/2-17/2 = 3
+    \end{align*}
+
+    \item
+    We expect a refinement to reduce the difference. 
+    \begin{align*}
+        L(f,P) &= f(1)(1/2) + f(3/2)(1/2) + f(2)(1/2) + f(5/2)(1/2) \\    
+                &= 9
+    \end{align*}
+
+    \begin{align*}
+        U(f,P) &= f(3/2)(1/2) + f(2)(1/2) + f(5/2)(1/2) + f(3)(1/2) \\    
+                &= 11
+    \end{align*}
+
+    Hence, 
+    \begin{align*}
+        U(f,P) - L(f,P) = 11 - 9 = 2
+    \end{align*}
+
+    \item
+    If we devide the interval into equal steps of length $1/10$
+    we obtain
+    \begin{align*}
+        U(f,P) - L(f,P) = 11 - 9 = 2/5
+    \end{align*}
+\end{enumerate}
+
+\ex{3}
+\begin{proof}
+    For any closed interval and any partition, $P$, of 
+    this interval observe
+    \begin{align*}
+        U(f,P) = k \sum \Delta x_i = L(f,P)
+    \end{align*}
+    Hence, for any $\varepsilon>0$ we have found a partition 
+    such that 
+    \begin{align*}
+        U(f,P) - L(f,P) = < 0 \varepsilon
+    \end{align*}
+    so $f(x)=k$ is integrable.
+\end{proof}
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        $(\Rightarrow)$ Suppose $f$ is integrable on $[a,b]$ then by \Thm 7.2.8 
+        we know for every $\varepsilon>0$ there exists $P$ s.t. 
+        \begin{align*}
+            U(f,P) - L(f,P) < \varepsilon
+        \end{align*}
+        Let $\varepsilon_n = 1/n$ with corresponding partition $P_n$.
+        Now 
+        \begin{align*}
+            0 \leq U(f,P_n) - L(f,P_n) < 1/n
+        \end{align*}
+        Taking limits on both sides we obtain 
+        \begin{align*}
+            \lim_n U(f,P_n) - L(f,P_n) = 0
+        \end{align*}
+
+        $(\Leftarrow)$ Suppose for some bounded function 
+        $f$ there exist partitions $(P_n)$ satisfying
+        \begin{align*}
+            \lim_n U(f,P_n) - L(f,P_n) = 0
+        \end{align*}
+        Hence, for any $\varepsilon>0$ there exists $N$ s.t. 
+        \begin{align*}
+            \lim_n U(f,P_n) - L(f,P_n) < \varepsilon
+        \end{align*}
+        for $n\geq N$. Hence, by \Thm 7.2.8 $f$ is integrable.
+    \end{proof}
+
+    \item
+    \begin{gather*}
+        L(f, P_n) = \sum_{i=0}^{n-1} \frac{1}{n} f(i/n) = \sum_{i=0}^{n-1} \frac{i}{n^2} = \frac{n-1}{2n} \\
+        U(f, P_n) = \sum_{i=1}^{n} \frac{1}{n} f(i/n) = \sum_{i=1}^{n} \frac{i}{n^2} = \frac{n+1}{2n}
+    \end{gather*}
+
+    \item
+    \begin{proof}
+        \begin{align*}
+            U(f, P_n) - L(f, P_n) = \frac{1}{2n}
+        \end{align*}
+        Since $\lim \frac{1}{2n} = 0$ then $f$ is integrable.
+    \end{proof}
+\end{enumerate}
+
+\ex{5}
+
+\ex{6}
+\begin{proof}
+    For some partition $P$ 
+    \begin{gather*}
+        L(f,P) = \sum_{j=1}^n f(x_{j-1})(x_j - x_{j-1}) \\
+        U(f,P) = \sum_{j=1}^n f(x_{j})(x_j - x_{j-1})
+    \end{gather*}
+    Suppose $P_n$ is a parition of $[a,b]$ into $n$ equal subintervals, 
+    then 
+    \begin{gather*}
+        L(f,P_n) = \sum_{j=1}^n f(x_{j-1})\frac{1}{n} \\
+        U(f,P_n) = \sum_{j=1}^n f(x_{j})\frac{1}{n}
+    \end{gather*}
+    Doing a change of variables $L(f,P_n)$:
+    \begin{gather*}
+        L(f,P_n) = \sum_{j=0}^{n-1} f(x_{j})\frac{1}{n}
+    \end{gather*}
+    Hence, 
+    \begin{align*}
+        U(f,P_n) - L(f,P_n) = \frac{f(x_n) - f(x_0)}{n} = \frac{f(b) - f(a)}{n}
+    \end{align*}
+    Clearly $U(f,P_n) - L(f,P_n) \rightarrow 0$ so $f$ is integrable.
+\end{proof}
