@@ -1,0 +1,187 @@
+\subsection{Properties of the Integral}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We break up this proof into the following
+        three cases
+        \begin{itemize}
+            \item $f(A)<0$: $M'=\sup |f|=-\inf f=-m$ $m'=\inf |f|=-\sup f=-M$.
+            Hence, $M-m=M'-m'$.
+
+            \item $f(A)>0$: $m'=\inf |f|=\inf f=m$ $M'=\sup |f|=\sup f=M$.
+            Hence, $M-m=M'-m'$.
+
+            \item $f(A)$ contains positive and negative elements:
+            $m'=\inf |f| > \inf f=m$ $M'=\sup |f|=\sup f=M$.
+            Hence, $M-m=M'-m>M'-m'$.
+        \end{itemize}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Since $f$ is integrable, for $\varepsilon>0$ 
+        choose parition $P$ s.t. 
+        $U(f, P)-L(f, P) < \varepsilon$. This implies 
+        \begin{align*}
+            U(|f|, P)-L(|f|, P) &= \sum_j (M_j'-m_j')\delta x_j \\
+            &\leq \sum_j (M_j-m_j)\delta x_j \\
+            &= U(f, P)-L(f, P) \\
+            &< \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item
+    \begin{proof}
+        $f$ is integrable and $-|f|\leq f\leq |f|$ $\Rightarrow$ \Thm 7.4.2 (ii)
+        and (iv)
+        \begin{align*}
+            - \int |f| \leq \int f \leq \int |f|
+        \end{align*}
+        and by \Thm 7.4.2 (iii) $\int |f|\geq 0$ so 
+        \begin{align*}
+            |\leq \int f| \leq \int |f|
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+\ex{2}
+\begin{proof}
+    \begin{align*}
+        \int_a^c+\int_c^b = -\int_c^a + \int_c^a + \int_a^b = \int_a^b
+    \end{align*}
+\end{proof}
+
+\ex{3}
+\begin{proof}
+    From Exercise 7.2.5 we know uniform Convergence of a sequence 
+    preserves integrability so $\int f$ is well-defined.
+    We only need to establish the equailty $\lim_n \int f_n = \int f$.
+
+    \begin{align*}
+        |\int f - \lim_n \int f_n| &= |\lim_n \int (f -  f_n)| \\
+        &= \lim_n |\int (f-f_n)| \\
+        &\leq \lim_n \int |f-f_n|
+    \end{align*}
+    where the second equailty holds since $|\cdot|$ is differentiable.
+
+    We know $f_n\rightarrow f$ uniformly so there exists $N$
+    s.t. 
+    \begin{align*}
+        |f-f_n| < \frac{\varepsilon}{(b-a)}
+    \end{align*}
+    Hence for the same $N$
+    \begin{align*}
+        \lim_n \int |f-f_n| \leq \frac{\varepsilon}{(b-a)}(b-a) = \varepsilon
+    \end{align*}
+    by \Thm 7.4.2 (iii).
+    Hence, 
+    \begin{align*}
+        |\int f - \lim_n \int f_n| < \varepsilon
+    \end{align*}
+    for $n\geq N$ which implies $\lim \int f_n = \int f$ as required.
+\end{proof}
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    False, consider
+    \begin{align*}
+        f(x) = \begin{cases}
+            1 & x\in \mathbb{Q} \\
+            0 & x\not\in \mathbb{Q} 
+        \end{cases}
+    \end{align*}
+    which is not integrable, however, $|f(x)|=1$ is 
+    certainly integrable.
+
+    \item
+    Consider,
+    \begin{align*}
+        g(x) = \begin{cases}
+            1 & n\in \mathbb{N} \\
+            0 & n\not\in \mathbb{N}
+        \end{cases}
+    \end{align*}
+    Then this integrates to zero despite there being an (countabely) infinite 
+    number of points where $g(x)>0$.
+
+    An example, where the integration is not defined on the entire real 
+    line is given by $g: [0,1]\rightarrow \mathbb{R}$
+    \begin{align*}
+        g(x) = \begin{cases}
+            1 & x = 1/n : n\in \mathbb{N} \\
+            0 & \text{otherwise}
+        \end{cases}
+    \end{align*}
+
+    \item
+    \begin{proof}
+        We previously proved that for a continuous function $g$, if 
+        $g(x_0)>0$ then there exists $\delta>0$ s.t. 
+        \begin{align*}
+            g(x)>0
+        \end{align*}
+        given $|x-x_0|<\delta$. Say $x_1 \in V_\delta(x_0)$ with 
+        $x_0 < x_1$ then 
+        \begin{align*}
+            g(x)>0 \quad x\in [x_0,x_1]
+        \end{align*}
+        Hence, 
+        \begin{align*}
+            \int_a^b g = \int_a^{x_0} g + \int_{x_0}^{x_1} g + \int_{x_1}^{b} g 
+        \end{align*}
+        Now $ \int_a^{x_0} g\geq 0, \int_{x_1}^{b} g\geq 0$ and $\int_{x_0}^{x_1} g>0$
+        so $\int_a^b g>0$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Assume for contradition every interval $[c,d]\subseteq [a,b]$
+        $f(x) \leq 0$. This implies $\sup(f(x))\leq 0$ and 
+        $\inf(f(x))\leq 0$ which implies $\int f \leq 0$. This is a 
+        contradition and the required result follows.
+    \end{proof}
+\end{enumerate}
+
+\ex{5}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+
+\end{enumerate}
+
+\ex{6}
+
+\ex{7}
+\begin{proof}
+    Observe on $[0,1]$
+    \begin{align*}
+        |\lim_n \int_0^1 g_n - \int_0^1 g| &= |\lim_n \int_0^1 g_n-g| \\
+        &= |\lim_n [\int_0^\delta (g_n-g) + \int_\delta^1 (g_n-g)]| \\
+        &\leq |\lim_n \int_0^\delta (g_n-g) | + |\lim_n \int_\delta^1 (g_n-g)|
+    \end{align*}
+    On $[\delta, 1]$ we know $\lim_n \int g_n = \int g$ so we can find
+    $N \in \mathbb{N}$ s.t. 
+    \begin{align*}
+        |\lim_n \int_\delta^1 (g_n-g)| < \varepsilon/2
+    \end{align*}
+    for $n\geq N$.
+
+    As for $|\lim_n \int_0^\delta (g_n-g) |$, we know $g_n, g$ are 
+    bounded by say $M>0$ so $|g_n-g|\leq 2M$.
+    By \Thm 7.4.2 we know this implies  
+    \begin{align*}
+        |\lim_n \int_0^\delta (g_n-g) | \leq 2M\delta
+    \end{align*}
+    So if we choose
+    \begin{align*}
+        \delta < \frac{\varepsilon}{4M}
+    \end{align*}
+    we find 
+    \begin{align*}
+        |\lim_n \int_0^1 g_n - \int_0^1 g| &\leq  |\lim_n \int_0^\delta (g_n-g) | + |\lim_n \int_\delta^1 (g_n-g)| \\
+        &<  2M\delta  + \varepsilon/2 \\
+        &<  \varepsilon
+    \end{align*}
+\end{proof}

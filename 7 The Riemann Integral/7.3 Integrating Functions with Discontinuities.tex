@@ -1,0 +1,317 @@
+\subsection{Integrating Functions with Discontinuities}
+
+\ex{1}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    For every partition the final subinterval will be of the form 
+    $[x_n,1]$. However the infimum on this set of $h$ will always be 
+    1.
+
+    \item
+    Consider partition $x_0=0, x_1=1-\frac{1}{20},x_2=1$, then 
+    \begin{align*}
+        U(h,P) &= (1-1/20)+(1/20)2 \\
+        &= 1 + 1/20 < 1+1/10
+    \end{align*}
+
+    \item
+    Consider partition $x_0=0, x_1=1-\frac{\varepsilon}{/2},x_2=1$, then 
+    \begin{align*}
+        U(h,P) &= (1-\varepsilon/2)+(\varepsilon/2)2 \\
+        &= 1 + \varepsilon/2 < 1+\varepsilon
+    \end{align*}
+\end{enumerate}
+
+\ex{2}
+For some enumeration of the rationals $\{r_1, r_2, \dots\}$, consider 
+\begin{align*}
+    g_n(x) = \begin{cases}
+        1 & x\in \{r_1, r_2, \dots, r_n\} \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{align*}
+
+$g_n(x)$ is integrable since it has a finite number of discontinuities
+but the limit which is dirichlet's function is not. This is expected since 
+in Exercise 7.2.5 we proved that the limit is guaranteed to be 
+integrable (given the terms of the sequence are integrable)
+if the convergence is uniform. 
+
+\ex{3}
+\begin{proof}
+    Choose the open interval so that all added the size of all the 
+    intervals is $\varepsilon/8M$ where $M$ is the bound on $f$.
+
+    Let $\{p_i\}_{i=1}^k$ be the set of discontinuities and 
+    $\delta_i$ the size of each neighbourhood of point $p_i$ i.e.
+    \begin{align*}
+        \sum_i 2\delta_i = \frac{\varepsilon}{4M}
+    \end{align*}
+    Construct partitions $\{P_i\}$ where $P_i$ is a partiion 
+    of interval $[p_i+\delta_i, p_{i+1}-\delta_{i+1}]$ where the 
+    parition is chosen to satisfy 
+    \begin{align*}
+        U(f, P_i) - L(f,P_i) < \frac{\varepsilon}{2(k+1)}
+    \end{align*}
+    where $k$ is the number of discontinuities. The first and last 
+    paritions will be the interval from the boundaries and the 
+    first and last disconuity respectively.
+    We know this is always possible since $f$ with the discontinuities 
+    removed is continuous and therefore integrable.
+
+    Now let $P = \cup_i P_i$, since $P$ is a refinement the above 
+    inequailities will continue to be satisfied.
+    
+    Hence, 
+    \begin{gather*}
+        U(f, P) = \sum_i^{k+1} U(f, P_i) + \sum_{i=1}^k \sup f(V_{\delta_i}(p_i))2\delta_i \\
+        L(f, P) = \sum_i^{k+1} L(f, P_i) + \sum_{i=1}^k \inf f(V_{\delta_i}(p_i))2\delta_i
+    \end{gather*}
+    so 
+    \begin{align*}
+        U(f, P) -  L(f, P) &= \sum_i^{k+1} U(f, P_i)  - L(f, P_i)  \\ 
+        &+ \sum_{i=1}^k 2\delta_i (\sup f(V_{\delta_i}(p_i)) - \inf f(V_{\delta_i}(p_i)))
+    \end{align*}
+    Since $f$ is bouned $\sup f(V_{\delta_i}(p_i)) - \inf f(V_{\delta_i}(p_i)) \leq 2M$.
+    So 
+    \begin{align*}
+        U(f, P) -  L(f, P) &\leq \sum_i^{k+1} U(f, P_i)  - L(f, P_i) + \sum 2\delta_i 2M \\
+        &\leq \sum_i^{k+1} U(f, P_i)  - L(f, P_i) + 4M \sum \delta_i \\
+        &< \frac{\varepsilon}{2(k+1)} \sum_i^{k+1} 1 + 4M \frac{\varepsilon}{8M} \\
+        &= \varepsilon/2 + \varepsilon/2 \\
+        &= \varepsilon 
+    \end{align*}
+\end{proof}
+
+We could have proceeded with the proof by using the continuity of 
+$f$ on a compact set which implies the set is now uniformly continuous. 
+We could then argue that $U(f,P_i) - L(f,P_i)$ can be made 
+arbitrarily small by paritioning $P_i$ s.t. each subinterval is less than 
+$\delta>0$ where $|x-y|<\delta \Rightarrow |f(x)-f(y)|<\frac{\varepsilon}{2(b-a)}$.
+However, this is les elegant I think.
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        We will denote the modified function by $g$.
+
+        Let's parition the interval $[a,b]$ into three subintervals 
+        $[a,p-\delta], [p-\delta, p+\delta], [p+\delta,b]$ where 
+        $p$ is the point in the domain of $f$ which has been changed 
+        and $\delta>0$ is some neighbourhood of $p$ to be determined.
+
+        We can compose a partition of $[a,b]$ as the union of the paritions
+        $[a,p-\delta], [p+\delta,b]$ which we will denote by $P_{[a,p-\delta]}, 
+        P_{[p+\delta,b]}$ respectively and the refinement by $P= P_{[a,p-\delta]} 
+        \cup P_{[p+\delta,b]}$, then 
+        \begin{align*}
+            U(g, P) - L(g, P) &= U(f, P_{[a,p-\delta]}) - L(f, P_{[a,p-\delta]}) \\ 
+            &+ U(f, P_{[p+\delta,b]}) - L(f, P_{[p+\delta,b]}) \\
+            &+ 2\delta(\sup g([p-\delta, p+\delta]) - \inf g([p-\delta, p+\delta]) ) \\
+            &\leq U(f, P_{[a,p-\delta]}) - L(f, P_{[a,p-\delta]}) 
+            + U(f, P_{[p+\delta,b]}) - L(f, P_{[p+\delta,b]}) 
+            + 2\delta (2M)
+        \end{align*}
+        where $M$  is an upper bound on $g$ since $f$ is integrable and $g$ and $f$
+        differ at a single point.
+        Hence, we see if we choose $\delta = \frac{\varepsilon}{8M}$ and 
+        partitions such that $U - L < \varepsilon/4$ then 
+        \begin{align*}
+            U(g, P) - L(g, P) &< \varepsilon
+        \end{align*}
+        Hence, $g$ remains integrable.
+
+        To show that the integral remains unchanged it suffices to only
+        show $U(f)=U(g)$. In addition, it suffices to show for $\varepsilon>0$
+        there exists a partition such that 
+        \begin{align*}
+            U(f,P) < U(g)+ \varepsilon
+        \end{align*}
+        Observe,
+        \begin{align*}
+            U(f,P) &= \sum_i \sup f(\Delta x_i) \Delta x_i \\
+            &= \sum_i \sup g(\Delta x_i) \Delta x_i + \sup f(\Delta x_j) \Delta x_j \\
+            &\leq U(g, P) - \sup g(\Delta x_j) \Delta x_j + \sup f(\Delta x_j) \Delta x_j \\
+            &\leq U(g, P) + \Delta x_j (\sup f(\Delta x_j) - \sup g(\Delta x_j))
+        \end{align*}
+        $g$ is integrable so if we choose a partition s.t. 
+        \begin{align*}
+            U(g, P) < U(g) + \varepsilon/2
+        \end{align*}
+        so 
+        \begin{align*}
+            U(g, P) \Delta x_j (\sup f(\Delta x_j) - \sup g(\Delta x_j)) < U(g) + \frac{\varepsilon}{2} + \Delta x_j (\sup f(\Delta x_j) - \sup g(\Delta x_j))
+        \end{align*}
+        We can refine the parition such that each subinterval is less than $\frac{\varepsilon}{2(2M)}$ 
+        which implies 
+        \begin{align*}
+            & U(g) + \frac{\varepsilon}{2} + \Delta x_j (\sup f(\Delta x_j) - \sup g(\Delta x_j)) \\
+            &\leq U(g) + \frac{\varepsilon}{2} + \Delta x_j 2M \\
+            &< U(g) + \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+            &=  U(g) + \varepsilon
+        \end{align*}
+        where $M$ is an upper boundon $f$ and $g$.
+        So we have found a partition such that $U(f,P) <  U(g) + \varepsilon$.
+        Hence, $U(f) = \inf\{ U(f,P) : P \in \mathcal{P} \} = U(g)$.
+
+        Since $f$ and $g$ are integrable then we easily get 
+        \begin{align*}
+            L(f)=U(f)=U(g)=L(g)
+        \end{align*}
+        and we can conclude that the integral is unchanged.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        We can proceed by induction:
+        If we order the set of points which will change from $f$ to $g$
+        and we denote f after the first $n$ changes by $g_n$ then
+        for the base case consider if a single point is changed then 
+        $\int g_1 = \int f$ by (a).
+
+        For $n>1$ $\int g_n = \int g_{n-1} = \dots \int g_1 = \int f$ 
+        where we have used a strong induction on $n$. Hence, the result 
+        follows.
+    \end{proof}
+
+    \item
+    The rationals are countable so we can construct dirichlet's function
+    by starting at the zero function we can change each rational point to one.
+    However, the function we started with is integrable while dirichlet's
+    function is not integrable.
+\end{enumerate}
+
+\ex{5}
+\begin{proof}
+    The set $\{1/n\}$ are isolated points of $[0,1]$ so for any interval 
+    the infinum of $f$ on the set will be zero. Hence, for any parition 
+    $L(f,P) = 0 = L(f)$ so we focus on $U(f,P)$.
+
+    We will need to carefully construct a sequence of partitions $P_n$
+    where $U(f, P_n) - L(f, P_n) \rightarrow 0$. 
+
+    For discontinuity $p_i = 1/i$ we can choose neighbourhood 
+    \begin{align*}
+        \delta_i = \frac{1}{i} - \frac{1}{i+1} = \frac{1}{i(i+1)} 
+    \end{align*}
+    which will only contain $p_i$.
+
+    Next we create sequence of paritions where 
+    \begin{align*}
+        P_n = \{ 1 > 1-\frac{\delta_1}{n} > \frac{1}{2}+\frac{\delta_2}{n} > \frac{1}{2}-\frac{\delta_2}{n} > \frac{1}{3}+\frac{\delta_3}{n} > \dots\}
+    \end{align*}
+    Each $P_n$ will only parition the first $n$ discontinuities, for example
+    \begin{gather*}
+        P_1 = \{ 1 > 1-\frac{\delta_1}{n} > 0 \} \\
+        P_2 = \{ 1 > 1-\frac{\delta_1}{n}  > \frac{1}{2}+\frac{\delta_2}{n} > \frac{1}{2}-\frac{\delta_2}{n} > 0\} \\
+        \vdots
+    \end{gather*}
+    so $P_{n+1}$ is a refinement of $P_{n}$. 
+    Hence, with some thought each parition is given by  
+    \begin{align*}
+        U(f,P_n) &= \frac{\delta_1}{n} + \sum_{i=2}^N \frac{2\delta_i}{n} + (\frac{1}{n} - \frac{\delta_n}{n}) \\
+        &= \frac{1}{2n} + \frac{2}{n} \sum_{i=2}^n \delta_i + (\frac{1}{n} - \frac{1}{n^2 (n+1)}) \\
+        &= \frac{1}{n+1} + \frac{3n-2}{2n^2}
+    \end{align*}
+    So 
+    \begin{align*}
+        U(f,P_n) - L(f,P_n) = \frac{1}{n+1} + \frac{3n-2}{2n^2}
+    \end{align*}
+    Taking the limit we clearly see 
+    \begin{align*}
+        \lim_n [U(f,P_n) - L(f,P_n)] = 0
+    \end{align*}
+    Hence, $f$ is integrable. This implies $U(f)=L(f)=0$ so $\int_0^1 f = 0$.
+\end{proof}
+
+\ex{6}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        Choose finite open cover of the set of discontinuities s.t. 
+        \begin{align*}
+            \sum |O_n| \leq \frac{\varepsilon}{4M}
+        \end{align*}
+        where $M$ is an upper bound on $f$.
+
+        Now $f$ will be integrable on $[a,b] \backslash \{O_n\}$ since 
+        $f$ is continuous. So for each closed subinterval we choose a 
+        parition $P_i$. Let $P=\cup_i P_i$ then observe,
+         for any partition
+        \begin{align*}
+            U(f,P) - L(f,P) &\leq \sum U(f,P_i) - L(f,P_i) + \sum_{n=1}^N 2M |O_n| \\
+            &\leq \sum U(f,P_i) - L(f,P_i) + \frac{\varepsilon}{2}
+        \end{align*}
+        Now we can choose each partition such that 
+        \begin{align*}
+            \sum U(f,P_i) - L(f,P_i)  < \varepsilon/2
+        \end{align*}
+        whcih implies $ U(f,P) - L(f,P)<\varepsilon/2$. Since $\varepsilon$
+        was arbitrarily then $f$ is integrable.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Denote each point in the finite set under consideration by $p_n$ and 
+        let $k$ be the cardinalily of the set then 
+        let
+        \begin{align*}
+            O_n =(p_n - \delta, p_n + \delta)
+        \end{align*}
+        where 
+        \begin{align*}
+            \delta \leq \frac{\varepsilon}{\sum_{n=1}^k 2}
+        \end{align*}
+        Hence,
+        \begin{align*}
+            \sum_n |O_n| = \sum_{n=1}^k 2\delta \leq \varepsilon
+        \end{align*}
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        Now $C\subset C_n$ so let's find an finite open cover of 
+        $C_n$. Construct the open cover as follows: to cover each interval 
+        \begin{gather*}
+            O_1 = (0,\frac{1}{3^n}) \\
+            O_2 = (\frac{1}{3^n},\frac{2}{3^n}) \\
+            \vdots
+        \end{gather*}
+        there will be $2^n$ closed intervals in $C_n$. It is easy to see 
+        each open set has length 
+        \begin{align*}
+            |O_i| = \frac{1}{3^n}
+        \end{align*}
+        We can cover the end points of each subinterval of $C_n$ we include 
+        open sets of length $1/3^n$ centered around each end point, of which 
+        there are $2^n$ so we have in total $2\times 2^n$ open intervals whcih 
+        completely cover $C_n$ i.e. 
+        \begin{align*}
+            C_n \subset \cup_{i=1}^{2 \times 2^n} O_i
+        \end{align*}
+        It is clear 
+        \begin{align*}
+            \sum |O_i| = \frac{1}{3^n} \times 2\times 2^n = 2(\frac{2}{3})^n
+        \end{align*}
+        Hence, if we choose 
+        \begin{align*}
+            n\geq \frac{\log (\varepsilon/2)}{\log(2/3)}
+        \end{align*}
+        then 
+        \begin{align*}
+            \sum |O_i| \leq \varepsilon
+        \end{align*}
+        so the cantor set indeed has content zero.
+    \end{proof}
+
+    \item 
+    \begin{proof}
+        $h$ has discontinuities of content zero so $h$ is integrable. 
+        We know for any interval the infimum of $h$ on the interval will 
+        be zero so $L(h)=0$. However, since $h$ is integrable then this 
+        must be the value of the integral so $\int_0^1 h = 0$.
+    \end{proof}
+\end{enumerate}
+
+
