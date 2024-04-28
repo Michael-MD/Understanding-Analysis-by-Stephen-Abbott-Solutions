@@ -1,0 +1,227 @@
+\subsection{The Fundamental Theorem of Calculus}
+
+\ex{1}
+A continuous function is integrable so 
+\begin{align*}
+    G(x) = \int_a^x g
+\end{align*}
+is well-defiend and by FTC $G'=g$ so $g$ is the 
+the derivitive of some function $G$.
+
+\ex{2}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $f(x)$ is continous so it has an antiderivative so 
+    \begin{align*}
+        F(x) &= \begin{cases}
+            \int_{-1}^x -x & x\leq 0 \\
+            \int_{-1}^x x & x> 0
+        \end{cases} \\
+        &= \begin{cases}
+            -x^2/2|_{-1}^x & x\leq 0 \\
+            x^2/2|_{-1}^x & x> 0
+        \end{cases} \\
+        &= \begin{cases}
+            -(x^2/2-1/2) & x\leq 0 \\
+            x^2/2-1/2 & x> 0
+        \end{cases}
+    \end{align*}
+    $F$ will be continuous everywhere as long as $f$ is 
+    integrable. However, $F$ is differentiable when 
+    $f$ is continuous which is everywhere. Furthermore, 
+    $F'=f'$.
+
+    \item
+    $f(x)$ is continous so it has an antiderivative so 
+    \begin{align*}
+        F(x) &= \begin{cases}
+           \int_{-1}^x 1 & x < 0 \\
+           \int_{-1}^x 2 & x \geq 0
+        \end{cases} \\
+        &= \begin{cases}
+            1-x & x < 0 \\
+            1+2x & x \geq 0
+        \end{cases}
+    \end{align*}
+    $F$ will be continuous everywhere as long as $f$ is 
+    integrable. However, $F$ is differentiable when 
+    $f$ is continuous which is everywhere except $x=0$. 
+    Furthermore, 
+    $F'=f'$ for $x\neq 0$.
+\end{enumerate}
+
+\ex{3}
+To use the MVT we only require $F$ be differentiable on $(a,b)$,
+not $[a,b]$. However, we still require $F$ to be continuous on 
+$[a,b]$.
+So we require $F'=f$ on $(a,b)$ and $F$ be continuous on $[a,b]$.
+
+\ex{4}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        H(a) = \int_1^1 \frac{1}{t} dt = 0
+    \end{align*}
+    Since $1/t$ is continuous on $(0,\infty)$ then $H'(x)=1/x$
+    for $x>0$.
+
+    \item
+    \begin{proof}
+        H is differentiable so $H$ is continuous. Using the MVT 
+        on $[x,y]$ where $x,y\in (0,\infty)$ with $x<y$ so 
+        there exists $t\in(x,y)$ s.t. 
+        \begin{align*}
+            \frac{H(y)-H(x)}{y-x} = f'(t)>0
+        \end{align*}
+        which implies $H(y)-H(x)>0$ or $H(y)>H(x)$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        By the chain rule $g(x) = H(cx) = 1/x = H'(x)$ so 
+        \begin{align*}
+            H(x) &= \int_1^x g'(t) dt \\ 
+            &= g(x) - g(1) \\
+            &= H(cx) - H(x) \\
+            &\Rightarrow H(cx) = H(c) + H(x) 
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+\ex{5}
+\begin{proof}
+    $f_n'\rightarrow g$ uniformly and $f_n'$ are assumed to be 
+    continous so $g$ is also continuous which implies $g$ is 
+    integrable so 
+    \begin{align*}
+        G(x) = \int_a^x g + f(a)
+    \end{align*}
+    is well-defined.
+    Furthermore, since $g$ is continuous $G$ is differentiable 
+    and $G'=g$.
+
+    Fix $x\in [a,b]$ then 
+    \begin{align*}
+        |G(x)-f(x)| &= |\int_a^x g - \int_a^x f_n' + \int_a^x f_n' - f(x) + f(a)| \\
+        &= |\int_a^x (g - f_n') + f_n(x) - f_n(a) - f(x) + f(a)| \\
+        &\leq \int_a^x |g - f_n'| + |f_n(x) - f(x)| + |f_n(a) - f(a)|
+    \end{align*}
+    Since $f_n'\rightarrow g$ uniformly, choose $N_1$ s.t. 
+    \begin{align*}
+        |g(t) - f_n'(t)| < \frac{\varepsilon}{3}
+    \end{align*}
+    where $t\in [a,x]$.
+
+    Since $f_n\rightarrow f$ pointwise, choose $N_2$ s.t. 
+    \begin{align*}
+        |f_n(x) - f(x)| < \frac{\varepsilon}{3}
+    \end{align*}
+    and choose $N_3$ s.t. 
+    \begin{align*}
+        |f_n(a) - f(a)| < \frac{\varepsilon}{3}
+    \end{align*}
+    Hence, for $N=\max\{N_1, N_2, N_3\}$
+    \begin{align*}
+        |G(x)-f(x)| < \varepsilon
+    \end{align*}
+    so $G(x) = f(x)$ which implies $G'(x)=f'(x)$ which implies $g(x)=f'(x)$.
+    Since $x$ was arbitrary then this is true for all $x\in [a,b]$.
+\end{proof}
+
+\ex{6}
+\begin{proof}
+    Assuming $f$ is continuous then $G = \int_a^x g$ is well-defined and
+     $G'=g$. Since $G'=F'=f$ then $G(x) = F(x) + k$ so 
+    \begin{align*}
+        \int_a^b g = G(b) - G(a) = F(b) - F(a)
+    \end{align*}
+    which is (i) of FTC. 
+\end{proof}
+
+\ex{7}
+\begin{proof}
+    Assuming $f$ is continuous then $G = \int_a^x g$ is well-defined and
+    $G'=g$ and $G$ is continuous so by MVT there exists $c\in(a,b)$ s.t 
+    \begin{align*}
+        \frac{G(b)-G(a)}{b-a} = G'(c) = g(c)
+    \end{align*}
+    However, $G(b)-G(a) = \int_a^b g$  and $ G'(c) = g(c)$ so
+    \begin{align*}
+        g(c) = \frac{\int_a^b g}{b-a}
+    \end{align*} 
+\end{proof}
+
+\ex{8}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{proof}
+        \begin{align*}
+            Vf &= \sup\{ \sum_k |f(x_k) - f(x_{k-1})|\} \\
+            &= \sup\{ \sum_k |\int_{x_{k-1}}^{x_k} f'|\} \\ 
+            &\leq \sup\{ \sum_k \int_{x_{k-1}}^{x_k} |f'|\} \\ 
+            &= \sup\{ \int_{a}^{b} |f'|\} \\ 
+        \end{align*}
+        where the second equaily holds since $f'$ is assumed continuous
+        so $f(x)=\int_a^x f'$.
+    \end{proof}
+
+    \item
+    \begin{proof}
+        Since $\int f'$ is continuous and differentiable then we can apply 
+        the MVT on $[a,b]$ to obtain
+        \begin{align*}
+            \frac{\int_a^b f'}{b-a} = f'(t)
+        \end{align*}
+        for some $t\in(a,b)$. For a given partition, for every subitnerval 
+        there exists $t_k\in(x_{{k-1}},x_k)$ s.t 
+        \begin{align*}
+            \frac{f(x_k)-f(x_{k-1})}{x_k-x_{{k-1}}} = f'(t)
+        \end{align*}
+        Taking absolute values and rearranging
+        \begin{align*}
+            |f(x_k)-f(x_{k-1})| = |x_k-x_{{k-1}}||f'(t)|
+        \end{align*}
+        so 
+        \begin{align*}
+            Vf &= \sup\{ \sum_k |f'(t_k)||x_k-x_{{k-1}}|\}
+        \end{align*}
+        Now $\int |f'| = L(|f'|)$ so 
+        \begin{align*}
+            \int |f'| &= \sup\{ \sum_k \inf\{ |f'(x_k-x_{{k-1}})| \}(x_k-x_{{k-1}})\} \\
+            &\leq \sup\{ \sum_k |f'(x_k-x_{{k-1}})| (x_k-x_{{k-1}})\} \\
+            &= Vf
+        \end{align*}
+        so $\int |f'|\leq Vf$ and in (a) we showed $Vf \leq \int |f'|$ so $Vf = \int |f'|$.
+    \end{proof}
+\end{enumerate}
+
+\ex{9}
+\begin{proof}
+    \begin{align*}
+        H'(1) &= \lim_{x\rightarrow 1} \frac{H(x)-H(1)}{x-1} \\
+        &= \lim_{x\rightarrow 1} \frac{\int_1^x h}{x-1} \\
+        &= \lim_{x\rightarrow 1} \frac{x-1}{x-1} \\
+        &= 1
+    \end{align*}
+    Notice, $H'(1)\neq h(1)$ since $h$ is not continuous at $x=1$ so FTC does not 
+    gauarantee this anymore.
+\end{proof}
+
+\ex{10}
+\begin{proof}
+    For contradition, suppose $F$ is differentiable at $x=c$ then 
+    we need to find $F'(c)$ which is given by 
+    \begin{align*}
+        F'(c) &= \lim_{x\rightarrow c} \frac{F(x)-F(c)}{x-c} \\
+        &= \lim_{x\rightarrow c} \frac{\int_c^x f}{x-c}
+    \end{align*}
+    If we assume $f$ is continuous then $F' = f$ so using L'hopital's 
+    rule we obtain
+    \begin{align*}
+        F'(c) = \lim_{x\rightarrow c} f(x)
+    \end{align*} 
+    For this limit to exist we require both one-sided limits to exist which is 
+    false so $F'(c)$ does not exist.
+\end{proof}
+
+\ex{11}
